@@ -1,0 +1,48 @@
+@import url("./fonts/fonts.css");
+
+:root {
+  /* ------------------------------ Fonts ------------------------------ */
+
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+  --font-openSans: "Open Sans", sans-serif;
+  --font-mukta: "Mukta", sans-serif;
+
+  /* ------------------------------ Colors ------------------------------ */
+
+  /* ---- Admin ---- */
+
+  --Amain-black: #1e1e30;
+
+  --Asidebar-color: #c74feb;
+
+  --Atext-color1: #fcddec;
+  --Atext-color2: #c7c7c7;
+  --Atext-color3: #f5f5f5;
+
+  --Abutton-color1: #c035a2;
+  --Abutton-color2: #d63626;
+
+  --Abox-color1: #27283c;
+  --Abox-color2: #38394e;
+  --Abox-color3: #5a5b70;
+  --Abox-color4: #ffffff;
+
+  /* ---- Client ---- */
+
+  --button-color1: #d63626;
+  --button-color2: #fb9300;
+  --button-color3: #6fcf97;
+
+  --text-color1: #181617;
+  --text-color2: #828282;
+  --text-color3: #4f4f4f;
+  --text-color4: #ffffff;
+  --text-color5: #bdbdbd;
+  --text-color6: #000000;
+
+  --box-color1: #272727;
+  --box-color2: #eb5757;
+  --box-color3: #f3f4f6;
+  --box-color4: #ffffff;
+}
