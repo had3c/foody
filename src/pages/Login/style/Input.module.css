@@ -1,0 +1,35 @@
+.cont {
+    position: relative;
+    margin-bottom: 26px;
+    width: 100%;
+}
+
+.cont label {
+    display: block;
+    padding: 0 0 6px 6px;
+    font-size: 16px;
+    color: black;
+    font-family: var(--font-roboto);
+}
+
+.cont input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 18px;
+    color: black;
+    background-color: #FFE7E7;
+}
+.cont span {
+    display: block;
+    position: absolute;
+    top: 100%;
+    padding-left: 6px;
+    font-size: 16px;
+    color: var(--box-color2);
+    font-family: var(--font-roboto);
+}
+::placeholder{
+    font-family: var(--font-roboto);
+}
