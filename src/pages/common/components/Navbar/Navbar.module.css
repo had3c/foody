@@ -1,0 +1,76 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 44px 5%;
+    background-color: var(--box-color3);
+    margin: 2% 2% 0 2%;
+}
+
+.navigation {
+    align-items: center;
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+.navigation li {
+    display: inline-block;
+}
+
+.navigation li a {
+    font-family: var(--font-roboto);
+    color: var(--text-color2);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-left: 22px;
+}
+
+.search {
+    display: flex;
+    width: 36%;
+    justify-content: space-between;
+    width: 42%;
+}
+
+.search input {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 15px;
+    width: 300px;
+}
+
+.search input::placeholder {
+    font-family: var(--font-roboto);
+    color: black;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 18.75px;
+}
+
+.search .signupBtn {
+    font-family: var(--font-roboto);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    background-color: var(--button-color1);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    width: 115px;
+}
+
+/*        Css Media           */
+
+@media only screen and (max-width: 320px) {
+    .navigation ul{
+        display: none;
+    }
+    .signupBtn{
+        display: none;
+    }
+    .search input{
+      display: none;
+    }
+  }
+  
