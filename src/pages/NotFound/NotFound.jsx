@@ -1,3 +1,5 @@
+import Not from "./components/Not";
+
 export default function NotFound() {
-  return <div>NotFound</div>;
+  return <div><Not/></div>;
 }
