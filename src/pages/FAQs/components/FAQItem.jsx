@@ -3,7 +3,7 @@ import remove from '../../../assets/icons/remove.svg'
 import StyleFaqItem from '../style/FAQItem.module.css'
 
 
-export const FaqItem = ({ question, answer, isOpen, toggleOpen }) => (
+export const FaqItem = ({ question, answer, isOpen, toggleOpen ,rim }) => (
     <div className={StyleFaqItem.faqItem}>
         <div className={StyleFaqItem.faqQuestion} onClick={toggleOpen}>
             {question}

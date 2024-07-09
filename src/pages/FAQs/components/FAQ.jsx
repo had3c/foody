@@ -10,7 +10,7 @@ function FAQ() {
 
     return (
         <div className={StyleFAQ.faqContainer}>
-            <h1 className={StyleFAQ.hh}>F.A.Q</h1>
+            <h1 className={StyleFAQ.hh}>F.A.Q.Q.Q.q.q.q</h1>
             {faqData.map((item, index) => (
                 <FaqItem
                     key={index}
