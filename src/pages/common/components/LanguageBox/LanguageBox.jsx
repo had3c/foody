@@ -1,10 +1,34 @@
 import "./LanguageBox.css";
-import useLanguageDisplay from "../../../../hooks/useLanguageDisplay";
+
+import eng from "../../../../assets/images/langEng.svg";
+import aze from "../../../../assets/images/langAze.svg";
+import fra from "../../../../assets/images/langFrance.svg";
+
 import LangItem from "./components/LangItem";
 import { motion } from "framer-motion";
+import { useState } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { setLangName } from "../../../../redux/features/langSlice/langSlice";
+
+const langs = {
+  en: eng,
+  fr: fra,
+  az: aze,
+};
 
 export default function LanguageBox() {
-  const [show, lang, setShow, handleLangSelect, langs] = useLanguageDisplay();
+  const { langName } = useSelector((state) => state.lang);
+  const dispatch = useDispatch();
+
+  const [lang, setLang] = useState(langName);
+  const [show, setShow] = useState(false);
+
+  const handleLangSelect = (value) => {
+    setLang(value);
+    dispatch(setLangName(value));
+    setShow(false);
+  };
 
   const liItems = Object.keys(langs).map((key) => (
     <LangItem key={key} data={{ key, langs, handleLangSelect }} />
