@@ -1,0 +1,138 @@
+.faqContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+
+}
+
+.hh {
+    text-align: center;
+    color: #000;
+    margin-bottom: 30px;
+    font-size: 45px;
+    font-family: var(--font-roboto);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0.15px;
+}
+
+.faqItem {
+    margin-bottom: 15px;
+    box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.20);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.faqQuestion {
+    background-color: #fff;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-roboto);
+
+    color: #000;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0.15px;
+}
+
+.faqToggle {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.faqToggle.open {
+    transform: rotate(180deg);
+}
+
+.faqAnswer {
+    padding: 15px;
+    font-family: var(--font-roboto);
+
+    color: #828282;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0.15px;
+}
+
+
+@media screen and (max-width: 480px) {
+    .faqContainer {
+        padding: 10px;
+    }
+
+    .hh {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .faqQuestion {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .faqAnswer {
+        font-size: 12px;
+        padding: 12px;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .faqContainer {
+        padding: 15px;
+    }
+
+    .hh {
+        font-size: 24px;
+    }
+
+    .faqQuestion {
+        font-size: 15px;
+    }
+
+    .faqAnswer {
+        font-size: 13px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .faqContainer {
+        max-width: 90%;
+    }
+
+    .hh {
+        font-size: 26px;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+    .faqContainer {
+        max-width: 80%;
+    }
+}
+
+@media screen and (min-width: 1441px) {
+    .faqContainer {
+        max-width: 1200px;
+    }
+
+    .hh {
+        font-size: 32px;
+    }
+
+    .faqQuestion {
+        font-size: 18px;
+    }
+
+    .faqAnswer {
+        font-size: 16px;
+    }
+}

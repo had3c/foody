@@ -1,3 +1,7 @@
+import FAQ from "./components/FAQ";
+
 export default function FAQs() {
-  return <div>FAQs</div>;
+  return <div>
+    <FAQ/>
+  </div>;
 }
