@@ -20,3 +20,4 @@ export const  faqData = [
         answer: "This question appears to be a duplicate. Please refer to the answer provided earlier."
     }
 ];
+// adadasd

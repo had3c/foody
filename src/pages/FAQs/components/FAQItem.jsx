@@ -14,4 +14,4 @@ export const FaqItem = ({ question, answer, isOpen, toggleOpen ,rim }) => (
         {isOpen && <div className={StyleFaqItem.faqAnswer}>{answer}</div>}
     </div>
 );
-
+// sdasdasd
