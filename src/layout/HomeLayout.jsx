@@ -1,22 +1,16 @@
 import { Outlet } from "react-router-dom";
+import Navbar from "../pages/common/components/Navbar/Navbar";
+import Footer from "../pages/common/components/Footer/Footer";
+
+
 export default function HomeLayout() {
   return (
     <div>
-      <h1>Header</h1>
-
-      <br />
-      <br />
-      <br />
-      <br />
+      <Navbar/>
 
       <Outlet />
 
-      <br />
-      <br />
-      <br />
-      <br />
-
-      <h1>Footer</h1>
+      <Footer/>
     </div>
   );
 }
