@@ -13,22 +13,22 @@ function About() {
             </div>
             <div className={StyleAbout.menuSection}>
                 <MenuItem
-                    image="/path-to-hamburger-image.jpg"
+                    image=""
                     name="Hamburger"
                     price="$5.90"
                 />
                 <MenuItem
-                    image="/path-to-pizza-image.jpg"
+                    image=""
                     name="Sausage Pizza"
                     price="$7.90"
                 />
                 <MenuItem
-                    image="/path-to-soup-image.jpg"
+                    image=""
                     name="Tomato Soup"
                     price="$7.90"
                 />
                 <MenuItem
-                    image="/path-to-coffee-image.jpg"
+                    image=""
                     name="Papa Coffee"
                     price="$1.40"
                 />
