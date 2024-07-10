@@ -1,0 +1,25 @@
+.dropDown{
+    background-color: white;
+    color: black;
+    font-family: var(--font-roboto);
+    font-size: 16px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    padding: 5% 3%;
+    position: absolute;
+    width: 170px;
+    z-index: 6;
+  top:50px;
+  right: 7px;
+}
+.dropDown li {
+border-bottom: 1px solid #F7F6FC;     
+padding: 10px 0;
+}
+
+.dropDown li a{
+    color: black;    
+}
+
+@media only screen and (min-width: 768px) {
+    
+}

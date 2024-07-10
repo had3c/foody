@@ -1,0 +1,70 @@
+.navbar{
+    /* background-color: white;
+    padding: 6% 7%;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 80%; */
+    background-color: white;
+    padding: 6% 7%;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: -80%; 
+    width: 80%;
+    transition: left 0.3s ease;
+}
+.navbar.open {
+    left: 0;
+}
+.sign{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 180px;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    display: none;
+}
+.user span{
+    font-family: var(--font-roboto);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 30px;
+    color: rgb(67, 67, 67);
+    margin-left: 10px;
+}
+.signupBtn {
+    font-family: var(--font-roboto);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 24px;
+    background-color: var(--button-color1);
+    border: none;
+    padding: 5px 0;
+    border-radius: 30px;
+    color: white;
+    width: 110px;
+}
+.navbar li a {
+    font-family: var(--font-roboto);
+    color: var(--text-color2);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 35px;
+}
+.logout{
+    margin-top: 30px;
+    font-family: var(--font-roboto);
+    color: var(--text-color2);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 35px;
+}
