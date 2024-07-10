@@ -66,23 +66,95 @@
     line-height: 27.47px;
 }
 
-/*            Css- Media         */
+/*            Css- Media- Tablet Mode         */
 
+
+@media only screen and (max-width: 768px) {
+    .socialMedia img {
+        width: 11%;
+    }
+
+    .slogan {
+        font-size: 16px;
+    }
+
+    .footerLogo {
+        width: 38%;
+    }
+
+    .footer ul li {
+        font-size: 10px;
+    }
+
+    .privacy {
+        font-size: 13px;
+    }
+}
+
+/* Media -  Mobile Mode  */
+
+@media only screen and (max-width: 576px) {
+    .footer {
+        padding: 13% 8% 2% 8%;
+    }
+
+    .footerLogo {
+        width: 35%;
+    }
+
+    .slogan {
+        font-size: 13px;
+    }
+
+    .listCategory {
+        font-size: 13px;
+    }
+
+    .footNavigate ul li {
+        font-size: 10px;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .mainSec {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .socialMedia {
+        justify-content: center;
+        margin-block: 7px;
+    }
+
+    .socialMedia img {
+        width: 8%;
+    }
+
+    .slogan {
+        margin-top: 15px;
+        font-size: 16px;
+        line-height: 28px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .footerLogo {
+        margin: 10px auto;
+        width: 28%;
+    }
+}
 
 @media only screen and (max-width: 320px) {
 
     .footNavigate {
         width: 100%;
-       margin: 16px auto;
-    }
-    .footer {
-        padding: 35% 8% 2% 8%;
+        margin: 16px auto;
     }
 
-    .mainSec {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .footer {
+        padding: 35% 8% 2% 8%;
     }
 
     .socialMedia img {
@@ -100,14 +172,10 @@
     }
 
     .slogan {
-        margin-top: 15px;
         font-size: 18px;
-        line-height: 28px;
-        width: 100%;
-        text-align: center;
     }
 
-    .footerLogo{
+    .footerLogo {
         margin: 0 auto;
         width: 42%;
     }
@@ -124,7 +192,6 @@
     }
 
     .privacy {
-        font-size: 13px;
         line-height: 27.47px;
     }
 }

@@ -28,6 +28,7 @@ export default function Home() {
         <div className={style.btns}>
           <button className={style.register}>Register</button>
           <button className={style.orderNow}>Order now</button>
+          <input type="text" placeholder='Search' className={style.search} />
         </div>
       </div>
 
@@ -43,10 +44,10 @@ export default function Home() {
     </header>
 
 
-    {/*          Main          */}
+    {/*                    Main                         */}
     <main>
 
-      {/*              Section Features               */}
+      {/*              Section Features                 */}
       <section className={style.features}>
         <h2 className={style.h2}>Features</h2>
         <p className={style.secTxt}>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
