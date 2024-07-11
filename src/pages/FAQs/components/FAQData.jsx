@@ -1,6 +1,6 @@
 export const  faqData = [
     {
-        question: "How to contact with Customerrrrrrrr Service?",
+        question: "How to contact with Customer Service?",
         answer: "Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!."
     },
     {
@@ -20,4 +20,3 @@ export const  faqData = [
         answer: "This question appears to be a duplicate. Please refer to the answer provided earlier."
     }
 ];
-// adadasd
