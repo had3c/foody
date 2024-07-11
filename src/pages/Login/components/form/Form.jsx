@@ -3,8 +3,8 @@ import { Formik, Form } from 'formik';
 import { initialValues, schemas } from '../../../../utils/helper';
 import Input from '../input/Input';
 import StyleForm from '../../style/Form.module.css';
-import LoginImg from '../../../../assets/images/loginImg.svg'
-import RegisImg from '../../../../assets/images/registerImg.svg'
+import LoginImg from '../../../../assets/images/loginImg.svg';
+import RegisImg from '../../../../assets/images/registerImg.svg';
 
 function LoginForm() {
     const [isRegistering, setIsRegistering] = useState(false);
@@ -12,8 +12,12 @@ function LoginForm() {
     return (
         <div className={StyleForm.pageContainer}>
             <div className={StyleForm.container}>
-                <div className={StyleForm.imageSection}>
-                    <img className={StyleForm.im} src={isRegistering ? RegisImg : LoginImg} alt="" />
+                <div className={`${StyleForm.imageSection} ${isRegistering ? StyleForm.register : StyleForm.login}`}>
+                    <img
+                        className={`${StyleForm.im} ${!isRegistering ? StyleForm.scaledImage : ''}`}
+                        src={isRegistering ? RegisImg : LoginImg}
+                        alt=""
+                    />
                 </div>
                 <div className={StyleForm.formSection}>
                     <div className={StyleForm.switchButtons}>
@@ -35,7 +39,7 @@ function LoginForm() {
 
                     <Formik
                         initialValues={initialValues}
-                        validationSchema={schemas.custom}
+                        validationSchema={isRegistering ? schemas.register : schemas.login}
                         onSubmit={() => console.log('Submitted')}
                     >
                         <Form>
@@ -49,8 +53,8 @@ function LoginForm() {
                                     />
                                     <Input
                                         label="Username"
-                                        name="userName"
-                                        id="userName"
+                                        name="userName2"
+                                        id="userName2"
                                         placeholder="Write Your Username"
                                     />
                                     <Input
