@@ -1,54 +1,49 @@
-import * as Yup from 'yup'
+import * as Yup from 'yup';
 
 const regEx = {
-    name: /^[a-zA-z]{2,20}$/,
+    name: /^[a-zA-Z]{2,20}$/,
     email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9]+$/,
-    password: /^[a-zA-Z0-9!@#$%^&*]{6,16}$/,
-}
+    password: /^(?=\S*$).{6,16}$/
+};
 
-const userName1 = Yup.string()
-    .matches(regEx.name, 'Errrrroooor')
-    .required('Write Your Name')
+const userName = Yup.string()
+    .matches(regEx.name, 'Error')
+    .required('Write Your Name');
 
 const userName2 = Yup.string()
-    .matches(regEx.name, 'Errrrroooor')
-    .required('Write Your Name')
+    .matches(regEx.name, 'Error')
+    .required('Write Your Name');
 
 
 const fullName = Yup.string()
-    .matches(regEx.name, 'Eror')
-    .required('Write Your Full Name')
+    .matches(regEx.name, 'Error')
+    .required('Write Your Full Name');
 
 const email = Yup.string()
     .matches(regEx.email, 'Email Wrong')
-    .required('Write Your Email')
+    .required('Write Your Email');
 
-const password1 = Yup.string()
-    .matches(regEx.password, 'Password if Wrong')
-    .required('Write Your Password')
-
-const password2 = Yup.string()
-    .matches(regEx.password, 'Password if Wrong')
-    .required('Write Your Password')
-
+const password = Yup.string()
+    .matches(regEx.password, 'Password is Wrong')
+    .required('Write Your Password');
 
 export const schemas = {
-    custom: Yup.object().shape({
-        userName1,
-        userName2,
+    login: Yup.object().shape({
+        userName,
+        password,
+    }),
+    register: Yup.object().shape({
         fullName,
+        userName2,
         email,
-        password1,
-        password2,
+        password,
     })
-}
+};
 
 export const initialValues = {
-    userName1: '',
+    userName: '',
     userName2: '',
     fullName: '',
     email: '',
     password: '',
-    password1: '',
-    password2: '',
-}
+};
