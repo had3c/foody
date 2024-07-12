@@ -95,9 +95,3 @@
     right: 50%;
   }
 }
-
-@media screen and (max-width: 768px) {
-  .lang_list {
-    right: 45%;
-  }
-}
