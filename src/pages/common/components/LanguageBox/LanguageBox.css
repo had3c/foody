@@ -1,6 +1,7 @@
 .LanguageBox {
   position: relative;
 }
+
 .lang_btn {
   background-color: transparent;
   outline: none;
@@ -58,15 +59,21 @@
   }
 }
 
-@media screen and (max-width: 1240px) {
+@media screen and (max-width: 1300px) {
   .lang_list {
-    right: 60%;
+    right: 45%;
   }
 }
 
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 1200px) {
   .lang_list {
-    right: 70%;
+    right: 45%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .lang_list {
+    right: 50%;
   }
 }
 
@@ -76,8 +83,21 @@
   }
 }
 
-@media screen and (max-width: 940px) {
+@media screen and (max-width: 1024px) {
   .lang_list {
-    right: 90%;
+    right: 40%;
+  }
+}
+
+
+@media screen and (max-width: 900px) {
+  .lang_list {
+    right: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .lang_list {
+    right: 45%;
   }
 }
