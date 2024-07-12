@@ -34,7 +34,7 @@
 
 .im {
     max-width: 100%;
-    height: auto;
+    height: 600px;
     transition: transform 0.3s ease;
 }
 
@@ -98,6 +98,9 @@ form input {
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: column;
+    }
+    .im{
+        height: 300px;
     }
 
     .imageSection,
