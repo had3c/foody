@@ -6,7 +6,12 @@ import StyleForm from '../../style/Form.module.css';
 import LoginImg from '../../../../assets/images/loginImg.svg';
 import RegisImg from '../../../../assets/images/registerImg.svg';
 
+import { useAuth } from '../../../../context/AuthContext'
+
 function LoginForm() {
+
+    const { generateUserLoginDatas } = useAuth()
+
     const [isRegistering, setIsRegistering] = useState(false);
 
     return (
@@ -88,7 +93,16 @@ function LoginForm() {
                                     />
                                 </>
                             )}
-                            <button type="submit" className={StyleForm.submitButton}>
+                            <button
+                                type="submit"
+                                className={StyleForm.submitButton}
+                                onClick={() => {
+                                    generateUserLoginDatas({
+                                        userName: 'qwerty',
+                                        password: 'asdfg'
+                                    })
+                                }}
+                            >
                                 {isRegistering ? 'Register' : 'Log in'}
                             </button>
                         </Form>
