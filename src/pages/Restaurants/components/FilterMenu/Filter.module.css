@@ -1,0 +1,39 @@
+.filterModal{
+    padding: 5% 3%;
+    background-color: white;
+    color: black;
+    font-family: var(--font-roboto);
+    border-radius: 20px 20px 0 0;
+    font-size: 18px;
+    position: fixed;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height:450px;
+ 
+}
+
+.menuItems::-webkit-scrollbar {
+    width: 7px;
+}
+
+.menuItems::-webkit-scrollbar-thumb {
+    background-color: #D63626;
+}
+
+.filterModal img{
+    margin: 0 auto;
+}
+.menuItems{
+    margin-top: 10%;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.filterModal p{
+    border-bottom: 1px solid #E0E0E0 ;
+    color: black;
+    font-family: var(--font-roboto);
+    font-size: 18px;
+    line-height: 45px;
+}
