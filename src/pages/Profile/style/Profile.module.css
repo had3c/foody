@@ -1,0 +1,123 @@
+.userProfile {
+    background-color: var(--box-color3);
+    color: var(--text-color3);
+    font-family: var(--font-mukta);
+    width: 80%;
+    padding: 4% 3%;
+}
+
+.userProfile h2 {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+}
+
+.userProfile img {
+    margin: 0 auto;
+}
+
+.form {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 5%;
+}
+
+.form form {
+    width: 48%;
+}
+
+.form label {
+    font-family: var(--font-mukta);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.03em;  
+    color: var(--text-color3);
+}
+
+.form input {
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    padding-left: 22px;
+}
+.form input::placeholder{
+    font-family: var(--font-mukta);
+font-size: 20px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0.03em;
+color: var(--text-color2);
+}
+.form button {
+    background-color: var(--button-color3);
+    color: white;
+    font-family: var(--font-mukta);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 53px;
+    letter-spacing: 0.03em;
+    border: none;
+    margin-top: 22px;
+    border-radius: 4px;
+}
+
+.uploadMob {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .userProfile {
+        width: 90%;
+        margin: 0 auto;
+        padding: 3%;
+    }
+
+    .userProfile .upload {
+        width: 22%;
+    }
+
+    .form {
+        flex-direction: column;
+        margin-block: 2%;
+    }
+
+    .form form {
+        width: auto;
+    }
+
+    .form input {
+        margin-bottom: 15px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .userProfile {
+        width: 96%;
+        padding: 15% 3%;
+        background-color: white;
+    }
+
+    .form {
+        margin-block: 4%;
+    }
+
+    .userProfile img {
+        margin-top: 15px;
+    }
+
+    .upload {
+        display: none;
+    }
+
+    .uploadMob {
+        display: block;
+        width: 48%;
+    }
+
+    .form input {
+        background-color: var(--box-color3);
+        margin-bottom: 22px;
+    }
+}
