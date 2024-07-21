@@ -72,7 +72,7 @@
     z-index: 2;
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+/* @media (min-width: 320px) and (max-width: 767px) {
     .container {
         padding: 30px 15px;
     }
@@ -86,16 +86,24 @@
     }
     
     .imageContainer {
-        height: 350px;
+        padding-top: 50px;
+        height: 300px;
     }
     
     .blok {
-        border-radius: 100px;
-        height: 300px;
-        width: 400px;
-        transform: rotate(90deg);
+        border-radius: 50px;
+        height: 100%;
+        width: 100%;
+        transform: rotate(0deg);
     }
-}
+
+    .ima {
+        height: auto;
+        width: 90%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+} */
 
 @media (min-width: 768px) {
     .container {
