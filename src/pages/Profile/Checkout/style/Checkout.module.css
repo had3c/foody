@@ -19,7 +19,9 @@
     letter-spacing: 0.03em;
     color: var(--text-color3);
 }
-
+.error{
+    color: red;
+}
 .form {
     margin-top: 5%;
 }
@@ -31,18 +33,18 @@
     line-height: 24px;
     letter-spacing: 0.03em;
     color: var(--text-color3);
+    margin-top: 1rem;
 }
 
-.form input {
+.form .input {
     border: none;
     border-radius: 4px;
     padding-left: 22px;
-    margin-bottom: 4%;
     margin-top: 1%;
     padding-block: 15px;
 }
 
-.form input::placeholder {
+.form .input::placeholder {
     font-family: var(--font-mukta);
     font-size: 20px;
     font-weight: 400;
@@ -61,9 +63,11 @@
     letter-spacing: 0.03em;
     border: none;
     margin-top: 28px;
-    border-radius: 4px;
+    border-radius: 4px;   
 }
-
+.form button:hover {
+  box-shadow: 5px 3px 14px 5px rgb(2, 84, 2);
+}
 .payment {
     display: flex;
     width: 86%;
@@ -73,7 +77,7 @@
 
 .pay {
     display: flex;
-    align-items: center;
+    align-items: baseline;
 }
 
 .payment label {
@@ -83,10 +87,10 @@
     line-height: 24px;
     letter-spacing: 0.03em;
     color: var(--text-color2);
-    margin-left: 5px;
+    margin-left: 6px;
 }
 
-.payment input[type="radio"] {
+ .payment input[type="radio"] {
     width: 25px;
     height: 25px;
 }
@@ -99,7 +103,10 @@
 
 .payment input[type="radio"]:checked+label {
     color: #6FCF97;
-}
+
+    
+}  
+
       /* Your  Order    - Total         */
 .orderTotal {
     background-color: var(--box-color3);
@@ -208,8 +215,66 @@ width: 30%;
     justify-content: center;
 }
 
+@media only screen and (max-width: 1164px){
+    .orderTotal li span:first-child{
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 28px;
+        }
+        
+        .orderTotal li span:last-child{
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 40px;
+        }
+        
+        .orderTotal p{
+        font-size: 12px;
+        line-height: 40px;
+        }
+}
+@media only screen and (max-width: 1084px){
+    .orderTotal li span:first-child{
+        font-size: 14px;
+        } 
+        .orderTotal li span:last-child{
+        font-size: 11px;
+        }
+        
+        .orderTotal p{
+        font-size: 11px;
+        }
+        .payment{
+            flex-direction: column;
+            margin-top: 10px;
+           }
+}
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 960px){
+    .orderTotal{
+        background-color: white;
+        box-shadow: none;
+    }
+  .orderTotal li{
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid lightgray;
+  }
+  .orderTotal li span:first-child{
+    font-size: 13px;
+    font-weight: 900;
+    } 
+    .orderTotal li span:last-child{
+    font-size: 10px;
+    }
+    
+    .orderTotal p{
+    font-size: 12px;
+    line-height: 20px;
+    }
+}
+
+@media only screen and (max-width: 781px) {
     .checkOut{
         width: 56%;
     }
@@ -222,10 +287,10 @@ width: 30%;
     .form label{
         font-size: 13px;
     }
-    .form input{
+    .form .input{
        padding-block: 10px;
     }
-    .form input::placeholder{
+    .form .input::placeholder{
         font-size: 14px;
     }
     .form button{
@@ -233,10 +298,6 @@ width: 30%;
         font-size: 13px;
         margin-top: 15px;
     }
-    .payment{
-        flex-direction: column;
-        margin-top: 10px;
-       }
     .orderTotal{
       width: 44%;
     }
@@ -272,25 +333,29 @@ width: 30%;
         .orderChecked p{
             width: 70%;
         }
+        .payment label{
+            font-size: 11px;
+        }
         
    }
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 576px) {
    .userCheck{
     flex-direction: column-reverse;
     width: 98%;
    }
    .checkOut{
     width: 100%;
+    height: auto;
     background-color: white;
    }
-   .form input{
+   .form .input{
     background-color: var(--box-color3);
    }
    .orderTotal{
     width: 100%;
     margin-bottom: 9%;
     margin-top: 3%;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     box-shadow: none;
    }
 
@@ -302,10 +367,10 @@ width: 30%;
    .form label{
        font-size: 18px;
    }
-   .form input{
+   .form .input{
       padding-block: 15px;
    }
-   .form input::placeholder{
+   .form .input::placeholder{
        font-size: 20px;
    }
    .form button{
