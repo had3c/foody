@@ -4,7 +4,9 @@
     padding: 44px 5%;
     background-color: var(--box-color3);
     margin: 2% 2% 0 2%;
+    position: relative;
 }
+
 .navigation {
     align-items: center;
     display: flex;
@@ -23,16 +25,24 @@
     line-height: 24px;
     margin-left: 22px;
 }
+.navigation li a:hover {
+border-bottom: 2px solid #d63626;
+}
+
 .menuBar{
     display: none;
 }
 .userTrue{
     display: flex;
-    width: 22%;
+    width: 21%;
     justify-content: space-between;
-    display: none;
+    align-items: center;
 }
 
+.userTrue img{
+    width: 2.5rem;
+    cursor: pointer;
+}
 .search {
     display: flex;
     justify-content: space-between;
@@ -65,84 +75,222 @@
     border-radius: 30px;
     color: white;
     width: 115px;
+    transition: all .5s;
 }
+
+.search .signupBtn:hover{
+   box-shadow: 3px 0px 16px 3px #f42020;  
+   border: 1px solid #f42020;
+   background-color: white;
+   color: red;
+}
+ button , li{
+    cursor: pointer;
+ }
+
 
 /*        Css Media          */
 
-@media only screen and (max-width: 1310px) {
+@media only screen and (max-width: 1362px) {
     .navigation li a {
-        font-size: 15px;
+        font-size: 17px;
         font-weight: 600;
-        margin-left: 17px;
+        margin-left: 15px;
     }
     .search input{
         width: 260px;
     }
+    .userTrue{
+        width: 23%;
+    }
   }
-  @media only screen and (max-width: 1024px) {
+
+@media only screen and (max-width: 1310px) {
     .navigation li a {
-        font-size: 13px;
-        margin-left: 12px;
+        font-size: 15px;
+        margin-left: 17px;
+    }
+  }
+
+  @media only screen and (max-width: 1250px) {
+    
+    .userTrue{
+        width: 24%;
     }
     .search input{
-        width: 230px;
+        width: 240px;
     }
-    .language{
-        margin-inline: 7px;
-    }
-    .userTrue img{
-        width: 45%;
+    .search input::placeholder{
+        font-size: 14px;
+        line-height: 16px;
     }
   }
+
+  @media only screen and (max-width: 1160px) {
+    .navigation li a {
+        font-size: 15px;
+        margin-left: 13px;
+    }
+    .navigation img:first-child{
+        width:80px;
+    }
+    .userTrue{
+        width: 25%;
+    }
+  
+    .search input{
+        width: 210px;
+    }
+  }
+  @media only screen and (max-width: 1045px) {
+    .navigation li a {
+        font-size: 14px;
+        margin-left: 12px;
+    }
+    .userTrue img{
+        width: 2.3rem;
+    }
+    .search input::placeholder{
+      font-size: 12px;
+      line-height: 14px;
+    }
+    .search .signupBtn{
+        width: 85px;
+        font-size: 13px;
+        line-height: 18px;
+    }
+  }
+  @media only screen and (max-width: 990px) {
+    .navigation li a {
+        font-size: 13px;
+        margin-left: 11px;
+    }
+    .search input{
+        width: 190px;
+    }
+
+    .search input::placeholder{
+        line-height: 11px;
+    }
+    .userTrue img{
+        width: 2.2rem;
+    }
+  }
+  @media only screen and (max-width: 930px) {
+   .search input{
+    width: 175px;
+   }
+
+   .navigation{
+   width: 54%;
+   }
+   .navigation img:first-child{
+    width:75px;
+}
+.userTrue img{
+    width: 2.1rem;
+}
+  }
+
+  @media only screen and (max-width: 848px) {
+.navbar{
+    padding: 44px 4%;
+}
+.navigation{
+    width: 55%;
+}
+  .navigation li a{
+    font-size: 12px;
+  }
+  .navigation img:first-child{
+    width:70px;
+}
+  .userTrue img{
+    width: 1.9rem;
+}
+.userTrue{
+    width: 23%;
+}
+.search input{
+    padding: 0 10px;
+}
+.search .signupBtn{
+    width: 75px;
+    margin-left: 8px;
+}
+   }
 
   @media only screen and (max-width: 768px) {
     .navbar {
         padding: 45px 3%;
         margin:0
     }
-    .navigation img{
-        width: 22%;
-    }
     .navigation li a {
-        font-size: 11px;
+        font-size: 13px;
         margin-left: 8px;
     }
+.navigation{
+    width: 56%;
+}
+.navigation img:first-child{
+    width:64px;
+}
     .search input{
-        width: 180px;
-        padding: 0 10px;
+        width: 160px;
     }
-    .search input::placeholder {
-        font-size: 13px;
-        line-height: 13px;
+    .userTrue{
+        width: 24%;
     }
-    
+    .userTrue img{
+        width: 1.8rem;
+    }
     .search .signupBtn {
         font-size: 12px;
         line-height: 20px;
         width: 70px;
     }
-    .userTrue img{
-        width: 46%;
-    }
+  }
+
+  @media only screen and (max-width: 698px) {
+  .search input{
+    width: 145px;
+  }
+  .navigation{
+    width: 57%;
+  }
+  .navigation li a{
+    font-size: 12px;
+    margin-left: 6px;
+  }
+  .navigation img:first-child{
+    width:60px;
+}
+.userTrue{
+    width: 26%;
+}
   }
   
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 630px) {
     .navbar{
         padding: 15px 5%;
     }
-    .navigation img{
-        width: 31%;
+    .navigation{
+        width: 37%;
     }
-    .search img{
-        width: 10%;
+
+    .search{
+        width: 46%;
+    }
+    .navigation img:first-child{
+        width:80px;
     }
     .search input{
-        width: 180px;
-        padding: 7px 15px;
+        width: 185px;
+        margin-right: 8px;
     }
     .search input::placeholder {
         font-size: 12px;
-        line-height: 13px;
+        line-height: 12px;
     }
     
     .navigation ul{
@@ -154,8 +302,9 @@
     }
     .menuBar{
         display: block;
-        width: 15% !important;
-        margin-right: 15px;
+        width: 40px;
+        margin-right: 13px;
+        margin-bottom: 5px;
     }
     .signupBtn{
         display: none;
@@ -163,15 +312,25 @@
     .userTrue{
         display: none;
     }
-    .language{
-        display: none;
-    }
   
   }
   
+
+  @media only screen and (max-width:500px){
+    .search {
+        width: 57%;
+    }
+    .search input{
+        width: 170px;
+    }
+  }
+
   @media only screen and (max-width:392px){
     .search input{
         display: none;
+    }
+    .search{
+        justify-content: flex-end;
     }
   }
  

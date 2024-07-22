@@ -1,26 +1,21 @@
-.navbar{
-    /* background-color: white;
-    padding: 6% 7%;
+.navbarBg {
+    background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
-    z-index: 10;
+    z-index: 2;
     top: 0;
     bottom: 0;
     left: 0;
-    width: 80%; */
+    right: 0;
+}
+
+.navbar {
     background-color: white;
     padding: 6% 7%;
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    bottom: 0;
-    left: -80%; 
     width: 80%;
-    transition: left 0.3s ease;
+    height: 100vh;
 }
-.navbar.open {
-    left: 0;
-}
-.sign{
+
+.sign {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,12 +23,12 @@
     height: 180px;
 }
 
-.user{
+.user {
     display: flex;
     align-items: center;
-    display: none;
 }
-.user span{
+
+.user span {
     font-family: var(--font-roboto);
     font-size: 14px;
     font-weight: 600;
@@ -41,6 +36,7 @@
     color: rgb(67, 67, 67);
     margin-left: 10px;
 }
+
 .signupBtn {
     font-family: var(--font-roboto);
     font-size: 15px;
@@ -52,7 +48,15 @@
     border-radius: 30px;
     color: white;
     width: 110px;
+    transition: all .5s;
 }
+
+.signupBtn:hover{
+    box-shadow: 3px 0px 16px 3px #f42020;  
+    border: 1px solid #f42020;
+    background-color: white;
+    color: red;
+ }
 .navbar li a {
     font-family: var(--font-roboto);
     color: var(--text-color2);
@@ -60,11 +64,16 @@
     font-weight: 500;
     line-height: 35px;
 }
-.logout{
-    margin-top: 30px;
-    font-family: var(--font-roboto);
-    color: var(--text-color2);
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 35px;
+
+.navbar li a:hover {
+    color: var(--button-color1);
 }
+.logout {
+    margin-top: 30px;
+}
+
+@media only screen and (min-width: 631px) {
+   .navbarBg{
+    display: none;
+   }
+  }

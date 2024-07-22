@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../../context/AuthContext';
 import navLogo from '../../../../assets/icons/headerLogo.svg';
 import LanguageBox from '../LanguageBox/LanguageBox';
 import navStyle from './Navbar.module.css';
@@ -8,11 +9,14 @@ import basket from '../../../../assets/icons/basketIcon.svg'
 import SearchResult from '../SearchResult/SearchResult';
 import UserMenu from '../DropDownMenu/UserMenu';
 import ResponsNav from '../ResponsNav/ResponsNav';
+import './NavBar.css'
+
 
 function Navbar() {
+  const navigate = useNavigate();
+  const { user } = useAuth();
   const [openMenu, setOpenMenu] = useState(false)
   const [dropDown, setDropDown] = useState(false)
-
   function openResponsMenu() {
     setOpenMenu(!openMenu)
   }
@@ -20,17 +24,16 @@ function Navbar() {
   function dropDownMenu() {
     setDropDown(!dropDown)
   }
+
   return (
     <div className={navStyle.navbar}>
-      {openMenu && <ResponsNav/>}
+      {openMenu && <ResponsNav />}
       {/*     Foody Logo and Navigation Bar       */}
       <div className={navStyle.navigation}>
-
         <img src={navLogo} alt="" />
         <img src={menuBar} alt="" className={navStyle.menuBar} onClick={openResponsMenu} />
-       
         <ul>
-          <li><NavLink to="/"  >Home</NavLink></li>
+          <li><NavLink className={navStyle.activeLink} to="/" >Home</NavLink></li>
           <li><NavLink to="/restaurants">Restaurants</NavLink></li>
           <li><NavLink to="/about-us">About us</NavLink></li>
           <li><NavLink to="/how-it-works">How it works</NavLink></li>
@@ -46,13 +49,16 @@ function Navbar() {
         <div className={navStyle.language}>
           <LanguageBox />
         </div>
-        <div className={navStyle.userTrue}>
-          <img src={basket} alt="" />
-          <img src={basket} alt="" onClick={dropDownMenu} />
-          {dropDown && <UserMenu />}
-        </div>
 
-        <button className={navStyle.signupBtn}>Sign up</button>
+        {user ? (
+          <div className={navStyle.userTrue}>
+            <img src={basket} alt="" onClick={() => navigate('/user/basket')}/>
+            <img src={basket} alt="" onClick={dropDownMenu} />
+            {dropDown && <UserMenu />}
+          </div>
+        ) : (
+          <button className={navStyle.signupBtn} onClick={() => navigate('/login')}>Sign up</button>
+        )}
       </div>
 
     </div>
@@ -60,4 +66,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
