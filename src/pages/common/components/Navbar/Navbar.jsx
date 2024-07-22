@@ -9,7 +9,7 @@ import basket from '../../../../assets/icons/basketIcon.svg'
 import SearchResult from '../SearchResult/SearchResult';
 import UserMenu from '../DropDownMenu/UserMenu';
 import ResponsNav from '../ResponsNav/ResponsNav';
-import './NavBar.css'
+
 
 
 function Navbar() {
