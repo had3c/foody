@@ -142,6 +142,7 @@
 
 .prdctImg {
     width: 8%;
+    margin-right: 13px;
 }
 
 .feature p {
@@ -192,6 +193,54 @@
 
 /*          Css Media         */
 
+@media only screen and (max-width: 1209px){
+    .feature p{
+        font-size: 16px;
+    }
+    .feature span{
+        font-size: 13px;
+    }
+    .price{
+        margin-left: 8%;
+    }
+.price span:last-child {
+    font-size: 14px;
+}
+.price span:first-child {
+    font-size: 12px;
+}
+.addPrdct{
+    width: 5%;
+}
+}
+
+@media only screen and (max-width: 1114px) {
+    .prdctImg{
+        width: 7%;
+    }
+    .feature span{
+        font-size: 12px;
+    }
+    .prdctCard{
+        padding: 2% 4%;
+    }
+}
+
+@media only screen and (max-width: 1037px){
+    .price span:first-child {
+        display: none;
+        }
+        .addPrdct{
+            width: 25px;
+        }
+}
+
+@media only screen and (max-width: 794px){
+   .feature p{
+    font-size: 14px;
+    line-height: 25px;
+   }
+}
 @media only screen and (max-width: 768px) {
     .information{
         flex-direction: column;
