@@ -4,7 +4,6 @@ import profile from '../../../../assets/icons/people_outline.svg'
 import basket from '../../../../assets/icons/shopping_basket.svg'
 import style from './SideBar.module.css'
 
-import "./SideBarCustom.css"
 function SideBar() {
 
   return (
