@@ -1,0 +1,153 @@
+.offers {
+    padding: 4% 6%;
+}
+
+.rowReverse {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.promo {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 9%;
+}
+
+.promoTxt {
+    width: 45%;
+}
+
+.promo h2 {
+    font-family: var(--font-roboto);
+    font-size: 50px;
+    font-weight: 900;
+    line-height: 70px;
+    letter-spacing: 0.03em;
+    color: var(--text-color1);
+}
+
+.promo p {
+    font-family: var(--font-roboto);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0.03em;
+    color: var(--text-color2);
+    width: 80%;
+    margin-top: 25px;
+}
+/*            Media Css 1290 px         */
+
+@media only screen and (max-width: 1290px) {
+.promoTxt{
+    width: 70%;
+    margin-left: 20px;
+}
+}
+
+/* Media Css -1210 px */
+
+@media only screen and (max-width: 1210px) {
+    .promo h2 {
+        font-size: 43px;
+    }
+
+    .promo p {
+        font-size: 17px;
+    }
+
+    .promoImg img {
+        width: 80%;
+    }
+}
+
+
+/* Media Css-  1024px */
+
+@media only screen and (max-width: 1024px) {
+    .promo h2 {
+        font-size: 38px;
+        line-height: 40px;
+    }
+
+    .promo p {
+        font-size: 14px;
+    }
+
+    .promoImg img {
+        width: 85%;
+    }
+
+    .promoTxt {
+        width: 85%;
+    }
+}
+
+/* Media Css Tablet Mode    */
+@media only screen and (max-width: 768px) {
+    .offers {
+        padding: 2% 6%;
+    }
+
+    .promo {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 13%;
+        align-items: center;
+    }
+
+    .promoTxt {
+        width: 98%;
+        margin-right: 20px;
+    }
+    .promoImg img{
+        width: 94%;
+    }
+    .promo h2 {
+        font-size: 27px;
+        line-height: 31px;
+        text-align: center;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .promo p {
+        font-size: 13px;
+        line-height: 25px;
+        text-align: center;
+        margin-top: 25px;
+        width: 100%;
+    }
+
+}
+
+ /*       Media Css   -   Mobile Mode */
+@media only screen and (max-width: 576px) {
+    .offers {
+        padding: 4% 6%;
+    }
+
+    .promo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 15%;
+    }
+
+    .promoTxt {
+        width: 90%;
+    }
+    .promoImg img{
+        width: 70%;
+        margin: 13px auto;
+    }
+
+}
+@media only screen and (max-width: 320px) {
+    .promoTxt {
+        width: auto;
+    }
+    .promoImg img{
+        width: 90%;
+    }
+}
