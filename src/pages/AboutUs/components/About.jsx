@@ -5,7 +5,6 @@ import BurgerImg from '../../../assets/images/burger.png';
 import PizzaImg from '../../../assets/images/pizza.png';
 import CoffeeImg from '../../../assets/images/cofe.png';
 import SoupImg from '../../../assets/images/soup.png';
-import {fadeIn , pulse , shift} from './animationAbout'
 
 function About() {
     const [rotation, setRotation] = useState(0);
@@ -29,66 +28,77 @@ function About() {
         return foodItems[(index + rotation) % 4];
     };
 
+    const abou = "About Us"
+    const text = "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.";
+
     return (
         <div className={StyleAbout.cont}>
             <div className={StyleAbout.content}>
-                <motion.div
-                    className={StyleAbout.aboutSection}
-                    initial="hidden"
-                    animate="visible"
-                    variants={fadeIn}
-                >
-                    <h2>About Us</h2>
-                    <p>
-                        Lorem ipsum is placeholder text commonly used in the
-                        graphic, print, and publishing industries for previewing layouts
-                        and visual mockups. Lorem ipsum is placeholder text
-                        commonly used in the graphic, print, and publishing industries
-                        for previewing layouts and visual mockups. Lorem ipsum is
-                        placeholder text commonly used in the graphic, print, and
-                        publishing industries for previewing layouts and visual
-                        mockups.
-                    </p>
-                </motion.div>
+                <div className={StyleAbout.aboutSection}>
+                    <motion.h2>
+                        {abou.split("").map((char, index) => (
+                            <motion.span
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{
+                                    duration: 0.05,
+                                    delay: index * 0.03,
+                                    ease: "easeInOut"
+                                }}
+                            >
+                                {char}
+                            </motion.span>
+                        ))}
+
+                    </motion.h2>
+                    <motion.p>
+                        {text.split("").map((char, index) => (
+                            <motion.span
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{
+                                    duration: 0.05,
+                                    delay: index * 0.03,
+                                    ease: "easeInOut"
+                                }}
+                            >
+                                {char}
+                            </motion.span>
+                        ))}
+                    </motion.p>
+                </div>
                 <div className={StyleAbout.container}>
                     <div className={StyleAbout.curvedSquare}>
                         {[0, 1, 2, 3].map((index) => {
                             const item = getRotatedItem(index);
                             return (
-                                <div 
-                                    key={index} 
+                                <motion.div
+                                    key={index}
                                     className={StyleAbout.foodCard}
+                                    animate={{
+                                        x: ['-5%', '0%', '-5%'],
+                                        rotate: [70, 70, 70]
+                                    }}
+                                    transition={{
+                                        duration: 2,
+                                        repeat: Infinity,
+                                        ease: "easeInOut"
+                                    }}
                                 >
-                                    <motion.img 
-                                        src={item.img} 
-                                        alt={item.name} 
-                                        initial="initial" 
-                                        animate="animate" 
-                                        variants={pulse}
-                                    />
-                                    <motion.h3 
-                                        initial="initial" 
-                                        animate="animate" 
-                                        variants={shift}
-                                    >
-                                        {item.name}
-                                    </motion.h3>
-                                    <motion.div 
-                                        className={StyleAbout.rating} 
-                                        initial="initial" 
-                                        animate="animate" 
-                                        variants={shift}
-                                    >
-                                        {item.rating}
-                                    </motion.div>
-                                    <motion.p 
-                                        initial="initial" 
-                                        animate="animate" 
-                                        variants={shift}
-                                    >
-                                        {item.price}
-                                    </motion.p>
-                                </div>
+                                    <div className={StyleAbout.foodCardContent}>
+                                        <img
+                                            src={item.img}
+                                            alt={item.name}
+                                        />
+                                        <h3>{item.name}</h3>
+                                        <div className={StyleAbout.rating}>
+                                            {item.rating}
+                                        </div>
+                                        <p>{item.price}</p>
+                                    </div>
+                                </motion.div>
                             );
                         })}
                     </div>
