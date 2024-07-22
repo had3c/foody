@@ -36,7 +36,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: 35px;
-  /* 175% */
   letter-spacing: 0.15px;
 }
 
@@ -51,7 +50,7 @@
 .curvedSquare {
   width: 687px;
   height: 407px;
-  transform: rotate(-67.934deg);
+  transform: rotate(-70.00deg) !important;
   flex-shrink: 0;
   border-radius: 100px;
   background: #FFB64F;
@@ -61,7 +60,7 @@
 
 .foodCard {
   position: absolute;
-  transform: rotate(67.934deg);
+  transform: rotate(70.00deg) !important;
   border-radius: 20px;
   background: var(--white, #FFF);
   box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.20);
