@@ -1,0 +1,44 @@
+.checkout p{
+ color: white;
+ font-family:var(--font-roboto);
+font-size: 16px;
+font-weight: 500;
+line-height: 20px;
+letter-spacing: 0.03em;
+}
+
+.checkout{
+    padding: 1px 2px 1px 25px;
+    background-color: var(--button-color1);
+    border-radius: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 15px auto;
+}
+
+.checkout div{
+    background-color: white;
+    color: var(--button-color1) ;
+    padding: 10px 30px;
+    border-radius: 100px;
+    font-family:var(--font-roboto);
+font-size: 16px;
+font-weight: 500;
+line-height: 20px;
+letter-spacing: 0.03em;
+}
+
+@media only screen and (max-width: 768px) {
+    .checkout p{
+       font-size: 13px;
+       line-height: 17px;
+       }
+         
+       .checkout div{
+           padding: 10px 20px;
+       font-size: 13px;
+       line-height: 17px;
+       } 
+  }

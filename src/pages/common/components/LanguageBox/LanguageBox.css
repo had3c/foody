@@ -60,10 +60,19 @@
 }
 
 @media screen and (max-width: 1300px) {
+
   .lang_list {
     right: 45%;
   }
 }
+
+@media screen and (max-width: 1200px) {
+
+  .lang_list {
+    right: 45%;
+  }
+}
+
 
 @media screen and (max-width: 1200px) {
   .lang_list {
@@ -77,6 +86,10 @@
 
 @media screen and (max-width: 1100px) {
   .lang_list {
+
+@media screen and (max-width: 1100px) {
+  .lang_list {
+
     right: 50%;
   }
 }
@@ -107,6 +120,7 @@
   }
 }
 
+
 @media screen and (max-width: 900px) {
   .lang_list {
     right: 50%;
@@ -136,4 +150,16 @@
 }
 
 
-/* /sadadsasdasdas */
+
+@media screen and (max-width: 1024px) {
+  .lang_list {
+    right: 40%;
+  }
+}
+
+
+@media screen and (max-width: 900px) {
+  .lang_list {
+    right: 50%;
+  }
+}

@@ -1,3 +1,7 @@
+import About from "./components/About";
+
 export default function AboutUs() {
-  return <div>AboutUs</div>;
+  return <>
+    <About />
+  </>;
 }

@@ -21,7 +21,7 @@
 }
 
 .logoIcon {
-    height: 24px;
+    height: auto;
     width: auto;
 }
 
@@ -30,48 +30,41 @@
     height: 24px;
 }
 
-/* Медиа-запрос для экранов шире 700px */
 @media (min-width: 701px) {
     .header {
         margin: 10px;
-        width: calc(100% - 20px); /* Учитываем отступы слева и справа */
-        border-radius: 5px; /* Добавляем скругление углов для эстетики */
+        width: calc(100% - 20px);
+        border-radius: 5px;
     }
 }
 
-/* Медиа-запросы для адаптивности на меньших экранах */
 @media (max-width: 700px) {
     .header {
         height: 50px;
         padding: 0 15px;
     }
 
-    .segmentIcon, .logoIcon, .flagIcon {
-        width: 20px;
-        height: 20px;
+    .segmentIcon,
+    .logoIcon,
+    .flagIcon {
+        width: 100px;
+        height: auto;
     }
 
-    .logoIcon {
-        height: 20px;
-    }
 }
 
 @media (max-width: 480px) {
     .header {
-        height: 40px;
+        height: 70px;
         padding: 0 10px;
     }
 
-    .segmentIcon, .logoIcon, .flagIcon {
-        width: 18px;
-        height: 18px;
+    .segmentIcon,
+    .logoIcon,
+    .flagIcon {
+        width: 100px;
+        height: auto;
     }
 
-    .logoIcon {
-        height: 18px;
-    }
-
-    .segmentIcon {
-        margin-right: 10px;
-    }
 }
+

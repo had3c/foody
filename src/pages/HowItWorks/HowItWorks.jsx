@@ -1,3 +1,7 @@
+import How from "./components/How";
+
 export default function HowItWorks() {
-  return <div>HowItWorks</div>;
+  return <>
+    <How />
+  </>;
 }
