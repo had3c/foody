@@ -72,7 +72,8 @@ form {
     flex-direction: column;
 }
 
-form input {
+form input, form select {
+    margin-left: -1px;
     margin-bottom: 20px;
     padding: 12px;
     font-size: 16px;
@@ -95,14 +96,97 @@ form input {
     background-color: darkred;
 }
 
+.selectField {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.selectField label {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0 0 6px 6px;
+    font-size: 16px;
+    font-family: var(--font-roboto);
+    color: black;
+}
+
+.selectField select {
+    width: 30%;
+    padding: 12px;
+    font-family: var(--font-roboto);
+    color: gray;
+    font-size: 18px;
+    border: 1px solid gray;
+    background-color: #FFE7E7;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    max-height: 150px;
+}
+
+.selectField select:focus {
+    outline: none;
+    border-color: var(--box-color2);
+    box-shadow: 0 0 0 2px rgba(var(--box-color2-rgb), 0.2);
+}
+
+.selectField select option {
+    padding: 10px;
+    color: gray;
+    font-family: var(--font-roboto);
+    font-size: 16px;
+}
+
+.selectField select option:hover {
+    background-color: #555;
+}
+
+.selectField select option:checked {
+    background-color: var(--box-color2);
+    color: white;
+}
+
+.selectField select option[value=""] {
+    display: none;
+}
+
+.selectField select::-webkit-scrollbar {
+    width: 8px;
+}
+
+.selectField select::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.selectField select::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.selectField select::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+.errorMessage {
+    color: var(--box-color2);
+    font-family: var(--font-roboto);
+    padding-left: 6px;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: column;
     }
-    .im{
+    
+    .im {
         height: 300px;
     }
-
+    
     .imageSection,
     .formSection {
         width: 100%;

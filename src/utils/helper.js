@@ -13,8 +13,7 @@ const userName = Yup.string()
 const userName2 = Yup.string()
     .matches(regEx.name, 'Error')
     .required('Write Your Name');
-
-
+ 
 const fullName = Yup.string()
     .matches(regEx.name, 'Error')
     .required('Write Your Full Name');
@@ -37,6 +36,7 @@ export const schemas = {
         userName2,
         email,
         password,
+        gender: Yup.string().required('Please select a gender'),
     })
 };
 
@@ -46,4 +46,5 @@ export const initialValues = {
     fullName: '',
     email: '',
     password: '',
+    gender: '',
 };
