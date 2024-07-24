@@ -77,7 +77,7 @@ function LoginForm() {
                                         <div className={StyleForm.selectField}>
                                             <label htmlFor="gender">Gender</label>
                                             <Field as="select" name="gender" id="gender">
-                                                <option value="" disabled>Select gender</option>
+                                                <option value="" disabled>Select</option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                                 <option value="other">Other</option>
