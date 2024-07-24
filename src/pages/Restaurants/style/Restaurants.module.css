@@ -10,19 +10,23 @@
     margin-bottom: 20px;
     padding: .7rem;
 }
-.restaurant:hover{
-    background-color:#f0e1e2;
+
+.restaurant:hover {
+    background-color: #f0e1e2;
 }
+
 .restList {
     background-color: var(--box-color3);
     padding: 2.5rem 1.5rem;
-    width: 255px;  
+    width: 255px;
     height: 800px;
 }
-.scroll{
-   overflow-y: auto;
-    max-height:700px; 
+
+.scroll {
+    overflow-y: auto;
+    max-height: 700px;
 }
+
 .scroll::-webkit-scrollbar {
     width: 4px;
 }
@@ -47,26 +51,30 @@
 
 .cards {
     display: flex;
+    align-content: flex-start;
     flex-wrap: wrap;
     width: 80%;
-    height: 600px;
-    margin-top: 1rem;
+    margin-left: 5px;
+    margin-block: .6rem;
 }
 
 .card {
     background-color: white;
     font-family: var(--font-roboto);
-    box-shadow: 0px 0px 5px 3px #1e1e1e40;
-    padding: 1% 17px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 1.1rem;
     font-family: var(--font-roboto);
-    width: 230px;
-    height: 350px;
-    margin-bottom: 25px;
-    margin-inline: 2%;
+    margin-bottom: 30px;
+    width: 22%;
+    height: 340px;
+    margin-inline: 1.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card img {
-    width: 85%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -103,8 +111,8 @@
     color: white;
     background-color: var(--button-color1);
     border-radius: 30px;
-   width: 80px;
- padding-block: 6px;
+    width: 80px;
+    padding-block: 6px;
     text-align: center;
 }
 
@@ -118,352 +126,225 @@
     display: none;
 }
 
-.closeModal{
+.closeModal {
     display: none;
 }
 
 @media only screen and (min-width: 1441px) {
-  .card{
-    height: 350px;
-  }
-}
-
-@media only screen and (max-width: 1426px) {
-    .card{
-        width:21%;
-    }
-}
-
-@media only screen and (max-width: 1390px) {
-    .card{
-     height: 325px;
-    }
- }
-
-@media only screen and (max-width: 1300px) {
-    .card img{
-     width: 76%;
-    }
-.card{
-    width: 200px;
-}
-   .restList{
-     width: 215px;
-   }
- }
-
- @media only screen and (max-width: 1240px) {
-    .card img{
-     width: 80%;
-    }
-    .restList{
-        width: 220px;
-    }
-    .card{
-        width: 230px;
+    .card {
         height: 350px;
-        margin-inline: 3%;
     }
- }
+}
 
- 
- @media only screen and (max-width: 1106px) {
-    .card img{
-     width: 76%;
-    }
-    .restList{
-        width: 230px;
-    }
-    .card{
-        width: 212px;
-        margin-inline: 3%;
-    }
- }
-
-  
- @media only screen and (max-width: 1048px) {
-    .card{
-        width:210px;
-        margin-inline: 2%;
-        height: 300px;
-    }
-  
-    .cardTitle {
-        font-size: 22px;
-        line-height: 30px;
-    }
-
-    .card p {
-        font-size: 16px;
-    }
-
+@media only screen and (max-width: 1250px) {
     .delivery {
-        font-size: 16px;
-        line-height: 22px;
+        font-size: 14px;
     }
 
     .time {
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 15px;
-        padding: 6px 12px;
+        font-size: 14px;
+        width: 72px;
     }
 
-    .cardFooter {
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
+    .card img {
+        width: 76%;
     }
-
- }
-
- @media only screen and (max-width: 986px){
-    .card{
-        width: 160px;
-        height: 260px;
-        margin-inline: 1.5%;
-        padding: 1% 10px;
-    }
-    .card img{
-        width: 55%;
-    }
-    .cardTitle{
-        font-size: 18px;
-    }
-    .cardFooter{
-        margin-top: 15px;
-    }
-    .restList{
-        width: 180px;
-    }
-    .restName{
-        font-size: 16px;
-    }
- }
- @media only screen and (max-width: 947px){
-  .card{
-    width: 150px;
-  }
-  .cardTitle{
-    font-size: 16px;
-  }
-  .card p{
-    font-size: 14px;
-  }
-  .delivery {
-    font-size: 13px;
-    line-height: 22px;
 }
 
-.time {
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 15px;
-    padding: 6px 10px;
-}
- }
-@media only screen and (max-width: 898px){
-    .card{
-      width: 180px;
-      height: 220px;
-      margin-inline: 13px;
-     
-    }
-    .card img{
-        width: 40%;
-    }
-    .cardTitle{
-      font-size: 15px;
-    }
-    .card p{
-      font-size: 12px;
-      line-height: 18px;
-    }
-    .delivery {
-      font-size: 12px;
-      line-height: 22px;
-  }
-  
-  .time {
-      font-size: 12px;
-      padding: 6px 8px;
-  }
 
- }
-
- @media only screen and (max-width: 832px) {
-    .card{
-        margin-inline: 9px;
-    }
- }
- @media only screen and (max-width: 800px) {
-    .card{
-       width: 160px;
-    }
-    .cards{
-        height: 500px;
-    }
- }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1135px) {
     .card {
-        width: 150px;
-        padding: 1% 15px;
-        height: 230px;
-    }
-
-    .cards{
-        height: 600px;
+        height: auto;
+        padding: 1.1rem .5rem;
     }
 
     .card img {
         width: 64%;
-        margin: 0 auto;
     }
 
     .cardTitle {
         font-size: 18px;
+        line-height: 30px;
+        text-align: center;
     }
 
     .card p {
         font-size: 13px;
-    }
-
-    .delivery {
-        font-size: 13px;
-        line-height: 22px;
-    }
-
-    .time {
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 15px;
-        padding: 6px 12px;
+        line-height: 24px;
+        text-align: center;
     }
 
     .cardFooter {
         flex-direction: column;
         justify-content: flex-start;
-        align-items: center;
     }
 
-    .restName {
-        font-size: 16px;
+    .delivery {
+        line-height: 40px;
+    }
+
+    .time {
+        width: 90%;
+        padding-block: 3px;
+        font-size: 14px;
     }
 }
 
-@media only screen and (max-width: 713px) {
-   .card{
-    width: 220px;
-    height: 250px;
-   }
-   .cards{
-    height: 800px;
-   }
-}
-
-@media only screen and (max-width: 684px) {
-    .card{
-     width: 165px;
-    }
-    .cards{
-        justify-content: center;
-    }
- }
- @media only screen and (max-width: 577px){
-  .card{
-    width: 143px;
-    height: 225px;
-  }
-  .cards{
-    width: 100%;
-    height: auto;
-  }
-  .restList{
-    width: 170px;
-  }
-  .card img{
-    width: 40%;
-    margin-block: 5px;
-  }
-  .filter {
-    display: flex;
-    background-color: white;
-    box-shadow: 0px 3px 8px -2px #00000033;
-    padding: 7px 0;
-    justify-content: center;
-}
-.restaurants {
-    margin: 10% 5%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
- }
-@media only screen and (max-width: 496px) {
- .cards{
-    width: 96%;
-    margin: 0 auto;
- }
-.modalBg{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    z-index: 5;
-}
-
-.restList{
-    position: fixed;
-    background-color: white;
-    color: black;
-    font-family: var(--font-roboto);
-    border-radius: 20px 20px 0 0;
-    font-size: 18px;
-    padding: 5% 3%;
-    width: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height:470px;
-}
-.closeModal{
-    display: block;
-    width: 2rem !important;
-    margin: 15px 48%;
-}
-
-.scroll{
-    max-height: 400px;
-}
-
-.restName{
-    font-family: var(--font-roboto);
-    font-size: 18px;
-    line-height: 45px;
-}
-   .restaurant{
-    border-bottom: 1px solid #E0E0E0 ;
-    padding-bottom: 8px;
-   }
-  
-    .cards {
-        margin-top: 35px;
-        width: 100%;
-    }
-
+@media only screen and (max-width: 1075px) {
     .card {
-        text-align: center;
-        padding:2%;
-        width: 160px;
-        height: 200px;
+        width: 28%;
+        margin-inline: 2.5%;
+    }
+
+    .card img {
+        width: 66%;
+    }
+}
+
+@media only screen and (max-width: 921px) {
+
+    .card img {
+        width: 60%;
     }
 
     .cardTitle {
-        font-size: 16px;
-        line-height: 18px;
-        font-weight: 500;
+        font-size: 15px;
+    }
+
+    .card p {
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    .delivery {
+        font-size: 13px;
+        line-height: 24px;
+    }
+
+    .time {
+        font-size: 12px;
+        padding-block: 2px;
+        width: 80%;
+    }
+
+    .restList {
+        width: 220px;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .card {
+        width: 31%;
+        margin-inline: 1%;
+    }
+
+    .card img {
+        width: 56%;
+    }
+
+    .cardTitle {
+        font-size: 14px;
+    }
+
+    .card p {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .delivery {
+        font-size: 11px;
+    }
+
+    .time {
+        font-size: 11px;
+        padding-block: 1px;
+        width: 78%;
+    }
+
+    .restList {
+        width: 205px;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    .card {
+        width: 42%;
+        margin-inline: 3%;
+    }
+}
+
+@media only screen and (max-width: 577px) {
+    .card {
+        width: 46%;
+        margin-inline: 2%;
+    }
+
+    .cards {
+        margin-inline: auto;
+    }
+
+    .modalBg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 5;
+    }
+
+    .restList {
+        position: fixed;
+        background-color: white;
+        color: black;
+        font-family: var(--font-roboto);
+        border-radius: 20px 20px 0 0;
+        font-size: 18px;
+        padding: 5% 3%;
+        width: auto;
+        bottom: 0;
+        height: 470px;
+    }
+
+    .closeModal {
+        display: block;
+        width: 2rem !important;
+        margin: 15px 48%;
+    }
+
+    .scroll {
+        max-height: 320px;
+    }
+
+    .restName {
+        font-family: var(--font-roboto);
+        font-size: 18px;
+        line-height: 45px;
+    }
+
+    .restaurant {
+        border-bottom: 1px solid #E0E0E0;
+        padding-bottom: 8px;
+    }
+
+    .filter {
+        display: flex;
+        background-color: white;
+        box-shadow: 0px 3px 8px -2px #00000033;
+        padding: 7px 0;
+        justify-content: center;
+        align-items: center;
+        width: 88%;
+        margin-inline: auto;
+        margin-bottom: 20px;
+    }
+
+    .restaurants {
+        margin: 10% 5%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
     }
 
     .filter p {
@@ -474,27 +355,15 @@
         letter-spacing: 0.03em;
         color: #4F4F4F;
     }
-    .card p{
-        font-size: 10px;
-        line-height: 16px;
-        font-weight: 400;
-    }
-    .time{
-    padding: 3px 13px;
-    }
-}
-@media only screen and (max-width: 396px) {
-    .card {
-        width: 130px;
-        margin-inline: 2%;
-    }
-    
 }
 
-@media only screen and (max-width: 319px) {
-    .card {
-        width: 110px;
-        margin-inline: 2%;
+@media only screen and (max-width: 420px) {
+    .filter {
+        width: 96%;
     }
-    
+
+    .cards {
+        width: 98%;
+    }
+
 }
