@@ -53,22 +53,22 @@
 
 }
 
-.slogan .register:hover{
+.slogan .register:hover {
     background-color: #fa949457;
-    border: 2px solid var(--button-color1); 
+    border: 2px solid var(--button-color1);
     color: var(--button-color1);
     transition: all .2s ease-in;
     margin-right: 10px;
 }
 
-.slogan .orderNow:hover{
+.slogan .orderNow:hover {
     background-color: #828282;
     color: white;
-     box-shadow: 8px 1px 20px 7px #acabab;
+    box-shadow: 8px 1px 20px 7px #acabab;
     transition: all .3s ease-in;
 }
 
-.slogan .orderNow {   
+.slogan .orderNow {
     width: 220px;
     height: 70px;
     border-radius: 30px;
@@ -105,9 +105,11 @@
     0% {
         transform: translateY(0);
     }
+
     100% {
         transform: translateY(-10px);
-    }}
+    }
+}
 
 .fries {
     bottom: 0;
@@ -126,7 +128,8 @@
     position: absolute;
     animation: floatUpDown 3s ease-in-out infinite alternate;
 }
-.search{
+
+.search {
     display: none;
     position: relative;
 }
@@ -199,6 +202,7 @@
     text-align: center;
     color: var(--text-color2);
 }
+
 /* Discover Restaurants - Explore now */
 
 .exploreNow {
@@ -244,7 +248,7 @@
 }
 
 .discover button:hover {
-   background-color: #CF6616;
+    background-color: #CF6616;
 }
 
 .explore {
@@ -256,18 +260,26 @@
 
 
 /* Css- Media */
-@media only screen and (max-width: 1390px) {
-    .burger{
-        margin-bottom: 8%;
-       right: -50px;
+@media only screen and (min-width: 1441px) {
+    .btns {
+        width: 470px;
     }
+}
+
+@media only screen and (max-width: 1390px) {
+    .burger {
+        margin-bottom: 8%;
+        right: -50px;
+    }
+
     .slogan {
         width: 65%;
     }
+
     .btns {
         width: 71%;
     }
-  }
+}
 
 @media only screen and (max-width: 1310px) {
     .slogan {
@@ -290,34 +302,39 @@
 /*            Media Css 1290 px         */
 
 @media only screen and (max-width: 1290px) {
-   .cardTitle{
-    font-size: 21px;
-    line-height: 30px;
-   }
-   .cardTxt{
-    font-size: 17px;
-    line-height: 30px;
-   }
-   
-   .card {
-    padding-bottom: 2%;
-}
-.discover{
-    margin-inline: 10%;
-    padding: 4% 3%;
-    bottom: -70px;
-}
-.discover h2{
-    font-size: 38px;
-    line-height: 55px;
-}
-.promoTxt{
-    width: 70%;
-    margin-left: 20px;
-}
-.btns {
-    width: 81%;
-}
+    .cardTitle {
+        font-size: 21px;
+        line-height: 30px;
+    }
+
+    .cardTxt {
+        font-size: 17px;
+        line-height: 30px;
+    }
+
+    .card {
+        padding-bottom: 2%;
+    }
+
+    .discover {
+        margin-inline: 10%;
+        padding: 4% 3%;
+        bottom: -70px;
+    }
+
+    .discover h2 {
+        font-size: 38px;
+        line-height: 55px;
+    }
+
+    .promoTxt {
+        width: 70%;
+        margin-left: 20px;
+    }
+
+    .btns {
+        width: 81%;
+    }
 }
 
 /* Media Css -1210 px */
@@ -327,31 +344,34 @@
         font-size: 40px;
     }
 
-    .burger{
+    .burger {
         right: -8px;
         margin-bottom: 10%;
         width: 50%;
     }
 
-    .bgBlack{
+    .bgBlack {
         width: 450px;
     }
-    .pizzaHut, .fries, .cheesBrgr{
+
+    .pizzaHut,
+    .fries,
+    .cheesBrgr {
         width: 240px;
     }
 
     .btns {
-        width: 82%;
+        width: 380px;
     }
 
-    .slogan .register{
+    .slogan .register {
         width: 180px;
         font-size: 22px;
-       height: 60px;
-       margin-right: 15px;
+        height: 60px;
+        margin-right: 15px;
     }
 
-    .slogan .orderNow{
+    .slogan .orderNow {
         width: 180px;
         font-size: 22px;
         height: 60px;
@@ -368,6 +388,7 @@
     .cardTxt {
         font-size: 16px;
     }
+
     .discover h2 {
         font-size: 40px;
     }
@@ -414,17 +435,20 @@
     .card img {
         width: 70%;
     }
-    .discover img{
+
+    .discover img {
         width: 10rem;
     }
-    .discover{
+
+    .discover {
         padding: 2% 4%;
         margin-inline: 11%;
     }
 
-    .discover h2{
+    .discover h2 {
         font-size: 30px;
     }
+
     .h2 {
         font-size: 35px;
     }
@@ -432,81 +456,114 @@
     .secTxt {
         font-size: 16px;
     }
-    .features h2{
+
+    .features h2 {
         font-size: 25px;
     }
-}
-@media only screen and (max-width: 981px){
-    .bgBlack{
+
+    .btns {
         width: 360px;
     }
-    .burger{
-      right: 0;
-      margin-bottom: 10%;
+}
+
+@media only screen and (max-width: 981px) {
+    .bgBlack {
+        width: 360px;
     }
-    .pizzaHut, .fries, .cheesBrgr{
+
+    .burger {
+        right: 0;
+        margin-bottom: 10%;
+    }
+
+    .pizzaHut,
+    .fries,
+    .cheesBrgr {
         width: 220px;
     }
-    .slogan h1{
+
+    .slogan h1 {
         font-size: 35px;
         line-height: 50px;
     }
 }
 
-@media only screen and (max-width: 915px){
-    .bgBlack{
+@media only screen and (max-width: 915px) {
+    .bgBlack {
         width: 350px;
         margin-bottom: 45px;
     }
-    .burger{
-      right: -5px;
-      margin-bottom: 14%;
+
+    .burger {
+        right: -5px;
+        margin-bottom: 14%;
     }
-    .pizzaHut, .fries, .cheesBrgr{
+
+    .pizzaHut,
+    .fries,
+    .cheesBrgr {
         width: 200px;
     }
-    .cheesBrgr{
+
+    .cheesBrgr {
         bottom: 50px;
     }
-    .fries{
+
+    .fries {
         bottom: 30px;
     }
-    .slogan h1{
+
+    .slogan h1 {
         font-size: 33px;
     }
-    .slogan p{
+
+    .slogan p {
         width: 90%;
     }
-    .slogan{
+
+    .slogan {
         width: 45%;
     }
 }
 
-@media only screen and (max-width: 865px){
-    .slogan{
+@media only screen and (max-width: 865px) {
+    .slogan {
         width: 50%;
     }
-    .slogan h1{
+
+    .slogan h1 {
         font-size: 30px;
     }
-    .burger{
+
+    .btns {
+        width: 320px;
+    }
+
+    .burger {
         margin-bottom: 15%;
         right: 10px;
-      }
-      .bgBlack{
+    }
+
+    .bgBlack {
         width: 370px;
         margin-bottom: 6%;
-      }
-      .pizzaHut, .fries, .cheesBrgr{
+    }
+
+    .pizzaHut,
+    .fries,
+    .cheesBrgr {
         width: 180px;
     }
-    .slogan p{
+
+    .slogan p {
         width: 85%;
     }
-    .fries{
+
+    .fries {
         bottom: 20px;
     }
 }
+
 /* Media Css Tablet Mode    */
 @media only screen and (max-width: 768px) {
 
@@ -518,6 +575,7 @@
 
     .slogan {
         width: 94%;
+        margin-top: 2rem;
     }
 
     .slogan h1 {
@@ -534,36 +592,38 @@
         flex-direction: column;
         align-items: center;
         margin: 0 auto;
+        width: auto;
     }
-     .images{
+
+    .images {
         position: relative;
-     }
-     .bgBlack{
-        width: 300px;
-     }
-    .burger {
-        width:100%;
-        bottom: 2rem;
-        right:0;
-        margin: 0 auto;
     }
-     .bgBlack{
-        margin-block: 2rem;
-     }
+
+    .bgBlack {
+        display: none;
+    }
+
+    .burger {
+        position: relative;
+        width: 73% !important;
+        margin: 0 0 0 18%;
+    }
+
     .pizzaHut {
-     width: 170px;
-     top: 0;
-     right: -30px;
+        top: 80px;
+        right: 55px;
+        width: 33%;
     }
 
     .fries {
         bottom: 11%;
-        right: 60%;
+        right: 0;
+        left: 20px;
         margin-right: 0;
         margin-bottom: 0;
-        width: 160px;
+        width: 33%;
     }
-    
+
     .cheesBrgr {
         display: none;
     }
@@ -613,6 +673,7 @@
         width: 98%;
         line-height: 22px;
     }
+
     .exploreNow {
         height: 280px;
     }
@@ -649,11 +710,25 @@
     }
 }
 
- /*       Media Css   -   Mobile Mode */
+/*       Media Css   -   Mobile Mode */
 @media only screen and (max-width: 576px) {
     .slogan h1 {
         font-size: 22px;
     }
+
+    .pizzaHut {
+        top: 50px;
+        right: 20px;
+        position: absolute;
+        width: 38%;
+    }
+
+    .fries {
+        width: 38%;
+        right: 0;
+        left: 20px;
+    }
+
     .cards {
         margin-top: 4%;
         display: flex;
@@ -661,12 +736,14 @@
     }
 
     .card {
-        margin-block: 5px;
+        margin-block: 15px;
         padding-bottom: 3%;
     }
-.card img{
-    width: 40%;
-}
+
+    .card img {
+        width: 40%;
+    }
+
     .cardTitle {
         font-size: 20px;
     }
@@ -679,21 +756,23 @@
         padding: 4% 5%;
         bottom: -40px;
     }
-    .discover h2{
+
+    .discover h2 {
         font-size: 16px;
         line-height: 22px;
     }
 }
 
 @media only screen and (max-width: 392px) {
-    .search{
+    .search {
         display: block;
         border: none;
         border-radius: 30px;
         padding: 12px 15px;
-        width:200px; 
+        width: 200px;
         margin-top: 15px;
     }
+
     .search::placeholder {
         font-family: var(--font-roboto);
         color: black;
@@ -702,14 +781,33 @@
         text-align: center;
         line-height: 18.75px;
     }
-    .pizzaHut{
-        right: 5px;
-        width: 155px;
+
+    .discover img {
+        display: none;
     }
-    .fries{
-        bottom:0;
-        right: 10rem;
-        width: 155px;
+
+    .discover h2 {
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .discover {
+        padding-block: 6%;
+    }
+
+    .pizzaHut {
+        top: 45px;
+        right: 20px;
+        width: 150px;
+    }
+
+    .fries {
+        display: none;
+    }
+
+    .burger {
+        width: 82% !important;
+        margin: 0 0 0 14%;
     }
 }
 
@@ -718,19 +816,25 @@
     .card {
         padding-bottom: 8%;
     }
-    .card img{
+
+    .card img {
         width: 63%;
     }
 
     .discover {
-        padding: 10% 5%;
+        padding: 9% 5%;
     }
 
-    .discover img {
-        display: none;
+    .discover h2 {
+        font-size: 16px;
     }
-    .fries{
-        right: 8rem;
-        bottom: 3%;
+
+    .burger {
+        width: 90% !important;
+        margin: 0 0 0 10%;
+    }
+
+    .pizzaHut {
+        width: 135px;
     }
 }

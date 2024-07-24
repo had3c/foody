@@ -34,7 +34,8 @@
   align-items: center;
 
   margin-top: 16px;
-  background-color:white;
+  background-color: #f5f5f6;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   width: 4rem;
 
@@ -78,6 +79,7 @@
   .lang_list {
     right: 45%;
   }
+
   .lang_fig_img_btn {
     width: 2.3rem;
     height: 2.3rem;
@@ -86,10 +88,6 @@
 
 @media screen and (max-width: 1100px) {
   .lang_list {
-
-@media screen and (max-width: 1100px) {
-  .lang_list {
-
     right: 50%;
   }
 }
@@ -98,6 +96,7 @@
   .lang_list {
     right: 80%;
   }
+
   .lang_fig_img_btn {
     margin-top: 3px;
     width: 2.2rem;
@@ -134,22 +133,6 @@
     margin-top: 3px;
   }
 }
-
-@media screen and (max-width: 768px) {
-  .lang_fig_img_btn {
-    width: 1.7rem;
-    height: 1.7rem;
-  }
-}
-
-@media screen and (max-width: 630px) {
-  .lang_fig_img_btn {
-    width: 2.3rem;
-    height: 2.3rem;
-  }
-}
-
-
 
 @media screen and (max-width: 1024px) {
   .lang_list {

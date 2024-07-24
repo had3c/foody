@@ -4,10 +4,11 @@ import style from './ResponsNav.module.css';
 import closeMenuIcon from '../../../../assets/icons/Vector.svg';
 import basket from '../../../../assets/icons/basketIcon.svg';
 import { useAuth } from '../../../../context/AuthContext';
+import { motion, AnimatePresence } from 'framer-motion';
 
 function ResponsNav() {
     const { user } = useAuth();
-    const navigate= useNavigate()
+    const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(true);
 
     const closeResponsMenu = () => {
@@ -15,21 +16,34 @@ function ResponsNav() {
     }
 
     return (
-        <>
+        <AnimatePresence>
             {isOpen && (
-                <div className={style.navbarBg} onClick={closeResponsMenu}>
-                    <div className={style.navbar}>
+                <motion.div
+                    className={style.navbarBg}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={closeResponsMenu}
+                >
+                    <motion.div
+                        className={style.navbar}
+                        initial={{ x: '-100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '-100%' }}
+                        transition={{ type: 'tween', duration: 0.5 }}
+                        onClick={(e) => e.stopPropagation()}
+                    >
                         <img src={closeMenuIcon} alt="Close menu" onClick={closeResponsMenu} />
                         <div className={style.sign}>
-                        {user ? (<div className={style.user}>
+                            {user ? (<div className={style.user}>
                                 <img src={basket} alt="" />
                                 <span>Sarkhan Rahimli</span>
                             </div>
-        
-      ) : (
-        <button className={style.signupBtn} onClick={() => navigate('/login')}>Sign up</button>
-      )}
-                           
+
+                            ) : (
+                                <button className={style.signupBtn} onClick={() => navigate('/login')}>Sign up</button>
+                            )}
+
                         </div>
                         <ul>
                             <li><NavLink to="/" onClick={closeResponsMenu}>Home</NavLink></li>
@@ -40,24 +54,24 @@ function ResponsNav() {
                                 <li><NavLink to="/user/orders" onClick={closeResponsMenu}>Your Orders</NavLink></li>
                                 <li><NavLink to="/user/checkout" onClick={closeResponsMenu}>Checkout</NavLink></li>
                             </div>
-        
-      ) : (
-        <></>
-      )}
+
+                            ) : (
+                                <></>
+                            )}
                             <li><NavLink to="/about-us" onClick={closeResponsMenu}>About us</NavLink></li>
                             <li><NavLink to="/how-it-works" onClick={closeResponsMenu}>How it works</NavLink></li>
                             <li><NavLink to="/faqs" onClick={closeResponsMenu}>FAQs</NavLink></li>
-                            {user ? ( <li className={style.logout}><NavLink to="/" onClick={closeResponsMenu}>Logout</NavLink></li>
-        
-      ) : (
-        <></>
-      )}
-                           
+                            {user ? (<li className={style.logout}><NavLink to="/" onClick={closeResponsMenu}>Logout</NavLink></li>
+
+                            ) : (
+                                <></>
+                            )}
+
                         </ul>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             )}
-        </>
+        </AnimatePresence>
     );
 }
 
