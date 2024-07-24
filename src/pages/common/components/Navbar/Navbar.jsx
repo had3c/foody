@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink,useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../../context/AuthContext';
 import navLogo from '../../../../assets/icons/headerLogo.svg';
 import LanguageBox from '../LanguageBox/LanguageBox';
@@ -9,7 +9,6 @@ import basket from '../../../../assets/icons/basketIcon.svg'
 import SearchResult from '../SearchResult/SearchResult';
 import UserMenu from '../DropDownMenu/UserMenu';
 import ResponsNav from '../ResponsNav/ResponsNav';
-
 
 
 function Navbar() {
@@ -30,7 +29,7 @@ function Navbar() {
       {openMenu && <ResponsNav />}
       {/*     Foody Logo and Navigation Bar       */}
       <div className={navStyle.navigation}>
-        <img src={navLogo} alt="" />
+        <img src={navLogo} alt="" onClick={() => navigate('/')} />
         <img src={menuBar} alt="" className={navStyle.menuBar} onClick={openResponsMenu} />
         <ul>
           <li><NavLink className={navStyle.activeLink} to="/" >Home</NavLink></li>
@@ -52,7 +51,7 @@ function Navbar() {
 
         {user ? (
           <div className={navStyle.userTrue}>
-            <img src={basket} alt="" onClick={() => navigate('/user/basket')}/>
+            <img src={basket} alt="" onClick={() => navigate('/user/basket')} />
             <img src={basket} alt="" onClick={dropDownMenu} />
             {dropDown && <UserMenu />}
           </div>

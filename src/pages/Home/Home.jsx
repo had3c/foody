@@ -12,7 +12,7 @@ import pizza from '../../assets/images/pizza.svg'
 import dubblechees from '../../assets/images/dubbleChees.svg'
 import kfcMenu from '../../assets/images/twisterMenu.svg'
 import margarita from '../../assets/images/margarita.svg'
-import {useNavigate} from'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Offers from './components/Offers/Offers'
 
 export default function Home() {
@@ -31,7 +31,7 @@ export default function Home() {
 
         <div className={style.btns}>
           <button className={style.register} onClick={() => navigate('/login')}>Register</button>
-          <button className={style.orderNow}  onClick={() => navigate('/restaurants')}>Order now</button>
+          <button className={style.orderNow} onClick={() => navigate('/restaurants')}>Order now</button>
           <input type="text" placeholder='Search' className={style.search} />
         </div>
       </div>
@@ -77,8 +77,8 @@ export default function Home() {
       </section>
 
       {/*               Section Offers                  */}
-     
-      <Offers/>
+
+      <Offers />
 
       {/*              Section New Foods              */}
       <section className={style.features}>
@@ -111,11 +111,11 @@ export default function Home() {
         <div className={style.discover}>
           <img src={pizza} alt="" />
           <div className={style.explore}>
-              <h2>
+            <h2>
               Discover Restaurants
               Near From you
-              </h2>
-              <button onClick={() => navigate('/restaurants')}>Explore now</button>
+            </h2>
+            <button onClick={() => navigate('/restaurants')}>Explore now</button>
           </div>
           <img src={burgers} alt="" />
         </div>
