@@ -59,8 +59,8 @@ function About() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{
-                                    duration: 0.05,
-                                    delay: index * 0.03,
+                                    duration: 0.015,
+                                    delay: index * 0.009,
                                     ease: "easeInOut"
                                 }}
                             >
