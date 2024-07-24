@@ -33,51 +33,51 @@ export default function Checkout() {
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
-                handleCheckout(values); 
+                handleCheckout(values);
                 setSubmitting(false);
               }, 400);
             }}
           >
             {({ isSubmitting }) => (
               <Form>
-                
-                  <label htmlFor="address">Delivery Address</label>
-                  <Field
-                    type="text"
-                    id="address"
-                    name="address"
-                    placeholder="Delivery Address"
-                    className={style.input}
-                  />
-                  <ErrorMessage name="address" component="div" className={style.error} />
 
-                  <label htmlFor="contact">Contact Number</label>
-                  <Field
-                    type="text" id="contact"  name="contact"  placeholder="+994"
-                    className={style.input}
-                  />
-                  <ErrorMessage name="contact" component="div" className={style.error} />
+                <label htmlFor="address">Delivery Address</label>
+                <Field
+                  type="text"
+                  id="address"
+                  name="address"
+                  placeholder="Delivery Address"
+                  className={style.input}
+                />
+                <ErrorMessage name="address" component="div" className={style.error} />
 
-                  <label>Payment Method</label>
-                  <div className={style.payment}>
-                    <div className={style.pay}>
-                      <Field
-                        type="radio" id="paymentMethod-thedoor" name="paymentMethod" value="pay at the door"
-                      />
-                      <label htmlFor="paymentMethod-thedoor">Pay at the door</label>
-                    </div>
-                    <div className={style.pay}>
-                      <Field type="radio" id="paymentMethod-creditcard" name="paymentMethod"
-                        value="pay at the door by credit card"
-                      />
-                      <label htmlFor="paymentMethod-creditcard">Pay at the door by credit card</label>
-                    </div>
+                <label htmlFor="contact">Contact Number</label>
+                <Field
+                  type="text" id="contact" name="contact" placeholder="+994"
+                  className={style.input}
+                />
+                <ErrorMessage name="contact" component="div" className={style.error} />
+
+                <label>Payment Method</label>
+                <div className={style.payment}>
+                  <div className={style.pay}>
+                    <Field
+                      type="radio" id="paymentMethod-thedoor" name="paymentMethod" value="pay at the door"
+                    />
+                    <label htmlFor="paymentMethod-thedoor">Pay at the door</label>
                   </div>
+                  <div className={style.pay}>
+                    <Field type="radio" id="paymentMethod-creditcard" name="paymentMethod"
+                      value="pay at the door by credit card"
+                    />
+                    <label htmlFor="paymentMethod-creditcard">Pay at the door by credit card</label>
+                  </div>
+                </div>
 
-                  <button type="submit" disabled={isSubmitting} onClick={handleCheckout}>
-                    Checkout
-                  </button>
-                
+                <button type="submit" disabled={isSubmitting} onClick={handleCheckout}>
+                  Checkout
+                </button>
+
               </Form>
             )}
           </Formik></div>
