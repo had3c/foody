@@ -6,7 +6,13 @@ import PizzaImg from '../../../assets/images/pizza.png';
 import CoffeeImg from '../../../assets/images/cofe.png';
 import SoupImg from '../../../assets/images/soup.png';
 
+import { useTranslation } from 'react-i18next';
+
 function About() {
+
+    const { t } = useTranslation()
+
+
     const [rotation, setRotation] = useState(0);
 
     useEffect(() => {
@@ -18,18 +24,18 @@ function About() {
     }, []);
 
     const foodItems = [
-        { img: CoffeeImg, name: "Papa Coffee", rating: "⭐⭐⭐⭐", price: "$1.40" },
-        { img: BurgerImg, name: "Hamburger", rating: "⭐⭐⭐⭐", price: "$5.90" },
-        { img: SoupImg, name: "Tomato Soup", rating: "⭐⭐⭐", price: "$7.90" },
-        { img: PizzaImg, name: "Sousage Pizza", rating: "⭐⭐⭐⭐", price: "$7.90" }
+        { img: CoffeeImg, name: t("Coffe"), rating: "⭐⭐⭐⭐", price: "$1.40" },
+        { img: BurgerImg, name: t('Hamburger'), rating: "⭐⭐⭐⭐", price: "$5.90" },
+        { img: SoupImg, name: t('Soup'), rating: "⭐⭐⭐", price: "$7.90" },
+        { img: PizzaImg, name: t('Pizza'), rating: "⭐⭐⭐⭐", price: "$7.90" }
     ];
 
     const getRotatedItem = (index) => {
         return foodItems[(index + rotation) % 4];
     };
 
-    const abou = "About Us"
-    const text = "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.";
+    const abou = t("About us")
+    const text = t("abu")
 
     return (
         <div className={StyleAbout.cont}>
