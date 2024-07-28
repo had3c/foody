@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import StyleFAQ from '../style/FAQ.module.css';
-import { faqData } from './FAQData';
+import { useFaqData } from './FAQData';
 import { FaqItem } from './FAQItem';
 
 function FAQ() {
     const [openIndex, setOpenIndex] = useState(-1);
+    const faqData = useFaqData();
 
     return (
         <motion.div 
@@ -45,4 +46,3 @@ function FAQ() {
 }
 
 export default FAQ;
-
