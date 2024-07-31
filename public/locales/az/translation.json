@@ -196,6 +196,24 @@
   "Pizza": "Sosiskali Pizza",
 
   "FoodyChat": "FoodySöhbət",
+  "Gender": "Cins",
+
+  "Other": "Digər",
+
+
+  "PN":"Tam adınızı yazın",
+  "PU":"İstifadəçi adınızı yazın",
+  "PE":"E-poçtunuzu yazın",
+  "PP":"Şifrənizi yaradın",
+  "PP2":"Şifrənizi yazın",
+
+  "WUN":"Yanlış istifadəçi adı",
+  "TN2":"Ad ən azı 2 simvol olmalıdır",
+  "TF2":"Tam ad ən azı 2 simvol olmalıdır",
+  "WE":"Yanlış E-mail",
+  "WP":"Yanlış şifrə",
+  "P6":"Şifrə ən azı 6 simvol olmalıdır",
+
 
 
   "Question1":"Müştəri Təcrübəsi Komandamız həftənin 7 günü işləyir və biz əlaqə saxlamağın 2 yolunu təklif edirik: E-poçt və Çat. Tez cavab verməyə çalışırıq, ona görə də cavab üçün çox gözləməyinizə ehtiyac yoxdur!",

@@ -54,8 +54,8 @@
   "Are you sure it's deleted ?": "Êtes-vous sûr que c'est supprimé ?",
   "Attention! If you delete this product, it will not come back...": "Attention ! Si vous supprimez ce produit, il ne reviendra pas...",
   "Name": "Nom",
-  "Male": "Homme",
-  "Female": "Femme",
+  "Male": "Masculin",
+  "Female": "Féminin",
   "Kids": "Enfants",
   "Weekly Sales Rate": "Taux de ventes hebdomadaires",
   "Users Rate": "Taux d'utilisateurs",
@@ -190,11 +190,30 @@
   "This is not Admin password": "Ce nest pas un mot de passe administrateu",
   "Must be 5 characters or more": "Doit contenir 5 caractères ou plus",
   "Must be 15 characters or less": "Doit contenir 15 caractères ou moins",
+  "Gender": "Genre",
   "Coffe": "Papa-Café",
   "Hamburger": "Hamburger",
   "Soup": "Soupe de Tomate",
   "Pizza": "Pizza à la Saucisse",
   "How do I create a account?": "Comment créer un compte ?",
+
+  "PN":"Écrivez votre nom complet",
+  "PU":"Écrivez votre nom d'utilisateur",
+  "PE":"Écrivez votre adresse e-mail",
+  "PP":"Créez votre mot de passe",
+  "PP2":"Écrivez votre mot de passe",
+
+  "Other": "Autre",
+
+  "WUN":"Nom d'utilisateur incorrect",
+  "TN2":"Le nom doit comporter au moins 2 caractères",
+  "TF2":"Le nom complet doit comporter au moins 2 caractères",
+  "WE":"E-mail incorrect",
+  "WP":"Mot de passe incorrect",
+  "P6":"Le mot de passe doit contenir au moins 6 caractères",
+
+
+
   "Website reponse taking time, how to improve?": "La réponse d'un site Web prend du temps, comment s'améliorer ?",
   "Question1": "Notre équipe Expérience client est disponible 7 jours sur 7 et nous proposons 2 façons d'entrer en contact : e-mail et chat. Nous essayons de répondre rapidement, vous n'avez donc pas besoin d'attendre trop longtemps pour une réponse !",
   "Question2": "Veuillez vérifier la configuration système requise et essayez de réinstaller l'application. Si le problème persiste, contactez notre équipe d'assistance.",
