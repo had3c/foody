@@ -195,6 +195,25 @@
   "Hamburger": "Hamburger",
   "Soup": "Tomato Soup",
   "Pizza": "Sousage Pizza",
+  "Gender": "Gender",
+
+  "PN":"Write Your Full Name",
+  "PU":"Write Your User Name",
+  "PE":"Write Your E-mail",
+  "PP":"Create Your Password",
+  "PP2":" Write Your Password",
+
+  "Other": "Other",
+
+  "WUN":"Wrong User Name",
+  "TN2":"The name must be at least 2 characters",
+  "TF2":"The full name must be at least 2 characters",
+  "WE":"Wrong E-mail",
+  "WP":"Wrong Password",
+  "P6":"The password must contain at least 6 characters",
+
+
+  
 
   "Question1":"Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact: Email and Chat. We try to reply quickly, so you need not wait too long for a response!",
   "Question2":"Please check the system requirements and try reinstalling the application. If the problem persists, contact our support team.",

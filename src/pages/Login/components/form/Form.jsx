@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
-import { initialValues, schemas } from '../../../../utils/helper';
+import { initialValues, getValidationSchemas } from '../../../../utils/helper';
 import Input from '../input/Input';
 import StyleForm from '../../style/Form.module.css';
 import LoginImg from '../../../../assets/images/loginImg.svg';
@@ -8,7 +8,13 @@ import RegisImg from '../../../../assets/images/registerImg.svg';
 
 import { useAuth } from '../../../../context/AuthContext'
 
+import { useTranslation } from 'react-i18next';
+
 function LoginForm() {
+
+    const {t} = useTranslation()
+    const schemas = getValidationSchemas(t);
+
     const { generateUserLoginDatas } = useAuth()
     const [isRegistering, setIsRegistering] = useState(false);
 
@@ -29,15 +35,15 @@ function LoginForm() {
                             className={!isRegistering ? StyleForm.active : ''}
                             onClick={() => setIsRegistering(false)}
                         >
-                            Login
+                            {t('Login')}
                         </button>
                         <button
                             type="button"
                             className={isRegistering ? StyleForm.active : ''}
                             onClick={() => setIsRegistering(true)}
                         >
-                            Register
-                        </button>
+{                            t('Register')
+}                        </button>
                     </div>
 
                     <Formik
@@ -50,37 +56,37 @@ function LoginForm() {
                                 {isRegistering ? (
                                     <>
                                         <Input
-                                            label="Full Name"
+                                            label={t("Full Name")}
                                             name="fullName"
                                             id="fullName"
-                                            placeholder="Write Your Full Name"
+                                            placeholder={t("PN")}
                                         />
                                         <Input
-                                            label="Username"
+                                            label={t("User Name")}
                                             name="userName2"
                                             id="userName2"
-                                            placeholder="Write Your Username"
+                                            placeholder={t("PU")}
                                         />
                                         <Input
-                                            label="Email"
+                                            label={t("E-mail")}
                                             name="email"
                                             id="email"
-                                            placeholder="Write Your Email"
+                                            placeholder={t("PE")}
                                         />
                                         <Input
-                                            label="Password"
-                                            name="password"
-                                            id="password"
-                                            placeholder="Create Your Password"
+                                            label= {t("Password")}
+                                            name="passwordReg"
+                                            id="passwordReg"
                                             type="password"
+                                            placeholder={t("PP")}
                                         />
                                         <div className={StyleForm.selectField}>
-                                            <label htmlFor="gender">Gender</label>
+                                            <label htmlFor="gender">{t("Gender")}</label>
                                             <Field as="select" name="gender" id="gender">
-                                                <option value="" disabled>Select</option>
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                                <option value="other">Other</option>
+                                                <option value="" disabled>{t('Select')}</option>
+                                                <option value="male">{t('Male')}</option>
+                                                <option value="female">{t('Female')}</option>
+                                                <option value="other">{t('Other')}</option>
                                             </Field>
                                             {errors.gender && touched.gender && (
                                                 <div className={StyleForm.errorMessage}>{errors.gender}</div>
@@ -90,17 +96,17 @@ function LoginForm() {
                                 ) : (
                                     <>
                                         <Input
-                                            label="Username"
+                                            label={t("User Name")}
                                             name="userName"
                                             id="userName"
-                                            placeholder="Write Your Username"
+                                            placeholder={t("PU")}
                                         />
                                         <Input
-                                            label="Password"
-                                            name="password"
-                                            id="password"
-                                            placeholder="Write Your Password"
+                                            label={t("Password")}
+                                            name="passwordLog"
+                                            id="passwordLog"
                                             type="password"
+                                            placeholder={t("PP2")}
                                         />
                                     </>
                                 )}
@@ -114,7 +120,7 @@ function LoginForm() {
                                         })
                                     }}
                                 >
-                                    {isRegistering ? 'Register' : 'Log in'}
+                                    {isRegistering ? t('Register') : t('Login')}
                                 </button>
                             </Form>
                         )}
