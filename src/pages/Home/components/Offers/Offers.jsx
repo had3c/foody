@@ -5,6 +5,7 @@ import secPizza from '../../../../assets/images/secPizza.svg'
 import secFrench from '../../../../assets/images/secFrench.svg'
 
 function Offers() {
+  
   return (
     <div>
           <section className={style.offers}>

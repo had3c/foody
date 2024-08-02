@@ -47,6 +47,10 @@
     cursor: pointer;
 }
 
+.userImg{
+    border-radius: 50%;  
+}
+
 .search {
     display: flex;
     justify-content: space-between;
@@ -270,8 +274,7 @@ li {
     .search {
         width: 59%;
     }
-
-    .userTrue {
+    .userTrue{
         width: 22%;
     }
 }

@@ -392,6 +392,9 @@
     .discover h2 {
         font-size: 40px;
     }
+    .exploreNow{
+        height: 250px;
+    }
 }
 
 
@@ -464,6 +467,7 @@
     .btns {
         width: 360px;
     }
+   
 }
 
 @media only screen and (max-width: 981px) {
@@ -524,6 +528,7 @@
     .slogan {
         width: 45%;
     }
+   
 }
 
 @media only screen and (max-width: 865px) {
@@ -533,6 +538,7 @@
 
     .slogan h1 {
         font-size: 30px;
+        line-height: 43px;
     }
 
     .btns {
@@ -675,7 +681,7 @@
     }
 
     .exploreNow {
-        height: 280px;
+        height: 200px;
     }
 
     .discover {

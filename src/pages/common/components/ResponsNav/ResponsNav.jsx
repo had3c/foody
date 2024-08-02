@@ -1,20 +1,57 @@
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import Swal from 'sweetalert2';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import style from './ResponsNav.module.css';
 import closeMenuIcon from '../../../../assets/icons/Vector.svg';
-import basket from '../../../../assets/icons/basketIcon.svg';
+import avatar from '../../../../assets/icons/avatar.svg'
 import { useAuth } from '../../../../context/AuthContext';
+import { useProfile } from '../../../../context/ProfileContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function ResponsNav() {
     const { user } = useAuth();
     const navigate = useNavigate()
+    const location = useLocation();
+    const { t } = useTranslation();
+    const { profileImage, fullName } = useProfile();
+    const { generateUserLogoutDatas } = useAuth();
     const [isOpen, setIsOpen] = useState(true);
+
+    const handleLogout = async (e) => {
+        e.preventDefault()
+        const result = await Swal.fire({
+            title: t('Are you sure?'),
+            text: t('You must log in again!'),
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: t('Yes'),
+            cancelButtonText: t('Cancel')
+        });
+
+        if (result.isConfirmed) {
+            generateUserLogoutDatas();
+
+            Swal.fire({
+                title: t('Logout'),
+      icon: 'success',
+      confirmButtonText: t('OK')
+            }).then(() => {
+                window.location.href = '/';
+            });
+        }
+    };
 
     const closeResponsMenu = () => {
         setIsOpen(false);
     }
-
+    const getNavLinkStyle = (path) => {
+        return {
+            color: location.pathname === path || (location.pathname === '/' && path === '/') ? '#d63626' : '#828282',
+        };
+    };
     return (
         <AnimatePresence>
             {isOpen && (
@@ -36,32 +73,34 @@ function ResponsNav() {
                         <img src={closeMenuIcon} alt="Close menu" onClick={closeResponsMenu} />
                         <div className={style.sign}>
                             {user ? (<div className={style.user}>
-                                <img src={basket} alt="" />
-                                <span>Sarkhan Rahimli</span>
+                                <img src={profileImage || avatar} alt="" />
+                                <span>{fullName || 'Username'}</span>
                             </div>
 
                             ) : (
-                                <button className={style.signupBtn} onClick={() => navigate('/login')}>Sign up</button>
+                                <button className={style.signupBtn} onClick={() => navigate('/login')}>{t('Sign Up')}</button>
                             )}
 
                         </div>
-                        <ul>
-                            <li><NavLink to="/" onClick={closeResponsMenu}>Home</NavLink></li>
-                            <li><NavLink to="/restaurants" onClick={closeResponsMenu}>Restaurants</NavLink></li>
+                        <ul> 
+                            <li><NavLink to="/" onClick={closeResponsMenu} style={() => getNavLinkStyle('/')}>{t('Home')}</NavLink></li>
+                            <li><NavLink to="/restaurants" onClick={closeResponsMenu} style={() => getNavLinkStyle('/restaurants')}>{t('Restaurants')}</NavLink></li>
                             {user ? (<div>
-                                <li><NavLink to="/user" onClick={closeResponsMenu}>Profile</NavLink></li>
-                                <li><NavLink to="/user/basket" onClick={closeResponsMenu}>Your Basket</NavLink></li>
-                                <li><NavLink to="/user/orders" onClick={closeResponsMenu}>Your Orders</NavLink></li>
-                                <li><NavLink to="/user/checkout" onClick={closeResponsMenu}>Checkout</NavLink></li>
+                                <li><NavLink to="/user" onClick={closeResponsMenu} style={() => getNavLinkStyle('/user')}>{t('Profile')}</NavLink></li>
+                                <li><NavLink to="/user/basket" onClick={closeResponsMenu} style={() => getNavLinkStyle('/user/basket')}>{t('Your Basket')}</NavLink></li>
+                                <li><NavLink to="/user/orders" onClick={closeResponsMenu} style={() => getNavLinkStyle('/user/orders')}>{t('Your Orders')}</NavLink></li>
+                                <li><NavLink to="/user/checkout" onClick={closeResponsMenu} style={() => getNavLinkStyle('/user/checkout')}>{t('Checkout')}</NavLink></li>
                             </div>
 
                             ) : (
                                 <></>
                             )}
-                            <li><NavLink to="/about-us" onClick={closeResponsMenu}>About us</NavLink></li>
-                            <li><NavLink to="/how-it-works" onClick={closeResponsMenu}>How it works</NavLink></li>
-                            <li><NavLink to="/faqs" onClick={closeResponsMenu}>FAQs</NavLink></li>
-                            {user ? (<li className={style.logout}><NavLink to="/" onClick={closeResponsMenu}>Logout</NavLink></li>
+                            <li><NavLink to="/about-us" onClick={closeResponsMenu} style={() => getNavLinkStyle('/about-us')}>{t('About us')}</NavLink></li>
+                            <li><NavLink to="/how-it-works" onClick={closeResponsMenu} style={() => getNavLinkStyle('/how-it-works')}>{t('How it Works')}</NavLink></li>
+                            <li><NavLink to="/faqs" onClick={closeResponsMenu} style={() => getNavLinkStyle('/faqs')}>{t('FAQs')}</NavLink></li>
+                            {user ? (<li className={style.logout}> <NavLink to="/" onClick={handleLogout}>
+                               {t('Logout')}
+                            </NavLink></li>
 
                             ) : (
                                 <></>
@@ -76,4 +115,3 @@ function ResponsNav() {
 }
 
 export default ResponsNav;
-

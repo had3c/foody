@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next';
 import footerLogo from '../../../../assets/icons/logoFooter.svg'
 import facebook from '../../../../assets/icons/facebook.svg'
 import twitter from '../../../../assets/icons/twitter.svg'
@@ -6,6 +7,8 @@ import instagram from '../../../../assets/icons/instagram.svg'
 import footStyle from './Footer.module.css'
 
 function Footer() {
+
+  const { t } = useTranslation();
    return (
       <div className={footStyle.footer}>
          <section className={footStyle.mainSec}>
@@ -24,30 +27,30 @@ function Footer() {
             {/*              Footer - Navigation                  */}
 
             <div className={footStyle.footNavigate}>
-               <ul>
-                  <li className={footStyle.listCategory}>Popular</li>
-                  <li>Programming</li>
-                  <li>Books for children</li>
-                  <li>Psychology</li>
-                  <li>Business</li>
-               </ul>
+            <ul>
+            <li className={footStyle.listCategory}>{t('Popular')}</li>
+            <li>{t('Programming')}</li>
+            <li>{t('Books for children')}</li>
+            <li>{t('Psychology')}</li>
+            <li>{t('Business')}</li>
+          </ul>
 
-               <ul>
-                  <li className={footStyle.listCategory}>Cash</li>
-                  <li>Delivery</li>
-                  <li>Payment</li>
-                  <li>About the store</li>
-               </ul>
+          <ul>
+            <li className={footStyle.listCategory}>{t('Cash')}</li>
+            <li>{t('Delivery')}</li>
+            <li>{t('Payment')}</li>
+            <li>{t('About the store')}</li>
+          </ul>
 
-               <ul>
-                  <li className={footStyle.listCategory}>Help</li>
-                  <li>Contacts</li>
-                  <li>Purchase returns</li>
-                  <li>Buyer help</li>
-               </ul>
+          <ul>
+            <li className={footStyle.listCategory}>{t('Help')}</li>
+            <li>{t('Contact')}</li>
+            <li>{t('Purchase returns')}</li>
+            <li>{t('Buyer Help')}</li>
+          </ul>
             </div>
          </section>
-         <p className={footStyle.privacy}>All rights reserved © 2003-2023 Foody TERMS OF USE | Privacy Policy</p>
+         <p className={footStyle.privacy}>{t('All rights reserved © 2003-2024 Foody TERMS OF USE | Privacy Policy')}</p>
       </div>
    )
 }
