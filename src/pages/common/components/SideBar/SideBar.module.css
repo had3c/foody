@@ -22,6 +22,10 @@
     border-radius: 4px;
 }
 
+.active {
+    color:#d63626 !important;
+    background-color:#f0e1e2 !important;
+ }
 .sideBar ul {
     margin: 60px 15% 1px 12%;
 }
@@ -32,10 +36,22 @@
     margin-bottom: 10px;
 }
 
+.sideBar .profile{
+    margin-top: 7px;
+}
+
+@media only screen and (min-width: 1441px) {
+    .sideBar {
+        width: 350px;
+        height: 50vh;
+    }
+
+}
+
 @media only screen and (max-width: 768px) {
     .sideBar {
-        width: 250px;
-        height: 50vh;
+        width: 280px;
+        height: 400px;
     }
 
     .sideBar li a {

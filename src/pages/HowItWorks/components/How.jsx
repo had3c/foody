@@ -4,9 +4,14 @@ import PeopleImg from '../../../assets/images/Rectangle 106.png';
 import { motion } from 'framer-motion';
 import { containerVariants, childVariants, blokVariants, imageVariants, titleVariants, letterVariants, paragraphVariants, wordVariants } from './animationHow';
 
+import { useTranslation } from 'react-i18next';
+
 function How() {
-    const title = "How it works";
-    const paragraphText = "Delivery may be extended during sale periods. Please refer to the checkout page for an updated estimate for your location. Kindly note that once you have placed an order, it is no longer possible to modify your order. Taxes and duties are included in all product prices. It is possible to place an order with shipment to a different address than your home or billing address when paying with a credit card. Please note that Klarna payments require that your order is shipped to your registered home address.";
+
+    const {t} = useTranslation()
+
+    const title = t("How it works");
+    const paragraphText = t("Delivery may be extended during sale periods. Please refer to the checkout page for an updated estimate for your location. Kindly note that once you have placed an order, it is no longer possible to modify your order. Taxes and duties are included in all product prices.It is possible to place an order with shipment to a different address than your home or billing address when paying with a credit card. Please note that Klarna payments require that your order is shipped to your registered home address.");
 
     return (
         <motion.div
@@ -52,8 +57,8 @@ function How() {
                         variants={blokVariants}
                         className={StyleHow.blok}></motion.div>
                     <motion.img
-                        variants={imageVariants}
-                        animate="animate"
+                        // variants={imageVariants}
+                        // animate="animate"
                         src={PeopleImg}
                         alt=""
                         className={StyleHow.ima} />

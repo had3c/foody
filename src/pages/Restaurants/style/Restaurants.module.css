@@ -7,24 +7,31 @@
 .restaurant {
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    padding: .7rem;
+}
+
+.restaurant:hover {
+    background-color: #f0e1e2;
 }
 
 .restList {
     background-color: var(--box-color3);
-    padding: 4% 2%;
-    width: 17%;
-    /* height: 898px;
-    overflow: auto; */
+    padding: 2.5rem 1.5rem;
+    width: 255px;
+    height: 800px;
+}
+
+.scroll {
     overflow-y: auto;
-    max-height: 840px;
+    max-height: 700px;
 }
 
-.restList::-webkit-scrollbar {
-    width: 7px;
+.scroll::-webkit-scrollbar {
+    width: 4px;
 }
 
-.restList::-webkit-scrollbar-thumb {
+.scroll::-webkit-scrollbar-thumb {
     background-color: #D63626;
 }
 
@@ -44,23 +51,30 @@
 
 .cards {
     display: flex;
+    align-content: flex-start;
     flex-wrap: wrap;
-    justify-content: space-between;
     width: 80%;
+    margin-left: 5px;
+    margin-block: .6rem;
 }
 
 .card {
     background-color: white;
     font-family: var(--font-roboto);
-    box-shadow: 0px 0px 5px 3px #00000040;
-    padding: 1% 17px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 1.1rem;
     font-family: var(--font-roboto);
-    width: 235px;
-    margin-bottom: 5%;
+    margin-bottom: 30px;
+    width: 22%;
+    height: 340px;
+    margin-inline: 1.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card img {
-    width: 85%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -97,7 +111,8 @@
     color: white;
     background-color: var(--button-color1);
     border-radius: 30px;
-    padding: 6px 18px;
+    width: 80px;
+    padding-block: 6px;
     text-align: center;
 }
 
@@ -111,79 +126,206 @@
     display: none;
 }
 
-@media only screen and (max-width: 1200px) {
-    .restList {
-        width: 20%;
+.closeModal {
+    display: none;
+}
+
+@media only screen and (min-width: 1441px) {
+    .card {
+        height: 350px;
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    .delivery {
+        font-size: 14px;
     }
 
-    .cards {
-        width: 75%;
+    .time {
+        font-size: 14px;
+        width: 72px;
+    }
+
+    .card img {
+        width: 76%;
     }
 }
 
 
-@media only screen and (max-width: 768px) {
-    .restList {
-        width: 25%;
-        max-height: 550px;
-    }
-
-    .cards {
-        width: 70%;
-    }
-
+@media only screen and (max-width: 1135px) {
     .card {
-        width: 150px;
-        padding: 1% 15px;
+        height: auto;
+        padding: 1.1rem .5rem;
     }
 
     .card img {
         width: 64%;
-        margin: 0 auto;
     }
 
     .cardTitle {
         font-size: 18px;
         line-height: 30px;
+        text-align: center;
     }
 
     .card p {
         font-size: 13px;
-    }
-
-    .delivery {
-        font-size: 13px;
-        line-height: 22px;
-    }
-
-    .time {
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 15px;
-        padding: 6px 12px;
+        line-height: 24px;
+        text-align: center;
     }
 
     .cardFooter {
         flex-direction: column;
         justify-content: flex-start;
-        align-items: center;
     }
 
-    .restName {
-        font-size: 16px;
+    .delivery {
+        line-height: 40px;
+    }
+
+    .time {
+        width: 90%;
+        padding-block: 3px;
+        font-size: 14px;
     }
 }
 
-@media only screen and (max-width: 490px) {
-    .restList {
-        display: none;
+@media only screen and (max-width: 1075px) {
+    .card {
+        width: 28%;
+        margin-inline: 2.5%;
     }
 
-    .restaurants {
-        margin: 10% 5%;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
+    .card img {
+        width: 66%;
+    }
+}
+
+@media only screen and (max-width: 921px) {
+
+    .card img {
+        width: 60%;
+    }
+
+    .cardTitle {
+        font-size: 15px;
+    }
+
+    .card p {
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    .delivery {
+        font-size: 13px;
+        line-height: 24px;
+    }
+
+    .time {
+        font-size: 12px;
+        padding-block: 2px;
+        width: 80%;
+    }
+
+    .restList {
+        width: 220px;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .card {
+        width: 31%;
+        margin-inline: 1%;
+    }
+
+    .card img {
+        width: 56%;
+    }
+
+    .cardTitle {
+        font-size: 14px;
+    }
+
+    .card p {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .delivery {
+        font-size: 11px;
+    }
+
+    .time {
+        font-size: 11px;
+        padding-block: 1px;
+        width: 78%;
+    }
+
+    .restList {
+        width: 205px;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    .card {
+        width: 42%;
+        margin-inline: 3%;
+    }
+}
+
+@media only screen and (max-width: 577px) {
+    .card {
+        width: 46%;
+        margin-inline: 2%;
+    }
+
+    .cards {
+        margin-inline: auto;
+    }
+
+    .modalBg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 5;
+    }
+
+    .restList {
+        position: fixed;
+        background-color: white;
+        color: black;
+        font-family: var(--font-roboto);
+        border-radius: 20px 20px 0 0;
+        font-size: 18px;
+        padding: 5% 3%;
+        width: auto;
+        bottom: 0;
+        height: 470px;
+    }
+
+    .closeModal {
+        display: block;
+        width: 2rem !important;
+        margin: 15px 48%;
+    }
+
+    .scroll {
+        max-height: 320px;
+    }
+
+    .restName {
+        font-family: var(--font-roboto);
+        font-size: 18px;
+        line-height: 45px;
+    }
+
+    .restaurant {
+        border-bottom: 1px solid #E0E0E0;
+        padding-bottom: 8px;
     }
 
     .filter {
@@ -192,23 +334,17 @@
         box-shadow: 0px 3px 8px -2px #00000033;
         padding: 7px 0;
         justify-content: center;
+        align-items: center;
+        width: 88%;
+        margin-inline: auto;
+        margin-bottom: 20px;
     }
 
-    .cards {
-        margin-top: 35px;
-        width: 100%;
-    }
-
-    .card {
-        text-align: center;
-        padding:2%;
-        width: 160px;
-    }
-
-    .cardTitle {
-        font-size: 16px;
-        line-height: 18px;
-        font-weight: 500;
+    .restaurants {
+        margin: 10% 5%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
     }
 
     .filter p {
@@ -219,17 +355,15 @@
         letter-spacing: 0.03em;
         color: #4F4F4F;
     }
-    .card p{
-        font-size: 10px;
-        line-height: 16px;
-        font-weight: 400;
-    }
-    .time{
-    padding: 3px 40px;
-    }
 }
-@media only screen and (max-width: 320px) {
-    .card {
-        width: 135px;
+
+@media only screen and (max-width: 420px) {
+    .filter {
+        width: 96%;
     }
+
+    .cards {
+        width: 98%;
+    }
+
 }

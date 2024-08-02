@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Formik, Form } from 'formik';
-import { initialValues, schemas } from '../../../../utils/helper';
+import { Formik, Form, Field } from 'formik';
+import { initialValues, getValidationSchemas } from '../../../../utils/helper';
 import Input from '../input/Input';
 import StyleForm from '../../style/Form.module.css';
 import LoginImg from '../../../../assets/images/loginImg.svg';
@@ -8,10 +8,14 @@ import RegisImg from '../../../../assets/images/registerImg.svg';
 
 import { useAuth } from '../../../../context/AuthContext'
 
+import { useTranslation } from 'react-i18next';
+
 function LoginForm() {
 
-    const { generateUserLoginDatas } = useAuth()
+    const {t} = useTranslation()
+    const schemas = getValidationSchemas(t);
 
+    const { generateUserLoginDatas } = useAuth()
     const [isRegistering, setIsRegistering] = useState(false);
 
     return (
@@ -31,15 +35,15 @@ function LoginForm() {
                             className={!isRegistering ? StyleForm.active : ''}
                             onClick={() => setIsRegistering(false)}
                         >
-                            Login
+                            {t('Login')}
                         </button>
                         <button
                             type="button"
                             className={isRegistering ? StyleForm.active : ''}
                             onClick={() => setIsRegistering(true)}
                         >
-                            Register
-                        </button>
+{                            t('Register')
+}                        </button>
                     </div>
 
                     <Formik
@@ -47,65 +51,79 @@ function LoginForm() {
                         validationSchema={isRegistering ? schemas.register : schemas.login}
                         onSubmit={() => console.log('Submitted')}
                     >
-                        <Form>
-                            {isRegistering ? (
-                                <>
-                                    <Input
-                                        label="Full Name"
-                                        name="fullName"
-                                        id="fullName"
-                                        placeholder="Write Your Full Name"
-                                    />
-                                    <Input
-                                        label="Username"
-                                        name="userName2"
-                                        id="userName2"
-                                        placeholder="Write Your Username"
-                                    />
-                                    <Input
-                                        label="Email"
-                                        name="email"
-                                        id="email"
-                                        placeholder="Write Your Email"
-                                    />
-                                    <Input
-                                        label="Password"
-                                        name="password"
-                                        id="password"
-                                        placeholder="Create Your Password"
-                                        type="password"
-                                    />
-                                </>
-                            ) : (
-                                <>
-                                    <Input
-                                        label="Username"
-                                        name="userName"
-                                        id="userName"
-                                        placeholder="Write Your Username"
-                                    />
-                                    <Input
-                                        label="Password"
-                                        name="password"
-                                        id="password"
-                                        placeholder="Write Your Password"
-                                        type="password"
-                                    />
-                                </>
-                            )}
-                            <button
-                                type="submit"
-                                className={StyleForm.submitButton}
-                                onClick={() => {
-                                    generateUserLoginDatas({
-                                        userName: 'qwerty',
-                                        password: 'asdfg'
-                                    })
-                                }}
-                            >
-                                {isRegistering ? 'Register' : 'Log in'}
-                            </button>
-                        </Form>
+                        {({ errors, touched }) => (
+                            <Form>
+                                {isRegistering ? (
+                                    <>
+                                        <Input
+                                            label={t("Full Name")}
+                                            name="fullName"
+                                            id="fullName"
+                                            placeholder={t("PN")}
+                                        />
+                                        <Input
+                                            label={t("User Name")}
+                                            name="userName2"
+                                            id="userName2"
+                                            placeholder={t("PU")}
+                                        />
+                                        <Input
+                                            label={t("E-mail")}
+                                            name="email"
+                                            id="email"
+                                            placeholder={t("PE")}
+                                        />
+                                        <Input
+                                            label= {t("Password")}
+                                            name="passwordReg"
+                                            id="passwordReg"
+                                            type="password"
+                                            placeholder={t("PP")}
+                                        />
+                                        <div className={StyleForm.selectField}>
+                                            <label htmlFor="gender">{t("Gender")}</label>
+                                            <Field as="select" name="gender" id="gender">
+                                                <option value="" disabled>{t('Select')}</option>
+                                                <option value="male">{t('Male')}</option>
+                                                <option value="female">{t('Female')}</option>
+                                                <option value="other">{t('Other')}</option>
+                                            </Field>
+                                            {errors.gender && touched.gender && (
+                                                <div className={StyleForm.errorMessage}>{errors.gender}</div>
+                                            )}
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Input
+                                            label={t("User Name")}
+                                            name="userName"
+                                            id="userName"
+                                            placeholder={t("PU")}
+                                        />
+                                        <Input
+                                            label={t("Password")}
+                                            name="passwordLog"
+                                            id="passwordLog"
+                                            type="password"
+                                            placeholder={t("PP2")}
+                                        />
+                                    </>
+                                )}
+                                <button
+                                    type="submit"
+                                    className={StyleForm.submitButton}
+                                    onClick={() => {
+                                        generateUserLoginDatas({
+                                            userName: 'qwerty',
+                                            password: 'asdfg'
+                                        })
+                                    }}
+                                >
+                                    {isRegistering ? t('Register') : t('Login')}
+                                </button>
+                            </Form>
+                        )}
                     </Formik>
                 </div>
             </div>
