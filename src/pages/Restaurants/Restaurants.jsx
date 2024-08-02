@@ -1,5 +1,6 @@
 import style from './style/Restaurants.module.css'
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence } from 'framer-motion';
 import margarita from '../../assets/images/margarita.svg'
 import filter from '../../assets/icons/filter_list.svg'
@@ -7,6 +8,7 @@ import closeModal from '../../assets/icons/close_modal.svg';
 
 export default function Restaurants() {
   const [isOpen, setIsOpen] = useState(true);
+  const { t } = useTranslation()
 
   useEffect(() => {
     function handleResize() {
@@ -63,7 +65,7 @@ export default function Restaurants() {
       </AnimatePresence>
       <div className={style.filter} onClick={openFilterMenu}>
         <img src={filter} alt="" />
-        <p>Filters</p>
+        <p>{t('Filters')}</p>
       </div>
 
       <div className={style.cards}>
@@ -72,8 +74,8 @@ export default function Restaurants() {
           <h6 className={style.cardTitle}>Papa Johns</h6>
           <p>chinese, sea-food, thai, lebanese, caribbean</p>
           <div className={style.cardFooter}>
-            <span className={style.delivery}>$5 Delivery</span>
-            <span className={style.time}>09 Min</span>
+            <span className={style.delivery}>$5 {t('Delivery')}</span>
+            <span className={style.time}>09 {t('Min')}</span>
           </div>
         </div>
         <div className={style.card}>
