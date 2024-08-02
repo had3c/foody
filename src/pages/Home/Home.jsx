@@ -1,4 +1,5 @@
 import style from './style/Home.module.css'
+import { useTranslation } from 'react-i18next';
 import background from '../../assets/images/bgBlack.svg'
 import burger from '../../assets/images/headerBurger.svg'
 import pizzaHut from '../../assets/images/pizzaHut.svg'
@@ -18,6 +19,7 @@ import Offers from './components/Offers/Offers'
 export default function Home() {
 
   const navigate = useNavigate()
+  const { t } = useTranslation();
   return <div>
 
     {/*                  Header                      */}
@@ -26,14 +28,17 @@ export default function Home() {
       {/*           Header Slogan         */}
 
       <div className={style.slogan}>
-        <h1>Our Food site makes it easy to find local food</h1>
-        <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
-
-        <div className={style.btns}>
-          <button className={style.register} onClick={() => navigate('/login')}>Register</button>
-          <button className={style.orderNow} onClick={() => navigate('/restaurants')}>Order now</button>
-          <input type="text" placeholder='Search' className={style.search} />
-        </div>
+        <h1>{t('Our Food site makes it easy to find local food')}</h1>
+          <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+          <div className={style.btns}>
+            <button className={style.register} onClick={() => navigate('/login')}>
+              {t('Register')}
+            </button>
+            <button className={style.orderNow} onClick={() => navigate('/restaurants')}>
+              {t('Order now')}
+            </button>
+            <input type="text" placeholder={t('Search')} className={style.search} />
+          </div>
       </div>
 
       {/*          Header Image           */}
@@ -53,22 +58,22 @@ export default function Home() {
 
       {/*              Section Features                 */}
       <section className={style.features}>
-        <h2 className={style.h2}>Features</h2>
+        <h2 className={style.h2}>{t("Features")}</h2>
         <p className={style.secTxt}>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
         <div className={style.cards}>
           <div className={style.card}>
             <img src={boucher} alt="" />
-            <h3 className={style.cardTitle}>Discount Boucher</h3>
+            <h3 className={style.cardTitle}>{t('Discount Boucher')} </h3>
             <p className={style.cardTxt}>Lorem ipsum is placeholder  commonly used in the graphic </p>
           </div>
           <div className={style.card}>
             <img src={healthyFood} alt="" />
-            <h3 className={style.cardTitle}>Fresh healthy Food</h3>
+            <h3 className={style.cardTitle}>{t('Fresh healthy Food')}</h3>
             <p className={style.cardTxt}>Lorem ipsum is placeholder  commonly used in the graphic </p>
           </div>
           <div className={style.card}>
             <img src={delivery} alt="" />
-            <h3 className={style.cardTitle}>Fast Home Delivery</h3>
+            <h3 className={style.cardTitle}>{t('Fast Home Delivery')}</h3>
             <p className={style.cardTxt}>Lorem ipsum is placeholder  commonly used in the graphic </p>
           </div>
         </div>
@@ -82,22 +87,22 @@ export default function Home() {
 
       {/*              Section New Foods              */}
       <section className={style.features}>
-        <h2 className={style.h2}>Our Popular Update New Foods</h2>
+        <h2 className={style.h2}>{t('Our Popular Update New Foods')}</h2>
         <p className={style.secTxt}>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
         <div className={style.cards}>
           <div className={style.card}>
             <img src={dubblechees} alt="" />
-            <h3 className={style.cardTitle}>Dubble Chees</h3>
+            <h3 className={style.cardTitle}>{t('Dubble Chees')}</h3>
             <p className={style.cardTxt}>Lorem ipsum is placeholder  commonly used in the graphic </p>
           </div>
           <div className={style.card}>
             <img src={margarita} alt="" />
-            <h3 className={style.cardTitle}>Margarita</h3>
+            <h3 className={style.cardTitle}>{t('Margarita')}</h3>
             <p className={style.cardTxt}>Lorem ipsum is placeholder  commonly used in the graphic </p>
           </div>
           <div className={style.card}>
             <img src={kfcMenu} alt="" />
-            <h3 className={style.cardTitle}>Twister Menu</h3>
+            <h3 className={style.cardTitle}>{t('Twister Menu')}</h3>
             <p className={style.cardTxt}>Lorem ipsum is placeholder  commonly used in the graphic </p>
           </div>
         </div>
@@ -112,10 +117,9 @@ export default function Home() {
           <img src={pizza} alt="" />
           <div className={style.explore}>
             <h2>
-              Discover Restaurants
-              Near From you
+            {t('Discover Restaurants Near From you')}
             </h2>
-            <button onClick={() => navigate('/restaurants')}>Explore now</button>
+            <button onClick={() => navigate('/restaurants')}>{t('Explore now')}</button>
           </div>
           <img src={burgers} alt="" />
         </div>
