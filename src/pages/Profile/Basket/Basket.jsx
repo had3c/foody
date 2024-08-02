@@ -1,18 +1,22 @@
 import React, { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import style from './style/Basket.module.css'
 import basket from '../../../assets/icons/red_basket.svg'
 import deleteBasket from '../../../assets/icons/delete_sweep.svg'
 import margarita from '../../../assets/images/margarita.svg'
 import Checkout from '../../common/components/CheckBasket/Checkout'
 function BasketItems() {
+  const {t} = useTranslation()
+const navigate= useNavigate()
 
   return (
     <div className={style.basketItems}>
       <div>
-          <h2>Your Basket</h2>
+          <h2>{t('Your Basket')}</h2>
         <div className={style.basketCount}>
           <img src={basket} alt="" />
-          <p>3 items</p>
+          <p>3 {t('items')}</p>
         </div>
 
         <div className={style.basketList}>
@@ -86,7 +90,12 @@ function BasketItems() {
         </div>
       </div>
 
-      <Checkout />
+      <div className={style.checkout}  onClick={() => navigate('/user/checkout')}>
+      <p>{t('Checkout')}</p>
+      <div>$ 3.14</div>
+    </div>
+    
+      {/* <div  style={{cursor:'pointer'}} onClick={() => navigate('/user/checkout')}><Checkout/></div> */}
 
     </div>
   )
