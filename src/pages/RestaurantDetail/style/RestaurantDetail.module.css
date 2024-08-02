@@ -15,7 +15,6 @@
     line-height: 40px;
     letter-spacing: 0.03em;
     color: var(--text-color3);
-
 }
 
 .location p {
@@ -30,7 +29,7 @@
 
 .foods {
     display: flex;
-    width: 35%;
+    width: 43%;
     justify-content: space-between;
     align-items: center;
 }
@@ -65,14 +64,14 @@
 
 .delivery p {
     font-family: var(--font-roboto);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 20px;
     letter-spacing: 0.03em;
     color: var(--button-color1);
     border: 1px solid #D63626;
     border-radius: 5px;
-    width: 72px;
+    width: 82px;
     height: 51px;
     padding: 6px 8px;
 }
@@ -87,9 +86,16 @@
     background-color: var(--button-color1);
     color: white;
     border: none;
-    width: 72px;
+    width: 75px;
     margin-left: 25px;
     height: 52px;
+    cursor: pointer;
+}
+
+.delivery button:hover {
+   border: 1px solid #D63626;
+   background-color: white;
+    color: #D63626;
 }
 .checkout{
     display: none;
@@ -188,6 +194,11 @@
     border-radius: 50%;
     border: 2px solid #BDBDBD;
     padding: 5px;
+    cursor: pointer;
+}
+.addPrdct:hover{
+    background-color: #8acda6;
+    border: none;
 }
 
 
@@ -233,6 +244,9 @@
         .addPrdct{
             width: 25px;
         }
+        .foods{
+            width: 50%;
+        }
 }
 
 @media only screen and (max-width: 794px){
@@ -240,6 +254,9 @@
     font-size: 14px;
     line-height: 25px;
    }
+   .foods{
+    width: 53%;
+}
 }
 @media only screen and (max-width: 768px) {
     .information{
@@ -285,6 +302,9 @@
     .addPrdct{
         padding: 1.5px;
     }
+    .delivery p{
+        width: 87px;
+    }
   }
 
 @media only screen and (max-width: 576px) {
@@ -299,6 +319,8 @@
     }
     .delivery p{
         border-radius: 0;
+        font-size: 12px;
+        width: 77px;
     }
     .location h5{
         font-size: 15px;
