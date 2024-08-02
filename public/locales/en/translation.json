@@ -74,7 +74,7 @@
   "Description": "Description",
   "Price": "Price",
   "Cancel": "Cancel",
-  "Delete": "Delete",
+  "Delete": "delete",
   "Update Product": "Update Product",
   "Upload Image": "Upload Image",
   "Upload image": "Upload image",
@@ -212,8 +212,21 @@
   "WP":"Wrong Password",
   "P6":"The password must contain at least 6 characters",
 
-
-  
+  "Opps!": "Opps!",
+   "Basket Empty": "Basket Empty",
+   "Profile": "Profile",
+   "Rows per page": "Rows per page",
+   "Count": "Count",
+   "Pay at the door by credit card": "Pay at the door by credit card",
+   "How it Works": "How it works",
+   "Delete Profile Photo": "Delete Profile Photo",
+   "Yes": "Yes",
+   "Are you sure?": "Are you sure?",
+   "You must log in again!": "You must log in again",
+   "OK": "OK",
+   "Address Required": "Write Your Address",
+   "Contact Required": "Write Your Contact Number",
+   "+44":"+44",
 
   "Question1":"Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact: Email and Chat. We try to reply quickly, so you need not wait too long for a response!",
   "Question2":"Please check the system requirements and try reinstalling the application. If the problem persists, contact our support team.",
