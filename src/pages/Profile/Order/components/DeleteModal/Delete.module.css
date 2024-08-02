@@ -1,4 +1,4 @@
- .delModal {
+.delModal {
     z-index: 5;
         background-color: rgba(0, 0, 0, 0.5); 
     position: fixed;
@@ -58,7 +58,9 @@
     margin-inline: 15px;
 }
 .cancel:hover {
-    background-color: #f0f0f0; 
+    background-color: #BDBDBD;
+    color: white; 
+    transition: all 1s;
 }
 .delete {
     font-family: var(--font-roboto);
@@ -76,25 +78,39 @@
 } 
     
 .delete:hover {
-    background-color: #d32f2f; 
+   background-color: rgb(141, 2, 2);
+   transition: all 1s;
 }
-
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 576px) {
     .modal {
-        width: 300px;
-        height: 240px;
+        width: 380px;
+        height: 180px;
         padding: 20px;
     }
     
     .modal h3 {
-        font-size: 20px;
+        font-size: 21px;
         line-height: 40px;
     }
     
     .modal p {
-        font-size: 16px;
+        font-size: 18px;
         line-height: 20px;
         width: 84%;
+    }    
+  }
+@media only screen and (max-width: 392px) {
+    .modal {
+        width: 290px;
+        height: 240px;
+    }
+    
+    .modal h3 {
+        font-size: 20px;
+    }
+    
+    .modal p {
+        font-size: 16px;
     }
     .buttons{
         display: flex;
@@ -111,8 +127,3 @@
     } 
         
   }
-
-
-
-
-
