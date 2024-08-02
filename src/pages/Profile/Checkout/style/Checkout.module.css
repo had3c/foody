@@ -70,7 +70,9 @@
 }
 
 .form button:hover {
-    box-shadow: 5px 3px 14px 5px rgb(2, 84, 2);
+    background-color: white;
+ color: var(--button-color3);
+   outline: 1px solid var(--button-color3);
 }
 
 .payment {
@@ -236,6 +238,13 @@
     }
 }
 
+@media only screen and (max-width: 1146px) {
+    .payment {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+}
+
 @media only screen and (max-width: 1084px) {
     .orderTotal li span:first-child {
         font-size: 14px;
@@ -247,11 +256,6 @@
 
     .orderTotal p {
         font-size: 11px;
-    }
-
-    .payment {
-        flex-direction: column;
-        margin-top: 10px;
     }
 }
 
@@ -387,17 +391,7 @@
     }
 }
 
-@media only screen and (max-width: 657px) {
-    .payment label {
-        font-size: 8px;
-    }
-
-    .checkOut {
-        height: 410px;
-    }
-}
-
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 690px) {
     .userCheck {
         flex-direction: column-reverse;
         width: 98%;
