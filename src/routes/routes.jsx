@@ -12,12 +12,7 @@ const Order = lazy(() => import("../pages/Profile/Order/Order"));
 const FAQs = lazy(() => import("../pages/FAQs/FAQs"));
 const HowItWorks = lazy(() => import("../pages/HowItWorks/HowItWorks"));
 const AboutUs = lazy(() => import("../pages/AboutUs/AboutUs"));
-const Basket = lazy(
-  () =>
-    new Promise((resolve) =>
-      setTimeout(() => resolve(import("../pages/Profile/Basket/Basket")), 2000)
-    )
-);
+const Basket = lazy(() => import("../pages/Profile/Basket/Basket"));
 const Checkout = lazy(() => import("../pages/Profile/Checkout/Checkout"));
 const Restaurants = lazy(() => import("../pages/Restaurants/Restaurants"));
 const RestaurantDetail = lazy(() =>
