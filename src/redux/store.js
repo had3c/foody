@@ -3,8 +3,8 @@ import basketReducer from "./features/basketSlice/basketSlice.jsx";
 
 const store = configureStore({
   reducer: {
-    basket: basketReducer
+    basket: basketReducer,
   },
+});
 
 export default store;
-
