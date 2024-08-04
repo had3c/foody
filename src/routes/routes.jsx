@@ -1,20 +1,28 @@
-import Home from "../pages/Home/Home";
-import Login from "../pages/Login/Login";
-import Profile from "../pages/Profile/Profile";
-import Order from "../pages/Profile/Order/Order";
-import FAQs from "../pages/FAQs/FAQs";
-import HowItWorks from "../pages/HowItWorks/HowItWorks";
-import NotFound from "../pages/NotFound/NotFound";
-import AboutUs from "../pages/AboutUs/AboutUs";
-import Basket from "../pages/Profile/Basket/Basket";
-import Checkout from "../pages/Profile/Checkout/Checkout";
-import Restaurants from "../pages/Restaurants/Restaurants";
-import RestaurantDetail from "../pages/RestaurantDetail/RestaurantDetail";
-
 import HomeLayout from "../layout/HomeLayout";
 import UserLayout from "../layout/UserLayout";
+import NotFound from "../pages/NotFound/NotFound";
 
 import mappedAuthRoutes from "../utils/authedRoutes";
+import { lazy, Suspense } from "react";
+
+const Home = lazy(() => import("../pages/Home/Home"));
+const Login = lazy(() => import("../pages/Login/Login"));
+const Profile = lazy(() => import("../pages/Profile/Profile"));
+const Order = lazy(() => import("../pages/Profile/Order/Order"));
+const FAQs = lazy(() => import("../pages/FAQs/FAQs"));
+const HowItWorks = lazy(() => import("../pages/HowItWorks/HowItWorks"));
+const AboutUs = lazy(() => import("../pages/AboutUs/AboutUs"));
+const Basket = lazy(
+  () =>
+    new Promise((resolve) =>
+      setTimeout(() => resolve(import("../pages/Profile/Basket/Basket")), 2000)
+    )
+);
+const Checkout = lazy(() => import("../pages/Profile/Checkout/Checkout"));
+const Restaurants = lazy(() => import("../pages/Restaurants/Restaurants"));
+const RestaurantDetail = lazy(() =>
+  import("../pages/RestaurantDetail/RestaurantDetail")
+);
 
 const routes = [
   {
@@ -76,7 +84,11 @@ const routes = [
   },
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <Suspense fallback={<div></div>}>
+        <Login />
+      </Suspense>
+    ),
   },
   {
     path: "*",
