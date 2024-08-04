@@ -6,8 +6,6 @@ import fra from "../../../../assets/images/langFrance.svg";
 import LangItem from "./components/LangItem";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setLangName } from "../../../../redux/features/langSlice/langSlice";
 
 const langs = {
   en: eng,
@@ -16,18 +14,16 @@ const langs = {
 };
 
 export default function LanguageBox() {
-  const { i18n } = useTranslation();
-  const { langName } = useSelector((state) => state.lang);
-  const dispatch = useDispatch();
-
-  const [lang, setLang] = useState(langName);
+  const [lang, setLang] = useState(localStorage.getItem("i18nextLng"));
   const [show, setShow] = useState(false);
 
-  const handleLangSelect = (value) => {
+  const { i18n } = useTranslation();
+
+  const handleLangSelect = async (value) => {
+    await i18n.changeLanguage(value);
+
     setLang(value);
-    dispatch(setLangName(value));
     setShow(false);
-    i18n.changeLanguage(value);
   };
 
   const liItems = Object.keys(langs).map((key) => (
