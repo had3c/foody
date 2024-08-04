@@ -1,6 +1,6 @@
 # 😋 Foody 🍔
 
-## 💻 EACAMP Group M2 "Team Triple E" - Final Project
+## 💻 EACAMP Team "3E" - Final Project
 
 <hr style="border-top:thin solid white; width:100%">
 
