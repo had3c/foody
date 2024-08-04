@@ -29,23 +29,23 @@ const routes = [
         element: <Home />,
       },
       {
-        path: "/faqs",
+        path: "faqs",
         element: <FAQs />,
       },
       {
-        path: "/how-it-works",
+        path: "how-it-works",
         element: <HowItWorks />,
       },
       {
-        path: "/about-us",
+        path: "about-us",
         element: <AboutUs />,
       },
       {
-        path: "/restaurants",
+        path: "restaurants",
         element: <Restaurants />,
       },
       {
-        path: "/restaurants/:id",
+        path: "restaurants/:id",
         element: <RestaurantDetail />,
       },
       {
@@ -53,7 +53,7 @@ const routes = [
         element: <NotFound />,
       },
       {
-        path: "/user",
+        path: "user",
         element: <UserLayout />,
         auth: true,
         children: [
