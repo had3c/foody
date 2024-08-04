@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { addProduct, removeProduct, updateQuantity } from '../../redux/basketSlice/basketSlice';
+import { addProduct, removeProduct, updateQuantity } from '../../redux/features/basketSlice/basketSlice';
 import style from './style/RestaurantDetail.module.css'
 import bstyle from './style/Basket.module.css'
 import addPrdct from '../../assets/icons/add_basket.svg'
