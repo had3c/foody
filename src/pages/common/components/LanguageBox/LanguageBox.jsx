@@ -14,7 +14,9 @@ const langs = {
 };
 
 export default function LanguageBox() {
-  const [lang, setLang] = useState(localStorage.getItem("i18nextLng"));
+  const [lang, setLang] = useState(
+    localStorage.getItem("i18nextLng").slice(0, 2)
+  );
   const [show, setShow] = useState(false);
 
   const { i18n } = useTranslation();
