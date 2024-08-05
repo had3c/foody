@@ -6,6 +6,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { MdPeopleOutline } from 'react-icons/md';
 import { MdOutlineShoppingBasket } from 'react-icons/md';
 import style from './SideBar.module.css';
+import '../../style/Swal.css'
 
 function SideBar() {
   const { t } = useTranslation();
