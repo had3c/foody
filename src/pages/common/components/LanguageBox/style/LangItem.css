@@ -10,3 +10,13 @@
   height: 100%;
   object-fit: cover;
 }
+
+@media screen and (max-width: 1040px) {
+  .lang_list {
+    right: 80%;
+  }
+  .lang_fig_img {
+    width: 2rem;
+    height: 2rem;
+  }
+}
