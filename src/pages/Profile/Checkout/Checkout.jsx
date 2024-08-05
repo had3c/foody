@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { addProduct, removeProduct, updateQuantity } from '../../../redux/features/basketSlice/basketSlice';
+import {useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import style from './style/Checkout.module.css';
 import checked from '../../../assets/images/successCheck.svg';
@@ -9,6 +11,7 @@ export default function Checkout() {
   const [isCheckedOut, setIsCheckedOut] = useState(false);
   const [orders, setOrders] = useState([]);
   const { t } = useTranslation();
+  const basketProducts = useSelector((state) => state.basket.products);
 
   const handleCheckout = (values) => {
     const exists = orders.some(order => 
@@ -26,6 +29,7 @@ export default function Checkout() {
     }, 2500); 
   };
 
+  console.log(basketProducts)
   const validationSchema = Yup.object().shape({
     address: Yup.string().required(t('Address Required')),
     contact: Yup.string()
@@ -120,23 +124,28 @@ export default function Checkout() {
 
       {!isCheckedOut && (
         <div className={style.orderTotal}>
-          <div>
-            <h4>{t('Your Order')}</h4>
-            <ul>
-              <li>
-                <div>
-                  <span>1</span>
-                  <span>x Papa John’s Pizza Restaurant</span>
-                </div>
-                <p>$ 8.00</p>
-              </li>
-            </ul>
-          </div>
-          <div className={style.total}>
-            <h5>{t('Total')}</h5>
-            <p>$ 17.80</p>
-          </div>
-        </div>
+  <div>
+    <h4>{t('Your Order')}</h4>
+    <ul>
+    {basketProducts.map((product) => (
+                <li key={product.id}>
+                  <div>
+                    <span>{product.quantity}</span>
+                    <span>x {product.name}</span>
+                  </div>
+                  <p>${(product.price * product.quantity).toFixed(2)}</p>
+                </li>
+              ))}
+    </ul>
+  </div>
+  <div className={style.total}>
+    <h5>{t('Total')}</h5>
+    <p>
+      ${basketProducts.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)}
+    </p>
+  </div>
+</div>
+
       )}
 
       {isCheckedOut && (
