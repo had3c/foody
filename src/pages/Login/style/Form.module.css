@@ -71,13 +71,29 @@
     font-weight: 600;
 }
 
-form {
+/* form {
     display: flex;
     flex-direction: column;
 }
 
 form input,
 form select {
+    margin-left: -1px;
+    margin-bottom: 20px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+} */
+
+
+.for {
+    display: flex;
+    flex-direction: column;
+}
+
+.for input,
+.for select {
     margin-left: -1px;
     margin-bottom: 20px;
     padding: 12px;
