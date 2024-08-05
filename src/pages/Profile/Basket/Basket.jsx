@@ -6,7 +6,6 @@ import { removeProduct, updateQuantity } from '../../../redux/features/basketSli
 import style from './style/Basket.module.css'
 import basket from '../../../assets/icons/red_basket.svg'
 import deleteBasket from '../../../assets/icons/delete_sweep.svg'
-import margarita from '../../../assets/images/margarita.svg'
 import { LuShoppingBasket } from "react-icons/lu";
 import Checkout from '../../common/components/CheckBasket/Checkout'
 
@@ -25,44 +24,6 @@ function BasketItems() {
     dispatch(updateQuantity({ id, quantity }));
   };
 
-  const productData = [
-    {
-      id: 1,
-      image: margarita,
-      name: "KFC",
-      price: 7.90
-    },
-    {
-      id: 2,
-      image: margarita,
-      name: "Papa John’s Pizza",
-      price: 7.00
-    },
-    {
-      id: 3,
-      image: margarita,
-      name: "Pizza",
-      price: 7.70
-    },
-    {
-      id: 4,
-      image: margarita,
-      name: "Papa John’s",
-      price: 7.10
-    },
-    {
-      id: 5,
-      image: margarita,
-      name: "John’s Pizza",
-      price: 7.20
-    },
-    {
-      id: 6,
-      image: margarita,
-      name: "Coffee",
-      price: 3.20
-    },
-  ];
   return (
     <div className={style.basketItems}>
       <div>
@@ -93,13 +54,16 @@ function BasketItems() {
                   </div>
                   <div className={style.itemCount}>
                     <p onClick={() => handleUpdateQuantity(product.id, product.quantity + 1)} className={style.operation}>＋</p>
-                    <p>{product.quantity}</p> {/* Ürün miktarını dinamik hale getirdik */}
+                    <p>{product.quantity}</p>
                     <p onClick={() => handleUpdateQuantity(product.id, product.quantity - 1)} className={style.operation}>‒</p>
                   </div>
                 </div>
               </div>
             ))
           ) : (
+
+            // Basket Bosdusa
+
             <div className={style.emptyBasket}>
               <LuShoppingBasket size={180} />
               <p>{t('Opps!')}</p>
