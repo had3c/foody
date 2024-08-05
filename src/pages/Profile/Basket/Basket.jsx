@@ -1,105 +1,119 @@
-import React, { useState } from 'react'
-import {useNavigate} from 'react-router-dom'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux';
+import { removeProduct, updateQuantity } from '../../../redux/features/basketSlice/basketSlice';
 import style from './style/Basket.module.css'
 import basket from '../../../assets/icons/red_basket.svg'
 import deleteBasket from '../../../assets/icons/delete_sweep.svg'
 import margarita from '../../../assets/images/margarita.svg'
+import { LuShoppingBasket } from "react-icons/lu";
 import Checkout from '../../common/components/CheckBasket/Checkout'
-function BasketItems() {
-  const {t} = useTranslation()
-const navigate= useNavigate()
 
+function BasketItems() {
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const basketProducts = useSelector((state) => state.basket.products);
+
+  const handleRemoveProduct = (id) => {
+    dispatch(removeProduct(id));
+  };
+
+  const handleUpdateQuantity = (id, quantity) => {
+    if (quantity < 1) return;
+    dispatch(updateQuantity({ id, quantity }));
+  };
+
+  const productData = [
+    {
+      id: 1,
+      image: margarita,
+      name: "KFC",
+      price: 7.90
+    },
+    {
+      id: 2,
+      image: margarita,
+      name: "Papa John’s Pizza",
+      price: 7.00
+    },
+    {
+      id: 3,
+      image: margarita,
+      name: "Pizza",
+      price: 7.70
+    },
+    {
+      id: 4,
+      image: margarita,
+      name: "Papa John’s",
+      price: 7.10
+    },
+    {
+      id: 5,
+      image: margarita,
+      name: "John’s Pizza",
+      price: 7.20
+    },
+    {
+      id: 6,
+      image: margarita,
+      name: "Coffee",
+      price: 3.20
+    },
+  ];
   return (
     <div className={style.basketItems}>
       <div>
-          <h2>{t('Your Basket')}</h2>
+        <h2>{t('Your Basket')}</h2>
         <div className={style.basketCount}>
           <img src={basket} alt="" />
-          <p>3 {t('items')}</p>
+          <p>{basketProducts.length} {t('items')}</p>
         </div>
 
         <div className={style.basketList}>
-          <div className={style.listCard}>
-            <div className={style.listHead}>
-              <img src={deleteBasket} alt="" />
-            </div>
-            <div className={style.listBody}>
-              <div className={style.listInform}>
-                <img src={margarita} alt="" />
-                <div>
-                  <p>Papa John’s Pizza Restaurant</p>
-                  <span>$15.80</span>
+          {basketProducts.length > 0 ? (
+            basketProducts.map((product) => (
+              <div key={product.id} className={style.listCard}>
+                <div className={style.listHead}>
+                  <img 
+                    src={deleteBasket} 
+                    alt="" 
+                    onClick={() => handleRemoveProduct(product.id)}
+                  />
                 </div>
-
-              </div>
-              <div className={style.itemCount}>
-
-                <p>＋</p>
-                <p>1</p>
-                <p>‒</p>
-
-              </div>
-            </div>
-          </div>
-          <div className={style.listCard}>
-            <div className={style.listHead}>
-              <img src={deleteBasket} alt="" />
-            </div>
-            <div className={style.listBody}>
-              <div className={style.listInform}>
-                <img src={margarita} alt="" />
-                <div>
-                  <p>Papa John’s Pizza Restaurant</p>
-                  <span>$15.80</span>
+                <div className={style.listBody}>
+                  <div className={style.listInform}>
+                    <img src={product.image} alt="" />
+                    <div>
+                      <p>{product.name}</p>
+                      <span>${(product.price * product.quantity).toFixed(2)}</span>
+                    </div>
+                  </div>
+                  <div className={style.itemCount}>
+                    <p onClick={() => handleUpdateQuantity(product.id, product.quantity + 1)} className={style.operation}>＋</p>
+                    <p>{product.quantity}</p> {/* Ürün miktarını dinamik hale getirdik */}
+                    <p onClick={() => handleUpdateQuantity(product.id, product.quantity - 1)} className={style.operation}>‒</p>
+                  </div>
                 </div>
-
               </div>
-              <div className={style.itemCount}>
-
-                <p>＋</p>
-                <p>1</p>
-                <p>‒</p>
-
-              </div>
+            ))
+          ) : (
+            <div className={style.emptyBasket}>
+              <LuShoppingBasket size={180} />
+              <p>{t('Opps!')}</p>
+              <p>{t('Basket Empty')}</p>
             </div>
-          </div>
-          <div className={style.listCard}>
-            <div className={style.listHead}>
-              <img src={deleteBasket} alt="" />
-            </div>
-            <div className={style.listBody}>
-              <div className={style.listInform}>
-                <img src={margarita} alt="" />
-                <div>
-                  <p>Papa John’s Pizza Restaurant</p>
-                  <span>$15.80</span>
-                </div>
-
-              </div>
-              <div className={style.itemCount}>
-
-                <p>＋</p>
-                <p>1</p>
-                <p>‒</p>
-
-              </div>
-            </div>
-          </div>
-
+          )}
         </div>
       </div>
 
-      <div className={style.checkout}  onClick={() => navigate('/user/checkout')}>
-      <p>{t('Checkout')}</p>
-      <div>$ 3.14</div>
-    </div>
-    
-      {/* <div  style={{cursor:'pointer'}} onClick={() => navigate('/user/checkout')}><Checkout/></div> */}
-
+      <div style={{ cursor: 'pointer' }} onClick={() => navigate('/user/checkout')}>
+        <Checkout basketProducts={basketProducts}/>
+      </div>
     </div>
   )
 }
 
 export default BasketItems
-
