@@ -1,11 +1,14 @@
 import "./LanguageBox.css";
-import { useTranslation } from "react-i18next";
+
 import eng from "../../../../assets/images/langEng.svg";
 import aze from "../../../../assets/images/langAze.svg";
 import fra from "../../../../assets/images/langFrance.svg";
+
 import LangItem from "./components/LangItem";
 import { motion } from "framer-motion";
 import { useState } from "react";
+
+import { useTranslation } from "react-i18next";
 
 const langs = {
   en: eng,
@@ -23,7 +26,6 @@ export default function LanguageBox() {
 
   const handleLangSelect = async (value) => {
     await i18n.changeLanguage(value);
-
     setLang(value);
     setShow(false);
   };
