@@ -59,11 +59,11 @@ const handleDeleteImage = () => {
   console.log(userData)
   const validationSchema = Yup.object().shape({
     contact: Yup.string()
-      .matches(/^\+994\d{7}$/, t('contact.invalid'))
+      .matches(/^(?:\+994\d{7}|\+44\d{10}|\+33\d{9})$/, t('Contact is invalid'))
       .required(t('Contact Required')),
-    username: Yup.string().required(t('Write Your User Name')),
-    fullName: Yup.string().required(t('Write Your Full Name')),
-    email: Yup.string().email(t('email.invalid')).required(t('Write Your E-mail')),
+    username: Yup.string().required(t('Username Required')),
+    fullName: Yup.string().required(t('Fullname Required')),
+    email: Yup.string().email(t('Email is invalid')).required(t('Email Required')),
     address: Yup.string().required(t('Address Required')),
   });
 
