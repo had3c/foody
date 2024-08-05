@@ -11,11 +11,10 @@ import { useAuth } from '../../../../context/AuthContext'
 import { useTranslation } from 'react-i18next';
 
 function LoginForm() {
-
-    const {t} = useTranslation()
+    const { t } = useTranslation();
     const schemas = getValidationSchemas(t);
 
-    const { generateUserLoginDatas } = useAuth()
+    const { generateUserLoginDatas } = useAuth();
     const [isRegistering, setIsRegistering] = useState(false);
 
     return (
@@ -42,17 +41,26 @@ function LoginForm() {
                             className={isRegistering ? StyleForm.active : ''}
                             onClick={() => setIsRegistering(true)}
                         >
-{                            t('Register')
-}                        </button>
+                            {t('Register')}
+                        </button>
                     </div>
 
                     <Formik
                         initialValues={initialValues}
                         validationSchema={isRegistering ? schemas.register : schemas.login}
-                        onSubmit={() => console.log('Submitted')}
+                        onSubmit={(values) => {
+                            const userData = {
+                                fullName: values.fullName,
+                                userName: values.userName2,
+                                email: values.email,
+                                password: values.passwordReg,
+                                gender: values.gender
+                            };
+                            console.log('User Data:', userData);
+                        }}
                     >
                         {({ errors, touched }) => (
-                            <Form>
+                            <Form className={StyleForm.for}>
                                 {isRegistering ? (
                                     <>
                                         <Input
@@ -74,7 +82,7 @@ function LoginForm() {
                                             placeholder={t("PE")}
                                         />
                                         <Input
-                                            label= {t("Password")}
+                                            label={t("Password")}
                                             name="passwordReg"
                                             id="passwordReg"
                                             type="password"
@@ -114,10 +122,12 @@ function LoginForm() {
                                     type="submit"
                                     className={StyleForm.submitButton}
                                     onClick={() => {
-                                        generateUserLoginDatas({
-                                            userName: 'qwerty',
-                                            password: 'asdfg'
-                                        })
+                                        if (!isRegistering) {
+                                            generateUserLoginDatas({
+                                                userName: 'qwerty',
+                                                password: 'asdfg'
+                                            });
+                                        }
                                     }}
                                 >
                                     {isRegistering ? t('Register') : t('Login')}

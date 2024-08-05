@@ -57,8 +57,8 @@ function How() {
                         variants={blokVariants}
                         className={StyleHow.blok}></motion.div>
                     <motion.img
-                        // variants={imageVariants}
-                        // animate="animate"
+                        variants={imageVariants}
+                        animate="animate"
                         src={PeopleImg}
                         alt=""
                         className={StyleHow.ima} />
