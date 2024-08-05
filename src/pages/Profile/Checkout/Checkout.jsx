@@ -23,15 +23,15 @@ export default function Checkout() {
     setIsCheckedOut(true);
     setTimeout(() => {
       setIsCheckedOut(false);
-    }, 2000); 
+    }, 2500); 
   };
 
   const validationSchema = Yup.object().shape({
-    address: Yup.string().required(t('')),
+    address: Yup.string().required(t('Address Required')),
     contact: Yup.string()
-      .matches(/^\+994\d{7}$/, t('Address Required'))
+      .matches(/^(?:\+994\d{7}|\+44\d{10}|\+33\d{9})$/, t('Contact is invalid'))
       .required(t('Contact Required')),
-    paymentMethod: Yup.string().required(t('paymentMethod.required')),
+    paymentMethod: Yup.string().required(t('Paymethod Required')),
   });
 
   return (
@@ -57,7 +57,8 @@ export default function Checkout() {
             >
               {({ isSubmitting }) => (
                 <Form>
-                  <label htmlFor="address">{t('Delivery Address')}</label>
+                   <div className={style.formik}>
+                     <label htmlFor="address">{t('Delivery Address')}</label>
                   <Field
                     type="text"
                     id="address"
@@ -65,9 +66,13 @@ export default function Checkout() {
                     placeholder={t('Delivery Address')}
                     className={style.input}
                   />
-                  <ErrorMessage name="address" component="div" className={style.error} />
-
-                  <label htmlFor="contact">{t('Contact Number')}</label>
+                  <ErrorMessage name="address" component="div" className={style.error} />  
+                   </div>
+                  
+                  
+                 
+                    <div className={style.formik}>
+                        <label htmlFor="contact">{t('Contact Number')}</label>
                   <Field
                     type="text"
                     id="contact"
@@ -76,6 +81,10 @@ export default function Checkout() {
                     className={style.input}
                   />
                   <ErrorMessage name="contact" component="div" className={style.error} />
+                    </div>
+                     
+                   
+                 
 
                   <label>{t('Payment Method')}</label>
                   <div className={style.payment}>
