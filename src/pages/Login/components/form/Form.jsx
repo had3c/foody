@@ -9,6 +9,7 @@ import RegisImg from '../../../../assets/images/registerImg.svg';
 import { useAuth } from '../../../../context/AuthContext'
 
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
     const { t } = useTranslation();
@@ -16,6 +17,7 @@ function LoginForm() {
 
     const { generateUserLoginDatas } = useAuth();
     const [isRegistering, setIsRegistering] = useState(false);
+    const navigate = useNavigate();
 
     return (
         <div className={StyleForm.pageContainer}>
@@ -57,6 +59,16 @@ function LoginForm() {
                                 gender: values.gender
                             };
                             console.log('User Data:', userData);
+
+                            if (!isRegistering) {
+                                generateUserLoginDatas({
+                                    userName: values.userName,
+                                    password: values.passwordLog
+                                });
+                                navigate("/");
+                            } else {
+                                setIsRegistering(false);
+                            }
                         }}
                     >
                         {({ errors, touched }) => (
@@ -121,14 +133,6 @@ function LoginForm() {
                                 <button
                                     type="submit"
                                     className={StyleForm.submitButton}
-                                    onClick={() => {
-                                        if (!isRegistering) {
-                                            generateUserLoginDatas({
-                                                userName: 'qwerty',
-                                                password: 'asdfg'
-                                            });
-                                        }
-                                    }}
                                 >
                                     {isRegistering ? t('Register') : t('Login')}
                                 </button>
