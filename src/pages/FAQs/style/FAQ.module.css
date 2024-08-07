@@ -1,94 +1,48 @@
+.faqSection {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+}
+
 .faqContainer {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-
+    padding: 0 20px;
 }
 
-.hh {
+.faqTitle {
     text-align: center;
-    color: #000;
-    margin-bottom: 30px;
-    font-size: 45px;
     font-family: var(--font-roboto);
-    font-style: normal;
-    font-weight: 500;
-    line-height: 30px;
-    letter-spacing: 0.16px;
+    color: #333;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
+.faqList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
+@media screen and (max-width: 768px) {
+    .faqSection {
+        padding: 40px 0;
+    }
+
+    .faqTitle {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+}
 
 @media screen and (max-width: 480px) {
-    .faqContainer {
-        padding: 10px;
+    .faqSection {
+        padding: 30px 0;
     }
 
-    .hh {
-        font-size: 22px;
-        margin-bottom: 20px;
-    }
-
-    .faqQuestion {
-        font-size: 14px;
-        padding: 12px;
-    }
-
-    .faqAnswer {
-        font-size: 12px;
-        padding: 12px;
-    }
-}
-
-@media screen and (min-width: 481px) and (max-width: 768px) {
-    .faqContainer {
-        padding: 15px;
-    }
-
-    .hh {
-        font-size: 24px;
-    }
-
-    .faqQuestion {
-        font-size: 15px;
-    }
-
-    .faqAnswer {
-        font-size: 13px;
-    }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-    .faqContainer {
-        max-width: 90%;
-    }
-
-    .hh {
-        font-size: 26px;
-    }
-}
-
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
-    .faqContainer {
-        max-width: 80%;
-    }
-}
-
-@media screen and (min-width: 1441px) {
-    .faqContainer {
-        max-width: 1200px;
-    }
-
-    .hh {
-        font-size: 32px;
-    }
-
-    .faqQuestion {
-        font-size: 18px;
-    }
-
-    .faqAnswer {
-        font-size: 16px;
+    .faqTitle {
+        font-size: 1.75rem;
+        margin-bottom: 25px;
     }
 }
