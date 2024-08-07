@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import ADDIcon from '../../../assets/icons/add_basket.svg';
 import remove from '../../../assets/icons/remove.svg';
 import StyleFaqItem from '../style/FAQItem.module.css';
