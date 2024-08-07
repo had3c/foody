@@ -1,3 +1,5 @@
+import { createBrowserRouter } from "react-router-dom";
+
 import HomeLayout from "../layout/HomeLayout";
 import UserLayout from "../layout/UserLayout";
 import NotFound from "../pages/NotFound/NotFound";
@@ -91,4 +93,4 @@ const routes = [
   },
 ];
 
-export default mappedAuthRoutes(routes);
+export const router = createBrowserRouter(mappedAuthRoutes(routes));
