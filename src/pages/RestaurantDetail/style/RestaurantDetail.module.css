@@ -203,6 +203,32 @@
 
 
 /*          Css Media         */
+@media only screen and (min-width: 1441px){
+    .feature p{
+        font-size: 1.5rem;
+    }
+    .feature span{
+        font-size: 1.1rem;
+    }
+    .price span:last-child {
+        font-size: 1.2rem;
+    }
+    .price span:first-child {
+        font-size:.9rem;
+    }
+    .prdctCards{
+        max-height: 600px;
+    }
+    .location p{
+        font-size: 1.1rem;
+    }
+    .location h5{
+        font-size: 1.5rem;
+    }
+    .foods span{
+        font-size: 1.1rem;
+    }
+}
 
 @media only screen and (max-width: 1209px){
     .feature p{
@@ -237,15 +263,18 @@
     }
 }
 
-@media only screen and (max-width: 1037px){
+@media only screen and (max-width: 1045px){
     .price span:first-child {
         display: none;
         }
+        .price span:last-child {
+            margin-right: 3px;
+               }
         .addPrdct{
             width: 25px;
         }
         .foods{
-            width: 50%;
+            width: 49%;
         }
 }
 
@@ -294,16 +323,12 @@
     }
     .price span:last-child {
      font-size: 13px;
-     margin-right: 3px;
         }
-    .price span:first-child {
-    display: none;
-    }
     .addPrdct{
         padding: 1.5px;
     }
     .delivery p{
-        width: 87px;
+        width: 85px;
     }
   }
 
