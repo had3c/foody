@@ -16,6 +16,10 @@ border-bottom: 1px solid #F7F6FC;
 padding: 10px 0;
 }
 
+.dropDown li span {
+color: #d63626;
+font-weight: 600;
+}
 .dropDown li a{
   color: black;    
 }

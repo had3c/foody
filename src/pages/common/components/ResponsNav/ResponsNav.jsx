@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Swal from 'sweetalert2';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import style from './ResponsNav.module.css';
+import '../../style/Swal.css'
 import closeMenuIcon from '../../../../assets/icons/Vector.svg';
 import avatar from '../../../../assets/icons/avatar.svg'
 import { useAuth } from '../../../../context/AuthContext';
@@ -74,7 +75,7 @@ function ResponsNav() {
                         <div className={style.sign}>
                             {user ? (<div className={style.user}>
                                 <img src={profileImage || avatar} alt="" />
-                                <span>{fullName || 'Username'}</span>
+                                <span>{fullName || t('User')}</span>
                             </div>
 
                             ) : (

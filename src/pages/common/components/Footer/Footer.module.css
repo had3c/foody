@@ -67,7 +67,20 @@
 }
 
 /*            Css- Media- Tablet Mode         */
-
+@media only screen and (min-width: 1441px) {
+.footer ul li {
+    font-size: 1.3rem;
+}
+.footerLogo{
+    width: 28%;
+}
+.slogan{
+    font-size: 1.6rem;
+}
+.privacy{
+    font-size: 1.1rem;
+}
+}
 
 @media only screen and (max-width: 768px) {
     .socialMedia img {

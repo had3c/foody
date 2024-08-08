@@ -1,15 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import style from './User.module.css';
+import '../../style/Swal.css'
 import { useAuth } from '../../../../context/AuthContext';
+import { useProfile } from '../../../../context/ProfileContext';
 import { useTranslation } from 'react-i18next';
 
 
 const UserMenu = ({ closeDropdown }) => {
   const { t } = useTranslation();
   const { generateUserLogoutDatas } = useAuth();
-
+  const { fullName } = useProfile();
   const handleLinkClick = () => {
     closeDropdown();
   };
@@ -42,13 +44,14 @@ const UserMenu = ({ closeDropdown }) => {
   return (
     <div className={style.dropDown}>
       <ul>
-        <li><Link to="/user" onClick={handleLinkClick}>{t('Profile')}</Link></li>
-        <li><Link to="/user/basket" onClick={handleLinkClick}>{t('Your Basket')}</Link></li>
-        <li><Link to="/user/orders" onClick={handleLinkClick}>{t('Your Orders')}</Link></li>
-        <li><Link to="/user/checkout" onClick={handleLinkClick}>{t('Checkout')}</Link></li>
-        <li> <Link to="/"  onClick={handleLogout}>
+        <li> <span>{fullName || t('User')}</span></li>
+        <li><NavLink to="/user" onClick={handleLinkClick}>{t('Profile')}</NavLink></li>
+        <li><NavLink to="/user/basket" onClick={handleLinkClick}>{t('Your Basket')}</NavLink></li>
+        <li><NavLink to="/user/orders" onClick={handleLinkClick}>{t('Your Orders')}</NavLink></li>
+        <li><NavLink to="/user/checkout" onClick={handleLinkClick}>{t('Checkout')}</NavLink></li>
+        <li><NavLink to="/" onClick={handleLogout}>
     {t('Logout')}
-  </Link></li>
+  </NavLink></li>
       </ul>
     </div>
   );

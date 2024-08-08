@@ -264,12 +264,22 @@
     .btns {
         width: 470px;
     }
+    .fries{
+        margin-right: 27%;
+    }
+    .exploreNow button{
+        font-size: 1.5rem;
+    }
+    .exploreNow h2{
+        width: 88%;
+    }
 }
 
 @media only screen and (max-width: 1390px) {
     .burger {
         margin-bottom: 8%;
-        right: -50px;
+        right: -15px;
+        width:610px;
     }
 
     .slogan {
