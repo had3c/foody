@@ -28,25 +28,25 @@ function Footer() {
 
             <div className={footStyle.footNavigate}>
             <ul>
-            <li className={footStyle.listCategory}>{t('Popular')}</li>
-            <li>{t('Programming')}</li>
-            <li>{t('Books for children')}</li>
-            <li>{t('Psychology')}</li>
-            <li>{t('Business')}</li>
+            <li className={footStyle.listCategory}>{t('Company')}</li>
+            <li>{t('Jobs')}</li>
+            <li>{t('Sustainability')}</li>
+            <li>{t('Security')}</li>
+            <li>{t('Investors')}</li>
           </ul>
 
           <ul>
-            <li className={footStyle.listCategory}>{t('Cash')}</li>
+            <li className={footStyle.listCategory}>{t('Payment')}</li>
             <li>{t('Delivery')}</li>
-            <li>{t('Payment')}</li>
-            <li>{t('About the store')}</li>
+            <li>{t('Cash')}</li>
+            <li>{t('Promo Codes')}</li>
           </ul>
 
           <ul>
             <li className={footStyle.listCategory}>{t('Help')}</li>
             <li>{t('Contact')}</li>
-            <li>{t('Purchase returns')}</li>
-            <li>{t('Buyer Help')}</li>
+            <li>{t('Feedback')}</li>
+            <li>{t('Support')}</li>
           </ul>
             </div>
          </section>
