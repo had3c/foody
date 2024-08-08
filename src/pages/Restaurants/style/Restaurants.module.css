@@ -9,6 +9,7 @@
     align-items: center;
     margin-bottom: 20px;
     padding: .7rem;
+    cursor: pointer;
 }
 
 .restaurant:hover {
@@ -132,7 +133,25 @@
 
 @media only screen and (min-width: 1441px) {
     .card {
-        height: 350px;
+        height: auto;
+    }
+    .restList{
+        width: 90%;
+    }
+    .restaurant p{
+        font-size: 1.5rem;
+    }
+    .delivery{
+        font-size: 19px;
+    }
+    .card img{
+        width: 68%;
+    }
+    .cardTitle{
+        font-size: 25px;
+    }
+    .card p{
+        font-size: 19px;
     }
 }
 @media only screen and (max-width: 1305px) {
@@ -142,7 +161,7 @@
     }
     
     .delivery {
-        line-height: 40px;
+        line-height: 35px;
     }
 
     .time {
@@ -151,12 +170,24 @@
         font-size: 14px;
     }
     .card{
-        height: 360px;
+        height: 340px;
+        justify-content: space-evenly;
+    }
+    .card img{
+        width: 74%;
     }
 }
 @media only screen and (max-width: 1250px) {
-    .card img {
-        width: 76%;
+    .card{
+        justify-content: space-evenly;
+        height: 320px;
+    }
+    .cardTitle {
+        line-height: 27px;
+    }
+
+    .card p {
+        line-height: 24px;
     }
 }
 
