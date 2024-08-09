@@ -14,6 +14,7 @@ function BasketItems() {
   const navigate = useNavigate()
   const dispatch = useDispatch();
   const basketProducts = useSelector((state) => state.basket.products);
+ 
 
   const handleRemoveProduct = (id) => {
     dispatch(removeProduct(id));
@@ -22,6 +23,12 @@ function BasketItems() {
   const handleUpdateQuantity = (id, quantity) => {
     if (quantity < 1) return;
     dispatch(updateQuantity({ id, quantity }));
+  };
+
+  const handleCheckoutClick = () => {
+    if (basketProducts.length > 0) {
+      navigate('/user/checkout');
+    }
   };
 
   return (
@@ -73,7 +80,7 @@ function BasketItems() {
         </div>
       </div>
 
-      <div style={{ cursor: 'pointer' }} onClick={() => navigate('/user/checkout')}>
+      <div style={{ cursor: 'pointer' }} onClick={handleCheckoutClick}>
         <Checkout basketProducts={basketProducts}/>
       </div>
     </div>
