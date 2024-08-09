@@ -6,7 +6,7 @@ import prev from '../../../../../assets/icons/prevTable.svg';
 import next from '../../../../../assets/icons/nextTable.svg';
 import close from '../../../../../assets/icons/close.svg';
 
-function ShowModal({ closeModal }) {
+function ShowModal({ closeModal,setShowDel}) {
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(2);
@@ -52,7 +52,10 @@ function ShowModal({ closeModal }) {
   return (
     <div className={style.showModal}>
       <div className={style.modal}>
-        <div className={style.modalClose} onClick={closeModal}>
+        <div className={style.modalClose}   onClick={() => {
+    closeModal();
+    setShowDel(false);
+  }}>
           <img src={close} alt="Close" />
         </div>
 
@@ -76,7 +79,7 @@ function ShowModal({ closeModal }) {
                   <td>{item.name}</td>
                   <td>{item.price}</td>
                   <td>{item.count}</td>
-                  <td>{item.price * item.count}</td>
+                  <td>{item.price * item.count.toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>

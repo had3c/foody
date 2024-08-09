@@ -4,7 +4,7 @@
     padding: 2px 16px;
     text-align: center;
     background-color: white;
-    right: 50px;
+    right: 55px;
     bottom: 10px;
 }
 
@@ -28,6 +28,12 @@
     text-align: left;
     color: #EB5757;
     cursor: pointer;
+}
+
+@media only screen and (min-width: 1441px) {
+    .showDel{
+        right: 68%;
+    }
 }
 
 @media only screen and (max-width: 1300px) {
@@ -63,8 +69,10 @@
 }
 .show{
     font-size: 12px;
+    text-align: center;
 }
 .delete{
     font-size: 12px;
+    text-align: center;
 }
 }

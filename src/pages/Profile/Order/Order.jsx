@@ -18,7 +18,7 @@ export default function Order() {
   };
 
 
-  const data = [
+  const [data,setData] =useState([
     { id: '9177', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
     { id: '2', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
     { id: '3', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
@@ -27,7 +27,7 @@ export default function Order() {
     { id: '6', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
     { id: '7', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
     { id: '8', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
-  ];
+  ]) ;
 
 
   const indexOfLastItem = currentPage * perPage;
@@ -57,6 +57,13 @@ export default function Order() {
     setCurrentPage(1);
   };
 
+  const handleDelete = (id) => {
+    const updatedData = data.filter(item => item.id !== id);
+    setData(updatedData);
+    // if (currentPage > Math.ceil(updatedData.length / perPage)) {
+    //   setCurrentPage(Math.ceil(updatedData.length / perPage));
+    // }
+  };
   return (
     <div className={style.userOrder}>
       <h2>{t('Your Orders')}</h2>
@@ -80,7 +87,7 @@ export default function Order() {
                 <td className={style.hidden}>
                 <img src={setting} alt="Settings" onClick={() => toggleShowDel(item.id)} />
                   {showDel === item.id && (
-                    <ShowDel/>
+                    <ShowDel setShowDel={setShowDel} handleDelete={handleDelete} itemId={item.id}/>
                   )}
                 </td>
                 <td className={style.Id}><span>{item.id}</span></td>
@@ -92,7 +99,7 @@ export default function Order() {
                 <td className={style.show}>
                   <img src={setting} alt="Settings" onClick={() => toggleShowDel(item.id)} />
                   {showDel === item.id && (
-                    <ShowDel/>
+                    <ShowDel setShowDel={setShowDel} handleDelete={handleDelete} itemId={item.id}/>
                   )}
                 </td>
               </tr>
