@@ -15,6 +15,7 @@ function LoginForm() {
     const { t } = useTranslation();
     const schemas = getValidationSchemas(t);
 
+    const [disabledBtn, setDisableBtn] = useState(false)
     const { generateUserLoginDatas } = useAuth();
     const [isRegistering, setIsRegistering] = useState(false);
     const navigate = useNavigate();
@@ -35,6 +36,7 @@ function LoginForm() {
                             type="button"
                             className={!isRegistering ? StyleForm.active : ''}
                             onClick={() => setIsRegistering(false)}
+
                         >
                             {t('Login')}
                         </button>
@@ -51,24 +53,44 @@ function LoginForm() {
                         initialValues={initialValues}
                         validationSchema={isRegistering ? schemas.register : schemas.login}
                         onSubmit={(values) => {
-                            const userData = {
-                                fullName: values.fullName,
-                                userName: values.userName2,
-                                email: values.email,
-                                password: values.passwordReg,
-                                gender: values.gender
-                            };
-                            console.log('User Data:', userData);
+                            setDisableBtn(true)
 
-                            if (!isRegistering) {
-                                generateUserLoginDatas({
-                                    userName: values.userName,
-                                    password: values.passwordLog
-                                });
-                                navigate("/");
-                            } else {
-                                setIsRegistering(false);
-                            }
+                            setTimeout(() => {
+                                if (!isRegistering) {
+                                    const userData = {
+                                        userName: values.userName,
+                                        password: values.passwordLog,
+                                    };
+                                    console.log('User Data:', userData);
+                                    try {
+                                        if (userData.userName === "foody" && userData.password === "foodyfoody") {
+                                            generateUserLoginDatas({
+                                                userName: values.userName,
+                                                password: values.passwordLog
+                                            });
+
+                                            navigate("/");
+                                        }
+
+                                        else throw new Error("wrong username or password")
+                                    } catch (error) {
+                                        console.log(error)
+                                        setDisableBtn(false)
+                                    }       
+                                } else {
+                                    const userData = {
+                                        fullName: values.fullName,
+                                        userName: values.userName2,
+                                        email: values.email,
+                                        password: values.passwordReg,
+                                        gender: values.gender,
+
+                                    };
+                                    console.log('User Data:', userData);
+                                    setIsRegistering(false);
+                                    setDisableBtn(false)
+                                }
+                            }, 2000);
                         }}
                     >
                         {({ errors, touched }) => (
@@ -132,7 +154,8 @@ function LoginForm() {
                                 )}
                                 <button
                                     type="submit"
-                                    className={StyleForm.submitButton}
+                                    className={disabledBtn ? `${StyleForm.submitButton} ${StyleForm.disableBtn}` : StyleForm.submitButton}
+                                    disabled={disabledBtn}
                                 >
                                     {isRegistering ? t('Register') : t('Login')}
                                 </button>

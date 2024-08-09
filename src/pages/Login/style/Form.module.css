@@ -212,6 +212,10 @@ form select {
     margin-top: 5px;
 }
 
+.disableBtn{
+    background-color: gray !important;
+}
+
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: column;
