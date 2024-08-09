@@ -52,7 +52,9 @@ function LoginForm() {
                     <Formik
                         initialValues={initialValues}
                         validationSchema={isRegistering ? schemas.register : schemas.login}
+
                         onSubmit={(values) => {
+
                             setDisableBtn(true)
 
                             setTimeout(() => {
@@ -74,9 +76,12 @@ function LoginForm() {
 
                                         else throw new Error("wrong username or password")
                                     } catch (error) {
+                                        
                                         console.log(error)
                                         setDisableBtn(false)
-                                    }       
+                                        values.userName = ""
+                                        values.passwordLog = ""
+                                    }
                                 } else {
                                     const userData = {
                                         fullName: values.fullName,
@@ -89,11 +94,19 @@ function LoginForm() {
                                     console.log('User Data:', userData);
                                     setIsRegistering(false);
                                     setDisableBtn(false)
+
+                                    values.fullName = ""
+                                    values.userName2 = ""
+                                    values.email = ""
+                                    values.passwordReg = ""
+                                    values.gender = ""
+
                                 }
                             }, 2000);
                         }}
                     >
-                        {({ errors, touched }) => (
+
+                        {({ errors, touched, resetForm }) => (
                             <Form className={StyleForm.for}>
                                 {isRegistering ? (
                                     <>
@@ -156,6 +169,7 @@ function LoginForm() {
                                     type="submit"
                                     className={disabledBtn ? `${StyleForm.submitButton} ${StyleForm.disableBtn}` : StyleForm.submitButton}
                                     disabled={disabledBtn}
+
                                 >
                                     {isRegistering ? t('Register') : t('Login')}
                                 </button>
