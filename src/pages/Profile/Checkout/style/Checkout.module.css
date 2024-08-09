@@ -26,6 +26,7 @@
     font-family: var(--font-roboto);
     font-weight: 500;
     margin-top: 13px;
+    width: 80% !important;
 }
 
 .form {
