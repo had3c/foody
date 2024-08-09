@@ -62,6 +62,7 @@
     margin-block: 6px;
     font-weight: 500;
     font-family: var(--font-mukta);
+    width: 80% !important;
 }
 .formik{
     margin-block: 5%;
@@ -81,6 +82,7 @@
     line-height: 24px;
     letter-spacing: 0.03em;  
     color: var(--text-color3);
+    margin-block: 10px;
 }
 
 .form .input {
@@ -107,7 +109,7 @@ color: var(--text-color2);
     line-height: 53px;
     letter-spacing: 0.03em;
     border: none;
-    margin-top: 22px;
+    margin-top: 44px;
     border-radius: 4px;
 }
 
@@ -123,19 +125,7 @@ color: var(--text-color2);
     }
 
 }
-@media only screen and (max-width: 1093px){
-    .error{
-        font-size: 12px;
-    }
 
-}
-@media only screen and (max-width: 1093px){
-    .error{
-        font-size: 11px;
-        font-weight: 400;
-    }
-
-}
 @media only screen and (max-width: 768px) {
     .userProfile {
         width: 90%;
