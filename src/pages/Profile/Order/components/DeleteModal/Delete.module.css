@@ -1,6 +1,6 @@
 .delModal {
     z-index: 5;
-        background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
     left: 0;
@@ -57,11 +57,13 @@
     margin-top: 5px;
     margin-inline: 15px;
 }
+
 .cancel:hover {
     background-color: #BDBDBD;
-    color: white; 
+    color: white;
     transition: all 1s;
 }
+
 .delete {
     font-family: var(--font-roboto);
     font-size: 16px;
@@ -75,55 +77,60 @@
     padding: 9px 30px;
     margin-top: 5px;
     margin-inline: 15px;
-} 
-    
-.delete:hover {
-   background-color: rgb(141, 2, 2);
-   transition: all 1s;
 }
+
+.delete:hover {
+    background-color: rgb(141, 2, 2);
+    transition: all 1s;
+}
+
 @media only screen and (max-width: 576px) {
     .modal {
         width: 380px;
         height: 180px;
         padding: 20px;
     }
-    
+
     .modal h3 {
         font-size: 21px;
         line-height: 40px;
     }
-    
+
     .modal p {
         font-size: 18px;
         line-height: 20px;
         width: 84%;
-    }    
-  }
+    }
+}
+
 @media only screen and (max-width: 392px) {
     .modal {
         width: 290px;
         height: 240px;
     }
-    
+
     .modal h3 {
         font-size: 20px;
     }
-    
+
     .modal p {
         font-size: 16px;
     }
-    .buttons{
+
+    .buttons {
         display: flex;
         flex-direction: column-reverse;
-       width: 90%;
-       align-items: center;
-        
+        width: 90%;
+        align-items: center;
+
     }
+
     .cancel {
-   width:100%;
+        width: 100%;
     }
+
     .delete {
-     width: 100%;
-    } 
-        
-  }
+        width: 100%;
+    }
+
+}

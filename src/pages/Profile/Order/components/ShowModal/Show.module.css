@@ -153,88 +153,104 @@
 
 @media only screen and (max-width: 768px) {
 
-  .selectPage p{
+  .selectPage p {
     display: none;
   }
-.selectPage select{
-  width: 45px;
-  margin-left: 20px;
-  padding-right: 18px;
-  font-size: 14px;
-}
-.pagesNum .prevPage {
-  font-size: 12px;
-  line-height: 18px;
-  padding: 0 12px;
-  margin-left: 8px;
-}
 
-.pagesNum .prevPage:hover{
-  background-color: #FCDDEC;
-}
-.pagesNum img{
-height: 30px;
-}
-.pagesNum .nextPage {
-  font-size: 12px;
-  line-height: 20px;
-  padding: 0 12px;
-}
-.pagesNum .nextPage:hover{
-  color: #BB6BD9;
- font-weight: bold;
-}
-.modal{
-  width: 550px;
-}
-.table {
-  min-width: 550px;
-}
+  .selectPage select {
+    width: 45px;
+    margin-left: 20px;
+    padding-right: 18px;
+    font-size: 14px;
+  }
+
+  .pagesNum .prevPage {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 0 12px;
+    margin-left: 8px;
+  }
+
+  .pagesNum .prevPage:hover {
+    background-color: #FCDDEC;
+  }
+
+  .pagesNum img {
+    height: 30px;
+  }
+
+  .pagesNum .nextPage {
+    font-size: 12px;
+    line-height: 20px;
+    padding: 0 12px;
+  }
+
+  .pagesNum .nextPage:hover {
+    color: #BB6BD9;
+    font-weight: bold;
+  }
+
+  .modal {
+    width: 550px;
+  }
+
+  .table {
+    min-width: 550px;
+  }
 }
 
 @media only screen and (max-width: 576px) {
-  .modal{
+  .modal {
     width: 480px;
   }
+
   .table {
     min-width: 480px;
   }
 }
 
 @media only screen and (max-width: 515px) {
-  .modal{
+  .modal {
     width: 390px;
     height: 250px;
   }
+
   .table {
     min-width: 390px;
   }
-  .table td{
+
+  .table td {
     font-size: 12px;
   }
-  .table th{
+
+  .table th {
     font-size: 11px;
     font-weight: 500;
   }
+
   .table td img {
     height: 25px;
   }
 }
+
 @media only screen and (max-width: 392px) {
-  .modal{
+  .modal {
     width: 300px;
   }
-  .selectPage select{
+
+  .selectPage select {
     width: 42px;
     margin-left: 30px;
     padding-right: 14px;
     font-size: 12px;
   }
+
   .pagesNum .prevPage {
     font-size: 11px;
     line-height: 10px;
     padding: 0 9px;
   }
+
   .pagesNum .nextPage {
     font-size: 11px;
     line-height: 10px;
@@ -243,7 +259,7 @@ height: 30px;
 }
 
 @media only screen and (max-width: 320px) {
-  .modal{
+  .modal {
     width: 280px;
   }
 }
