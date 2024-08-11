@@ -10,16 +10,18 @@
 .navigation {
     align-items: center;
     display: flex;
-    width: 50%;
+    width: 53%;
     justify-content: space-between;
 }
 
 .navigation li {
     display: inline-block;
 }
-.navigation img{
+
+.navigation img {
     cursor: pointer;
 }
+
 .navigation li a {
     font-family: var(--font-roboto);
     color: var(--text-color2);
@@ -39,32 +41,39 @@
 
 .userTrue {
     display: flex;
-    width: 21%;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .userTrue img {
     width: 2.5rem;
     height: 2.6rem;
-    border-radius: 50%; 
+    border-radius: 50%;
+    margin-left: 1.5rem;
     cursor: pointer;
 }
 
-
+.language {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .search {
     display: flex;
-    justify-content: space-between;
-    width: 42%;
     position: relative;
+    align-items: center;
+    justify-content: space-between;
+    width: 43%;
 }
 
 .search input {
     border: none;
     border-radius: 10px;
-    padding: 12px 15px;
+    padding: 12px 10px;
     width: 300px;
+    height: 44px;
+    position: relative;
 }
 
 .search input::placeholder {
@@ -85,6 +94,8 @@
     border-radius: 30px;
     color: white;
     width: 115px;
+    height: 50px;
+    margin-left: 1.5rem;
     transition: all .5s;
 }
 
@@ -103,130 +114,137 @@ li {
 
 /*        Css Media          */
 @media only screen and (min-width: 1441px) {
-    .navigation li a{
+    .navigation li a {
         font-size: 1.2rem;
     }
-    .userTrue img{
+
+    .userTrue img {
         width: 2.7rem;
         height: 2.7rem;
     }
-}
 
-@media only screen and (max-width: 1402px){
-    .navigation li a {
-        font-weight: 600;
-        margin-left: 15px;
-    }
-}
-@media only screen and (max-width: 1362px) {
     .search input {
-        width: 260px;
-    }
-
-    .userTrue {
-        width: 100px;
+        width: 58%;
     }
 }
 
-@media only screen and (max-width: 1320px) {
+@media only screen and (max-width: 1325px) {
     .navigation li a {
-        font-size: 15px;
+        font-size: 16px;
         margin-left: 17px;
     }
+
+    .search input {
+        width: 280px;
+    }
+
+    .search {
+        width: 44%;
+    }
 }
 
-@media only screen and (max-width: 1250px) {
-    .userTrue {
-        width: 24%;
+@media only screen and (max-width: 1220px) {
+    .navigation li a {
+        font-size: 15px;
+    }
+
+    .search {
+        width: 45%;
     }
 
     .search input {
-        width: 240px;
+        width: 270px;
+    }
+
+    .search .signupBtn {
+        font-size: 15px;
+        line-height: 20px;
+        width: 90px;
+        height: 50px;
+        margin-left: 1.4rem;
+    }
+}
+
+@media only screen and (max-width: 1170px) {
+    .userTrue img {
+        width: 2.4rem;
+        height: 2.4rem;
+        margin-left: 1.3rem;
+    }
+
+    .search .signupBtn {
+        margin-left: 1.3rem;
+    }
+
+    .navigation {
+        width: 51%;
+    }
+
+    .navigation img:first-child {
+        width: 75px;
+    }
+}
+
+
+@media only screen and (max-width: 1145px) {
+    .navigation li a {
+        font-size: 14px;
+        margin-left: 15px;
     }
 
     .search input::placeholder {
         font-size: 14px;
-        line-height: 16px;
-    }
-     .navigation img:first-child {
-        width: 90px;
-    }
-}
-
-@media only screen and (max-width: 1193px) {
-     .navigation li a {
-        margin-left: 12px;
-    } 
-}
-@media only screen and (max-width: 1170px) {
-    .userTrue {
-        width: 26%;
     }
 
     .search input {
-        width: 210px;
-    }
-    .navigation img:first-child {
-        width: 77.5px;
+        width: 255px;
     }
 }
 
-@media only screen and (max-width: 1105px) {
+@media only screen and (max-width: 1080px) {
+    .search {
+        width: 42%;
+    }
+
+    .search input {
+        margin-right: 15px;
+        width: 230px;
+    }
+
     .navigation li a {
-      font-size: 14px;
-    }
-    .userTrue{
-        width: 99px;
-    }
-    .search input::placeholder {
-        font-size: 12px;
-        line-height: 14px;
+        margin-left: 12px;
     }
 
     .search .signupBtn {
+        margin-left: 1.1rem;
+        font-size: 14px;
         width: 85px;
-        font-size: 13px;
-        line-height: 18px;
-    }
-}
-
-@media only screen and (max-width: 1060px) {
-    .navigation li a {
-        font-size: 13px;
-        margin-left: 8.5px;
-    }
-
-    .search input {
-        width: 190px;
-    }
-
-    .search input::placeholder {
-        line-height: 11px;
-    }
-
-    .userTrue img {
-        width: 38px;
-        height: 38px;
+        line-height: 15px;
     }
 }
 
 @media only screen and (max-width: 1040px) {
     .userTrue img {
-        width: 2.18rem;
-        height:2.18rem;
-    }
-    .userTrue{
-      width: 25%;
+        width: 2rem;
+        height: 2rem;
+        margin-left: 1.1rem;
     }
 }
-@media only screen and (max-width: 966px) {
+
+@media only screen and (max-width: 1028px) {
     .navigation img:first-child {
         width: 75px;
     }
-    .navigation li a{
-        font-size: 12.5px;
+
+    .navigation li a {
+        font-size: 13px;
+    }
+
+    .navigation {
+        width: 54%;
     }
 }
+
 @media only screen and (max-width: 930px) {
     .navbar {
         padding: 35px 5%;
@@ -237,35 +255,37 @@ li {
         flex-direction: row-reverse;
         justify-content: flex-end;
     }
+
     .navigation ul {
         display: none;
     }
-  .userTrue{
+
+    .userTrue {
         display: none;
     }
-    .signupBtn{
+
+    .signupBtn {
         display: none;
-    }
-    .search {
-        width: 40%;
-        align-items: center;
     }
 
     .search input {
         width: 80%;
     }
+
     .search input::placeholder {
         font-size: 15px;
     }
+
     .menuBar {
         display: block;
-        width: 37px;
+        width: 40px;
         margin-right: 7px;
+        margin-bottom: 5px;
     }
+
     .navigation img:first-child {
         width: 85px;
     }
-  
 }
 
 @media only screen and (max-width: 768px) {
@@ -284,13 +304,13 @@ li {
 
 
 @media only screen and (max-width: 630px) {
-    .search {
-        width: 49%;
-    }
 
     .search input::placeholder {
-        font-size: 12px;
-        line-height: 12px;
+        font-size: 13px;
+    }
+
+    .search {
+        width: 54%;
     }
 
 }
@@ -300,9 +320,11 @@ li {
     .search {
         width: 65%;
     }
+
     .navigation img:first-child {
         width: 70px;
     }
+
     .menuBar {
         width: 33px;
     }
@@ -319,5 +341,9 @@ li {
 
     .search {
         justify-content: flex-end;
+    }
+
+    .searchResult {
+        display: none;
     }
 }

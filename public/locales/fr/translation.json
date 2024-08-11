@@ -234,6 +234,7 @@
    "Fullname Required":"Veuillez entrer votre nom entier",
    "Email Required":"Veuillez entrer votre adresse e-mail",
    "Email is invalid":"S'il vous plaît, mettez une adresse email valide",
+   "Paymethod Required":"Choisissez mode de paiement",
   "+44":"+33",
 
   "Website reponse taking time, how to improve?": "La réponse d'un site Web prend du temps, comment s'améliorer ?",

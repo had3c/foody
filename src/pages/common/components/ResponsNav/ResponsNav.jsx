@@ -10,14 +10,13 @@ import { useAuth } from '../../../../context/AuthContext';
 import { useProfile } from '../../../../context/ProfileContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
-function ResponsNav() {
+function ResponsNav({ setOpenMenu, openMenu }) {
     const { user } = useAuth();
     const navigate = useNavigate()
     const location = useLocation();
     const { t } = useTranslation();
     const { profileImage, fullName } = useProfile();
     const { generateUserLogoutDatas } = useAuth();
-    const [isOpen, setIsOpen] = useState(true);
 
     const handleLogout = async (e) => {
         e.preventDefault()
@@ -37,16 +36,16 @@ function ResponsNav() {
 
             Swal.fire({
                 title: t('Logout'),
-      icon: 'success',
-      confirmButtonText: t('OK')
+                icon: 'success',
+                confirmButtonText: t('OK')
             }).then(() => {
-                window.location.href = '/';
+                navigate('/')
             });
         }
     };
 
     const closeResponsMenu = () => {
-        setIsOpen(false);
+        setOpenMenu(false);
     }
     const getNavLinkStyle = (path) => {
         return {
@@ -55,7 +54,7 @@ function ResponsNav() {
     };
     return (
         <AnimatePresence>
-            {isOpen && (
+            {openMenu && (
                 <motion.div
                     className={style.navbarBg}
                     initial={{ opacity: 0 }}
@@ -83,7 +82,7 @@ function ResponsNav() {
                             )}
 
                         </div>
-                        <ul> 
+                        <ul>
                             <li><NavLink to="/" onClick={closeResponsMenu} style={() => getNavLinkStyle('/')}>{t('Home')}</NavLink></li>
                             <li><NavLink to="/restaurants" onClick={closeResponsMenu} style={() => getNavLinkStyle('/restaurants')}>{t('Restaurants')}</NavLink></li>
                             {user ? (<div>
@@ -100,7 +99,7 @@ function ResponsNav() {
                             <li><NavLink to="/how-it-works" onClick={closeResponsMenu} style={() => getNavLinkStyle('/how-it-works')}>{t('How it Works')}</NavLink></li>
                             <li><NavLink to="/faqs" onClick={closeResponsMenu} style={() => getNavLinkStyle('/faqs')}>{t('FAQs')}</NavLink></li>
                             {user ? (<li className={style.logout}> <NavLink to="/" onClick={handleLogout}>
-                               {t('Logout')}
+                                {t('Logout')}
                             </NavLink></li>
 
                             ) : (

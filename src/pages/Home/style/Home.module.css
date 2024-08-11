@@ -258,19 +258,25 @@
     justify-content: space-between;
 }
 
+.searchResult {
+    display: none;
+}
 
 /* Css- Media */
 @media only screen and (min-width: 1441px) {
     .btns {
         width: 470px;
     }
-    .fries{
+
+    .fries {
         margin-right: 27%;
     }
-    .exploreNow button{
+
+    .exploreNow button {
         font-size: 1.5rem;
     }
-    .exploreNow h2{
+
+    .exploreNow h2 {
         width: 88%;
     }
 }
@@ -279,7 +285,7 @@
     .burger {
         margin-bottom: 8%;
         right: -15px;
-        width:610px;
+        width: 610px;
     }
 
     .slogan {
@@ -402,7 +408,8 @@
     .discover h2 {
         font-size: 40px;
     }
-    .exploreNow{
+
+    .exploreNow {
         height: 250px;
     }
 }
@@ -477,7 +484,7 @@
     .btns {
         width: 360px;
     }
-   
+
 }
 
 @media only screen and (max-width: 981px) {
@@ -538,7 +545,7 @@
     .slogan {
         width: 45%;
     }
-   
+
 }
 
 @media only screen and (max-width: 865px) {
@@ -780,6 +787,10 @@
 }
 
 @media only screen and (max-width: 392px) {
+    .searchResult {
+        display: block;
+    }
+
     .search {
         display: block;
         border: none;
@@ -787,15 +798,20 @@
         padding: 12px 15px;
         width: 200px;
         margin-top: 15px;
+        position: relative;
     }
 
     .search::placeholder {
         font-family: var(--font-roboto);
         color: black;
         font-size: 14px;
-        font-weight: 300;
+        font-weight: 400;
         text-align: center;
         line-height: 18.75px;
+    }
+
+    .btns {
+        position: relative;
     }
 
     .discover img {
