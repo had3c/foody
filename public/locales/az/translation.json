@@ -103,7 +103,7 @@
   "abu": "Biz ləzzətli yemək dünyasında sizin etibarlı tərəfdaşınızıq! Xidmətimiz evdən çıxmadan şəhərinizdəki ən yaxşı restoranlardan yeməkləri asanlıqla sifariş etməyə imkan verir. Hekayəmiz Bakıda başladı, burada innovativ **EACAMPM (Team Triple E)** şirkəti tərəfindən yaradıldıq. Onların təcrübəsi və baxışı sayəsində biz regionda aparıcı yemək çatdırılması xidmətinə çevrildik. Təklif etdiklərimiz: Restoranların və mətbəxlərin geniş seçimi, Vebsayt və ya tətbiq vasitəsilə rahat axtarış və sifariş, Qapınıza qədər sürətli çatdırılma, Mükəmməl xidmət və müştəri dəstəyi. Məqsədimiz yemək sifariş prosesini sizin üçün mümkün qədər sadə və xoş etməkdir. Sevdiyiniz yeməkləri seçin, qalanını biz həll edəcəyik! Bakı qonaqpərvərliyi ilə müasir texnologiyanın birləşməsi xidmətimizi hər bir müştəri üçün unikal və rahat edir.",
   "About Us": "Haqqımızda",
   "How it works": "Necə işləyir ?",
-  "FAQs": "SSS",
+  "FAQs": "FAQ",
   "F.A.Q": "S.S.S",
   "Sign Up": "Qeydiyyat",
   "Search": "Axtar",
@@ -242,6 +242,7 @@
    "Fullname Required":"Tam adınızı daxil edin",
    "Email Required":"Poçt ünvanınızı daxil edin",
    "Email is invalid":"Keçərli poçt ünvanı daxil edin",
+   "Paymethod Required":"Ödəniş üsulunu seçin",
    "+44":"+994",
 
   "Question1":"Müştəri Təcrübəsi Komandamız həftənin 7 günü işləyir və biz əlaqə saxlamağın 2 yolunu təklif edirik: E-poçt və Çat. Tez cavab verməyə çalışırıq, ona görə də cavab üçün çox gözləməyinizə ehtiyac yoxdur!",

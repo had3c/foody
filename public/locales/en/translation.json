@@ -240,6 +240,7 @@
    "Fullname Required":"Please enter your fullname",
    "Email Required":"Please enter your email address",
    "Email is invalid":"Please enter a valid email address",
+   "Paymethod Required":"Select a payment method",
    "+44":"+44",
 
   "Question1":"Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact: Email and Chat. We try to reply quickly, so you need not wait too long for a response!",

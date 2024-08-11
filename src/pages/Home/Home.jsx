@@ -1,5 +1,7 @@
-import style from './style/Home.module.css'
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom'
+import style from './style/Home.module.css'
 import background from '../../assets/images/bgBlack.svg'
 import burger from '../../assets/images/headerBurger.svg'
 import pizzaHut from '../../assets/images/pizzaHut.svg'
@@ -13,13 +15,16 @@ import pizza from '../../assets/images/pizza.svg'
 import dubblechees from '../../assets/images/dubbleChees.svg'
 import kfcMenu from '../../assets/images/twisterMenu.svg'
 import margarita from '../../assets/images/margarita.svg'
-import { useNavigate } from 'react-router-dom'
 import Offers from './components/Offers/Offers'
+import SearchResult from '../common/components/SearchResult/SearchResult';
+import useDebounce from '../../hooks/useDebounce';
 
 export default function Home() {
 
   const navigate = useNavigate()
   const { t } = useTranslation();
+  const [searchResult, setSearchResult] = useState('');
+  const debouncedSearch = useDebounce(searchResult, 200);
   return <div>
 
     {/*                  Header                      */}
@@ -31,13 +36,20 @@ export default function Home() {
         <h1>{t('Our Food site makes it easy to find local food')}</h1>
           <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
           <div className={style.btns}>
+            
+          <input type="text" placeholder={t('Search')} className={style.search}  value={searchResult}
+          onChange={(e) => setSearchResult(e.target.value)}/>
+            {searchResult && (
+          <div className={style.searchResult}>
+            <SearchResult debouncedSearch={debouncedSearch} />
+          </div>
+        )}
             <button className={style.register} onClick={() => navigate('/login')}>
               {t('Register')}
             </button>
             <button className={style.orderNow} onClick={() => navigate('/restaurants')}>
               {t('Order now')}
             </button>
-            <input type="text" placeholder={t('Search')} className={style.search} />
           </div>
       </div>
 

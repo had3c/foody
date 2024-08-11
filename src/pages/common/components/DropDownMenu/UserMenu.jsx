@@ -8,13 +8,10 @@ import { useProfile } from '../../../../context/ProfileContext';
 import { useTranslation } from 'react-i18next';
 
 
-const UserMenu = ({ closeDropdown }) => {
+const UserMenu = ({ setDropDown }) => {
   const { t } = useTranslation();
   const { generateUserLogoutDatas } = useAuth();
   const { fullName } = useProfile();
-  const handleLinkClick = () => {
-    closeDropdown();
-  };
 
   const handleLogout = async (e) => {
     e.preventDefault()
@@ -28,16 +25,16 @@ const UserMenu = ({ closeDropdown }) => {
       confirmButtonText: t('Yes'),
       cancelButtonText: t('Cancel')
     });
-  
+
     if (result.isConfirmed) {
       generateUserLogoutDatas();
-  
+
       Swal.fire({
-       title: t('Logout'),
-      icon: 'success',
-      confirmButtonText: t('OK')
+        title: t('Logout'),
+        icon: 'success',
+        confirmButtonText: t('OK')
       }).then(() => {
-        window.location.href = '/';
+        navigate('/')
       });
     }
   };
@@ -45,13 +42,13 @@ const UserMenu = ({ closeDropdown }) => {
     <div className={style.dropDown}>
       <ul>
         <li> <span>{fullName || t('User')}</span></li>
-        <li><NavLink to="/user" onClick={handleLinkClick}>{t('Profile')}</NavLink></li>
-        <li><NavLink to="/user/basket" onClick={handleLinkClick}>{t('Your Basket')}</NavLink></li>
-        <li><NavLink to="/user/orders" onClick={handleLinkClick}>{t('Your Orders')}</NavLink></li>
-        <li><NavLink to="/user/checkout" onClick={handleLinkClick}>{t('Checkout')}</NavLink></li>
+        <li><NavLink to="/user" onClick={() => setDropDown(false)}>{t('Profile')}</NavLink></li>
+        <li><NavLink to="/user/basket" onClick={() => setDropDown(false)}>{t('Your Basket')}</NavLink></li>
+        <li><NavLink to="/user/orders" onClick={() => setDropDown(false)}>{t('Your Orders')}</NavLink></li>
+        <li><NavLink to="/user/checkout" onClick={() => setDropDown(false)}>{t('Checkout')}</NavLink></li>
         <li><NavLink to="/" onClick={handleLogout}>
-    {t('Logout')}
-  </NavLink></li>
+          {t('Logout')}
+        </NavLink></li>
       </ul>
     </div>
   );
