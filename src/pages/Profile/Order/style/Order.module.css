@@ -23,6 +23,7 @@
   margin: 5% 0 3% 0;
   position: relative;
 }
+
 .orderTable td {
   font-family: var(--font-openSans);
   font-size: 14px;
@@ -34,17 +35,19 @@
   padding-block: 13px;
   vertical-align: middle;
 }
-.Id span{
+
+.Id span {
   border-radius: 8px;
-  border: 1px solid  #DFE2E9;
+  border: 1px solid #DFE2E9;
   padding: 2px 12px;
 }
 
-.orderTable tbody img{
+.orderTable tbody img {
   height: 20px;
-  margin: 5px 5px 0 50px; 
+  margin: 5px 5px 0 50px;
   cursor: pointer;
 }
+
 .orderTable th {
   padding: 12px;
   font-family: var(--font-openSans);
@@ -59,7 +62,7 @@
   border-block: 1px solid #ddd;
 }
 
-.delivery{
+.delivery {
   width: 18%;
 }
 
@@ -72,9 +75,11 @@
 .pagesNum {
   display: flex;
 }
-.pagesNum img{
+
+.pagesNum img {
   cursor: pointer;
 }
+
 .pagesNum .prevPage {
   font-family: var(--font-openSans);
   font-size: 14px;
@@ -88,9 +93,10 @@
   background-color: white;
 }
 
-.pagesNum .prevPage:hover{
+.pagesNum .prevPage:hover {
   background-color: #FCDDEC;
 }
+
 .pagesNum .nextPage {
   border: none;
   background-color: transparent;
@@ -102,9 +108,10 @@
   letter-spacing: 0.25px;
   color: var(--text-color2);
 }
-.pagesNum .nextPage:hover{
+
+.pagesNum .nextPage:hover {
   color: #BB6BD9;
- font-weight: bold;
+  font-weight: bold;
 }
 
 .selectPage {
@@ -122,199 +129,224 @@
 }
 
 .selectPage select {
- width:55px; 
+  width: 55px;
   margin-left: 40px;
-  appearance: none; 
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* SVG veri URL'si ile gri renkli üçgen oku ekler */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  /* SVG veri URL'si ile gri renkli üçgen oku ekler */
   background-repeat: no-repeat;
-  background-position: right 8px top 50%; 
+  background-position: right 8px top 50%;
   border: 1px solid #00000033;
-  padding-right: 24px; 
+  padding-right: 24px;
   padding: 8px 12px;
-  font-size: 16px; 
-  cursor: pointer; 
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.hidden{
+.hidden {
   display: none;
   position: relative;
 }
-.show{
+
+.show {
   position: relative;
 }
 
 @media only screen and (max-width: 1291px) {
-.userOrder{
-  height: 620px;
+  .userOrder {
+    height: 620px;
+  }
 }
-}
+
 @media only screen and (max-width: 1150px) {
-  .userOrder{
+  .userOrder {
     height: 520px;
   }
-  .orderTable td{
-    font-size: 12px;
-  }
-  .orderTable th{
+
+  .orderTable td {
     font-size: 12px;
   }
 
-  .Id span{
+  .orderTable th {
+    font-size: 12px;
+  }
+
+  .Id span {
     padding: 2px 7px;
   }
-  .delivery{
+
+  .delivery {
     width: 26%;
   }
 }
 
 @media only screen and (max-width: 1035px) {
-  .orderTable td{
+  .orderTable td {
     font-size: 10px;
     font-weight: 400;
   }
-  .orderTable th{
+
+  .orderTable th {
     font-size: 11px;
     font-weight: 500;
   }
-  .orderTable tbody img{
-    margin: 5px 8px 0 12px; 
+
+  .orderTable tbody img {
+    margin: 5px 8px 0 12px;
     height: 17px;
   }
-  .delivery{
+
+  .delivery {
     width: 25%;
   }
-  .userOrder{
+
+  .userOrder {
     padding: 4% 1rem;
   }
 }
- 
+
 @media only screen and (max-width: 860px) {
-   .userOrder{
+  .userOrder {
     padding: 4% .4rem;
-   }
-   .userOrder h2{
+  }
+
+  .userOrder h2 {
     margin-left: 15px;
-   }
-   .pagination{
-    margin-inline:8px ;
-   }
-   .orderTable td{
+  }
+
+  .pagination {
+    margin-inline: 8px;
+  }
+
+  .orderTable td {
     font-size: 8.5px;
     letter-spacing: 0px;
-   }
-   .orderTable th{
+  }
+
+  .orderTable th {
     font-size: 9.5px;
     padding: 8px;
-   }
-   .orderTable tbody img{
-    margin: 5px 8px 0 8px; 
+  }
+
+  .orderTable tbody img {
+    margin: 5px 8px 0 8px;
     height: 14px;
   }
-  .delivery{
+
+  .delivery {
     width: 24%;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .userOrder h2{
+  .userOrder h2 {
     font-size: 25px;
   }
-.selectPage p{
-  display: none;
-}
-.selectPage select{
-  width: 45px;
-  margin-left: 20px;
-  padding-right: 18px;
-  font-size: 14px;
-}
-.pagesNum .prevPage {
-  font-size: 12px;
-  line-height: 18px;
-  padding: 0 12px;
-  margin-left: 8px;
-}
-.pagesNum img{
-height: 30px;
-}
-.pagesNum .nextPage {
-  font-size: 12px;
-  line-height: 20px;
-  padding: 0 12px;
-}
+
+  .selectPage p {
+    display: none;
+  }
+
+  .selectPage select {
+    width: 45px;
+    margin-left: 20px;
+    padding-right: 18px;
+    font-size: 14px;
+  }
+
+  .pagesNum .prevPage {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 0 12px;
+    margin-left: 8px;
+  }
+
+  .pagesNum img {
+    height: 30px;
+  }
+
+  .pagesNum .nextPage {
+    font-size: 12px;
+    line-height: 20px;
+    padding: 0 12px;
+  }
 }
 
 @media only screen and (max-width: 740px) {
-  .userOrder{
+  .userOrder {
     padding: 4% .3rem;
-   width: 80%;
-   }
-   .orderTable td{
+    width: 80%;
+  }
+
+  .orderTable td {
     font-size: 7.8px;
-  
-   }
-   .orderTable th{
+
+  }
+
+  .orderTable th {
     font-size: 9px;
     vertical-align: middle;
- 
-   }
-   .orderTable tbody img{
-    margin: 5px 0 0 4px; 
+
+  }
+
+  .orderTable tbody img {
+    margin: 5px 0 0 4px;
     height: 13px;
   }
-  .delivery{
+
+  .delivery {
     width: 23%;
   }
 }
 
 @media only screen and (max-width: 690px) {
-  .userOrder{
+  .userOrder {
     width: 100%;
     margin: 0 auto;
     padding: 4% 1rem;
     background-color: white;
   }
-  .orderTable{
+
+  .orderTable {
     min-width: 650px;
   }
-  
-  .tableParent{
+
+  .tableParent {
     overflow-x: auto;
     width: 100%;
   }
-  
-  .orderTable tbody img{
+
+  .orderTable tbody img {
     height: 20px;
-    margin: 5px 5px 0 5px; 
+    margin: 5px 5px 0 5px;
   }
-  
+
   .orderTable td {
     font-size: 12px;
     font-weight: 400;
   }
-  .Id span{
+
+  .Id span {
     padding: 2px 12px;
   }
-  
+
   .orderTable th {
     padding: 12px;
     font-size: 14px;
     font-weight: 600;
   }
-  .delivery{
+
+  .delivery {
     width: 25%;
   }
-  .hidden{
+
+  .hidden {
     display: block;
   }
-  .show{
+
+  .show {
     display: none;
   }
 }
-
-
-
-
- 

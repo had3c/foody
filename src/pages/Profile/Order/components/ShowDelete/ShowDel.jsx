@@ -4,14 +4,14 @@ import { useTranslation } from 'react-i18next';
 import DeleteModal from '../DeleteModal/DeleteModal';
 import ShowModal from '../ShowModal/ShowModal';
 
-function ShowDel({setShowDel,handleDelete, itemId }) {
+function ShowDel({ setShowDel, handleDelete, itemId }) {
   const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
 
- 
+
   function toggleDeleteModal() {
-    setDeleteModal(!deleteModal); 
+    setDeleteModal(!deleteModal);
   }
 
   function handleShow() {
@@ -20,8 +20,8 @@ function ShowDel({setShowDel,handleDelete, itemId }) {
 
   return (
     <div>
-      {showModal && <ShowModal closeModal={handleShow} setShowDel={setShowDel}/>}
-      {deleteModal && <DeleteModal closeModal={toggleDeleteModal} setShowDel={setShowDel} handleDelete={handleDelete} itemId={itemId}/>}
+      {showModal && <ShowModal closeModal={handleShow} setShowDel={setShowDel} />}
+      {deleteModal && <DeleteModal closeModal={toggleDeleteModal} setShowDel={setShowDel} handleDelete={handleDelete} itemId={itemId} />}
       <ul className={style.showDel}>
         <li className={style.show} onClick={handleShow}>
           {t('Show')}

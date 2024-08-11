@@ -6,11 +6,11 @@ import prev from '../../../../../assets/icons/prevTable.svg';
 import next from '../../../../../assets/icons/nextTable.svg';
 import close from '../../../../../assets/icons/close.svg';
 
-function ShowModal({ closeModal,setShowDel}) {
+function ShowModal({ closeModal, setShowDel }) {
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(2);
-  
+
   const data = [
     { id: 1, image: margarita, name: "Papa John’s Pizza", price: 7.90, count: 2, amount: 15.80 },
     { id: 2, image: margarita, name: "Papa John’s Pizza", price: 7.90, count: 3, amount: 15.80 },
@@ -52,10 +52,10 @@ function ShowModal({ closeModal,setShowDel}) {
   return (
     <div className={style.showModal}>
       <div className={style.modal}>
-        <div className={style.modalClose}   onClick={() => {
-    closeModal();
-    setShowDel(false);
-  }}>
+        <div className={style.modalClose} onClick={() => {
+          closeModal();
+          setShowDel(false);
+        }}>
           <img src={close} alt="Close" />
         </div>
 
@@ -79,7 +79,7 @@ function ShowModal({ closeModal,setShowDel}) {
                   <td>{item.name}</td>
                   <td>{item.price}</td>
                   <td>{item.count}</td>
-                  <td>{item.price * item.count.toFixed(2)}</td>
+                  <td>{(item.price * item.count).toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>

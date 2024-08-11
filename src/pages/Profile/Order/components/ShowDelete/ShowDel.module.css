@@ -31,28 +31,30 @@
 }
 
 @media only screen and (min-width: 1441px) {
-    .showDel{
+    .showDel {
         right: 68%;
     }
 }
 
 @media only screen and (max-width: 1300px) {
-    .showDel{
+    .showDel {
         right: 40px;
     }
 }
+
 @media only screen and (max-width: 1140px) {
-    .showDel{
+    .showDel {
         right: 35px;
         bottom: 5px;
     }
 }
 
 @media only screen and (max-width: 1024px) {
-    .showDel{
+    .showDel {
         right: 28px;
     }
 }
+
 @media only screen and (max-width: 768px) {
     .showDel {
         padding: 2px 13px;
@@ -61,18 +63,20 @@
 }
 
 @media only screen and (max-width: 690px) {
-.showDel{
-    left: 20px;
-    width: 80px;
-    padding: 2px 10px;
-  bottom: 2px;
-}
-.show{
-    font-size: 12px;
-    text-align: center;
-}
-.delete{
-    font-size: 12px;
-    text-align: center;
-}
+    .showDel {
+        left: 20px;
+        width: 80px;
+        padding: 2px 10px;
+        bottom: 2px;
+    }
+
+    .show {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .delete {
+        font-size: 12px;
+        text-align: center;
+    }
 }

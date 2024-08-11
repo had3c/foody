@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Delete.module.css';
 import { useTranslation } from 'react-i18next';
 
-function DeleteModal({ closeModal,setShowDel,handleDelete, itemId }) {
+function DeleteModal({ closeModal, setShowDel, handleDelete, itemId }) {
   const { t } = useTranslation();
   return (
     <div className={style.delModal}>
