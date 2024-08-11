@@ -212,6 +212,14 @@
   "WP":"Wrong Password",
   "P6":"The password must contain at least 6 characters",
 
+  "T1": "Incorrect login details",
+  "T2": "Loading . . .",
+  "T3": "Your account has been successfully registered",
+  "T4": "You have successfully logged in",
+  "T5": "The login details are incorrect",
+  "T6": "Creating an account . . .",
+
+
   "Opps!": "Opps!",
    "Basket Empty": "Basket Empty",
    "Profile": "Profile",

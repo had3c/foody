@@ -212,6 +212,13 @@
   "WP":"Mot de passe incorrect",
   "P6":"Le mot de passe doit contenir au moins 6 caractères",
 
+  "T1": "Informations de connexion incorrectes",
+  "T2": "Chargement . . .",
+  "T3": "Votre compte a été enregistré avec succès",
+  "T4": "Vous vous êtes connecté avec succès",
+  "T5": "Les informations de connexion sont incorrectes",
+  "T6": "Création de compte . . .",
+
   "Address Required": "Veuillez entrer votre adresse",
    "Contact Required": "Veuillez entrer votre numéro",
    "Contact is invalid": "Le numéro doit commencer par '+33' et contenir exactement 9 chiffres",

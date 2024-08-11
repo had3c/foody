@@ -6,7 +6,10 @@ import StyleForm from '../../style/Form.module.css';
 import LoginImg from '../../../../assets/images/loginImg.svg';
 import RegisImg from '../../../../assets/images/registerImg.svg';
 
-import { useAuth } from '../../../../context/AuthContext'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { useAuth } from '../../../../context/AuthContext';
 
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -15,10 +18,32 @@ function LoginForm() {
     const { t } = useTranslation();
     const schemas = getValidationSchemas(t);
 
-    const [disabledBtn, setDisableBtn] = useState(false)
+    const [disabledBtn, setDisableBtn] = useState(false);
     const { generateUserLoginDatas } = useAuth();
     const [isRegistering, setIsRegistering] = useState(false);
     const navigate = useNavigate();
+
+    const toastiyLog = (message) => toast.success(message);
+    const toasityReg = () => toast.success(t("T3"));
+
+    const handleLogin = (userData) => {
+        setDisableBtn(true);
+        const loadingToast = toast.loading(t('T2'));
+
+        setTimeout(() => {
+            toast.dismiss(loadingToast);
+            if (userData.userName === "foody" && userData.password === "foodyfoody") {
+                generateUserLoginDatas(userData);
+                toastiyLog(t('T4'));
+                setTimeout(() => {
+                    navigate("/");
+                }, 2000);
+            } else {
+                toast.error(t("T5"));
+                setDisableBtn(false);
+            }
+        }, 2000);
+    };
 
     return (
         <div className={StyleForm.pageContainer}>
@@ -36,7 +61,6 @@ function LoginForm() {
                             type="button"
                             className={!isRegistering ? StyleForm.active : ''}
                             onClick={() => setIsRegistering(false)}
-
                         >
                             {t('Login')}
                         </button>
@@ -52,61 +76,36 @@ function LoginForm() {
                     <Formik
                         initialValues={initialValues}
                         validationSchema={isRegistering ? schemas.register : schemas.login}
+                        onSubmit={(values, { resetForm }) => {
+                            if (!isRegistering) {
+                                const userData = {
+                                    userName: values.userName,
+                                    password: values.passwordLog,
+                                };
+                                handleLogin(userData);
+                            } else {
+                                const userData = {
+                                    fullName: values.fullName,
+                                    userName: values.userName2,
+                                    email: values.email,
+                                    password: values.passwordReg,
+                                    gender: values.gender,
+                                };
+                                console.log('User Data:', userData);
+                                setDisableBtn(true);
+                                const loadingToast = toast.loading(t('T6'));
 
-                        onSubmit={(values) => {
-
-                            setDisableBtn(true)
-
-                            setTimeout(() => {
-                                if (!isRegistering) {
-                                    const userData = {
-                                        userName: values.userName,
-                                        password: values.passwordLog,
-                                    };
-                                    console.log('User Data:', userData);
-                                    try {
-                                        if (userData.userName === "foody" && userData.password === "foodyfoody") {
-                                            generateUserLoginDatas({
-                                                userName: values.userName,
-                                                password: values.passwordLog
-                                            });
-
-                                            navigate("/");
-                                        }
-
-                                        else throw new Error("wrong username or password")
-                                    } catch (error) {
-                                        
-                                        console.log(error)
-                                        setDisableBtn(false)
-                                        values.userName = ""
-                                        values.passwordLog = ""
-                                    }
-                                } else {
-                                    const userData = {
-                                        fullName: values.fullName,
-                                        userName: values.userName2,
-                                        email: values.email,
-                                        password: values.passwordReg,
-                                        gender: values.gender,
-
-                                    };
-                                    console.log('User Data:', userData);
+                                setTimeout(() => {
+                                    toast.dismiss(loadingToast);
                                     setIsRegistering(false);
-                                    setDisableBtn(false)
-
-                                    values.fullName = ""
-                                    values.userName2 = ""
-                                    values.email = ""
-                                    values.passwordReg = ""
-                                    values.gender = ""
-
-                                }
-                            }, 2000);
+                                    setDisableBtn(false);
+                                    toasityReg();
+                                    resetForm();
+                                }, 2000);
+                            }
                         }}
                     >
-
-                        {({ errors, touched, resetForm }) => (
+                        {({ errors, touched }) => (
                             <Form className={StyleForm.for}>
                                 {isRegistering ? (
                                     <>
@@ -169,7 +168,6 @@ function LoginForm() {
                                     type="submit"
                                     className={disabledBtn ? `${StyleForm.submitButton} ${StyleForm.disableBtn}` : StyleForm.submitButton}
                                     disabled={disabledBtn}
-
                                 >
                                     {isRegistering ? t('Register') : t('Login')}
                                 </button>
@@ -178,6 +176,17 @@ function LoginForm() {
                     </Formik>
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </div>
     );
 }
