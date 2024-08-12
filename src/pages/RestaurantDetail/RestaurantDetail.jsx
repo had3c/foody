@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { addProduct, removeProduct, updateQuantity } from '../../redux/features/basketSlice/basketSlice';
+import { useAuth } from '../../context/AuthContext';
+import Swal from 'sweetalert2';
 import style from './style/RestaurantDetail.module.css'
 import bstyle from './style/Basket.module.css'
 import addPrdct from '../../assets/icons/add_basket.svg'
@@ -17,6 +19,7 @@ import closeModal from '../../assets/icons/close_modal.svg'
 export default function RestaurantDetail() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(true);
   const dispatch = useDispatch();
   const basketProducts = useSelector((state) => state.basket.products);
@@ -61,13 +64,30 @@ export default function RestaurantDetail() {
     },
   ];
   const handleAddProduct = (product) => {
-    dispatch(addProduct(product));
+    if (user) {
+      dispatch(addProduct(product));
+    }else{
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2500,
+      });
+      Toast.fire({
+        icon: "info",
+        title: t('You must login')
+      });
+    }
   };
 
   const handleRemoveProduct = (id) => {
     dispatch(removeProduct(id));
   };
-
+  const handleDeleteAll = () => {
+    basketProducts.forEach(product => {
+      dispatch(removeProduct(product.id));
+    });
+  };
   const handleUpdateQuantity = (id, quantity) => {
     if (quantity <1) return;
     dispatch(updateQuantity({ id, quantity }));
@@ -156,9 +176,13 @@ export default function RestaurantDetail() {
                 </div>
 
                 <div className={bstyle.basketList}>
-
+                  <div className={bstyle.deleteAll}>
+                      <button onClick={handleDeleteAll}>{t('Delete all')}</button>
+                  </div>
+                
                   {basketProducts.map((product) => (
                     <div key={product.id} className={bstyle.listCard}>
+                   
                       <div className={bstyle.listHead}>
                         <img
                           src={deleteBasket}
