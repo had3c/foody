@@ -25,6 +25,12 @@ function BasketItems() {
     dispatch(updateQuantity({ id, quantity }));
   };
 
+  const handleDeleteAll = () => {
+    basketProducts.forEach(product => {
+      dispatch(removeProduct(product.id));
+    });
+  };
+
   const handleCheckoutClick = () => {
     if (basketProducts.length > 0) {
       navigate('/user/checkout');
@@ -41,6 +47,9 @@ function BasketItems() {
         </div>
 
         <div className={style.basketList}>
+        <div className={style.deleteAll}>
+                      <button onClick={handleDeleteAll}>{t('Delete all')}</button>
+                  </div>
           {basketProducts.length > 0 ? (
             basketProducts.map((product) => (
               <div key={product.id} className={style.listCard}>
@@ -69,7 +78,7 @@ function BasketItems() {
             ))
           ) : (
 
-            // Basket Bosdusa
+            // Basket Boshdusa
 
             <div className={style.emptyBasket}>
               <LuShoppingBasket size={180} />

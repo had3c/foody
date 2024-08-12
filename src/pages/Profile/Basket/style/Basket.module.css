@@ -1,6 +1,6 @@
 .basketItems {
     background-color: var(--box-color3);
-    width:80%;
+    width: 80%;
     border-radius: 4px;
     height: 680px;
     display: flex;
@@ -9,15 +9,35 @@
     padding-top: 3%;
     padding-bottom: 1%;
 }
-.basketItems h2{
-    font-family:var(--font-mukta);
-font-size: 30px;
-font-weight: 600;
-line-height: 24px;
-letter-spacing: 0.03em;
-color:var(--text-color3);
-margin-left:3%;
+
+.basketItems h2 {
+    font-family: var(--font-mukta);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    color: var(--text-color3);
+    margin-left: 3%;
 }
+
+.deleteAll {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 13px;
+}
+
+.deleteAll button {
+    background-color: transparent;
+    font-size: 14px;
+    font-family: var(--font-roboto);
+    padding: 5px;
+    color: #D63626;
+    border: none;
+}
+.deleteAll button:hover{
+    background-color: #D63626;
+    color: white;
+ }
 
 .basketCount p {
     font-family: var(--font-roboto);
@@ -90,7 +110,7 @@ margin-left:3%;
     line-height: 40px;
     letter-spacing: 0.03em;
     color: var(--text-color3);
-    
+
 }
 
 .basketList {
@@ -109,16 +129,17 @@ margin-left:3%;
 .listCard {
     border-top: 1px solid #E0E0E0;
     margin: 1% 3% 3% 3%;
-}   
-.operation{
+}
+
+.operation {
     cursor: pointer;
 }
 
-.emptyBasket{
+.emptyBasket {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color:  #a9a8a8;
+    color: #a9a8a8;
     font-family: var(--font-roboto);
     font-weight: 600;
     letter-spacing: 1px;
@@ -126,58 +147,62 @@ margin-left:3%;
     justify-content: space-evenly;
     height: 330px;
 }
+
 @media only screen and (max-width: 768px) {
     .basketItems {
         background-color: white;
-        width:96%;
+        width: 96%;
         margin: 0 auto;
         height: 500px;
     }
-    .basketItems h2{
-    font-size: 25px;
+
+    .basketItems h2 {
+        font-size: 25px;
     }
+
     .itemCount {
         background-color: var(--box-color3);
         width: 35px;
         font-size: 13px;
     }
-    
+
     .itemCount p {
         margin: 4px 0;
         font-weight: 900;
     }
-    
+
     .listHead {
         justify-content: flex-start;
     }
-    
+
     .listInform img {
         width: 15%;
         margin-right: 10px;
     }
-    
+
     .listInform p {
         font-size: 13px;
         line-height: 20px;
     }
-    
+
     .listInform span {
         font-size: 12px;
         line-height: 20px;
-        
+
     }
-    
+
     .basketList {
         max-height: 350px;
         overflow-y: scroll;
     }
-    
+
     .listCard {
         border-top: 1px solid #E0E0E0;
         margin: 1% 3% 3% 3%;
     }
-    .emptyBasket{
+
+    .emptyBasket {
         font-size: 29px;
     }
-    
+
 }
