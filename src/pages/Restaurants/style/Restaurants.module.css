@@ -29,7 +29,7 @@
 }
 
 .scroll::-webkit-scrollbar {
-    width: 4px;
+    width: 2px;
 }
 
 .scroll::-webkit-scrollbar-thumb {
@@ -72,8 +72,29 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    cursor: pointer;
 }
 
+.card:hover {
+    box-shadow: rgb(238, 128, 128) 0px 3px 8px;
+}
+
+.newRest{
+    font-size: 15px;
+    width: 60px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-roboto);
+    background-color: #D63626;
+    color: white;
+    font-weight: 400;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 .card img {
     width: 80%;
     margin: 0 auto;
@@ -96,7 +117,7 @@
 }
 
 .delivery {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     line-height: 70px;
     letter-spacing: 0.03em;
@@ -131,7 +152,7 @@
     display: none;
 }
 
-@media only screen and (min-width: 1441px) {
+@media only screen and (min-width: 1443px) {
     .card {
         height: auto;
     }
@@ -140,9 +161,6 @@
     }
     .restaurant p{
         font-size: 1.5rem;
-    }
-    .delivery{
-        font-size: 19px;
     }
     .card img{
         width: 68%;
@@ -154,7 +172,7 @@
         font-size: 19px;
     }
 }
-@media only screen and (max-width: 1305px) {
+@media only screen and (max-width: 1320px) {
     .cardFooter {
         flex-direction: column;
         justify-content: flex-start;
@@ -228,6 +246,11 @@
         padding-block: 3px;
         font-size: 14px;
     }
+    .newRest{
+        font-size: 14px;
+        width: 50px;
+        height: 27px;
+    }
 }
 
 @media only screen and (max-width: 1075px) {
@@ -269,6 +292,14 @@
 
     .restList {
         width: 220px;
+    }
+    .restList p{
+      font-size: 15px;
+    }
+    .newRest{
+        font-size: 13px;
+        width: 45px;
+        height: 22px;
     }
 }
 
