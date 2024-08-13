@@ -12,24 +12,27 @@
     font-family: var(--font-roboto);
 }
 
-.cont input {
+.inputWrapper {
+    position: relative;
+}
+
+.inputField {
     width: 100%;
     padding: 12px;
+    padding-right: 40px;
     border: 1px solid gray;
     border-radius: 5px;
     font-size: 18px;
     color: black;
     background-color: #FFE7E7;
 }
-.cont span {
-    display: block;
+
+.eyeIcon {
     position: absolute;
-    top: 100%;
-    padding-left: 6px;
-    font-size: 16px;
-    color: var(--box-color2);
-    font-family: var(--font-roboto);
-}
-::placeholder{
-    font-family: var(--font-roboto);
+    top: calc(50% - 10px);
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
 }
