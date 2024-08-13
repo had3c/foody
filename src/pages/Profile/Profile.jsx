@@ -110,7 +110,7 @@ const handleDeleteImage = () => {
                   <div className={style.formik}>
                     <div>
                       <label>{t('Contact')}</label>
-                      <Field type="text" name="contact" placeholder={t('+44')} className={style.input} />
+                      <Field type="number" name="contact" placeholder={t('+44')} className={style.input} />
                       <ErrorMessage name="contact" component="div" className={style.error} />
     
                       <label>{t('User Name')}</label>

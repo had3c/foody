@@ -78,7 +78,7 @@ export default function Checkout() {
                     <div className={style.formik}>
                         <label htmlFor="contact">{t('Contact Number')}</label>
                   <Field
-                    type="text"
+                    type="number"
                     id="contact"
                     name="contact"
                     placeholder={t('+44')}

@@ -29,8 +29,11 @@
     align-items: center;
     padding: 15px 5%;
     border-bottom: 1px solid #F7F6FC;
-
     cursor: pointer;
+}
+
+.restaurant:hover {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .restaurant img {

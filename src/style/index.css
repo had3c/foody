@@ -46,3 +46,9 @@
   --box-color3: #f3f4f6;
   --box-color4: #ffffff;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
