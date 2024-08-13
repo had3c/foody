@@ -66,7 +66,7 @@
     color: var(--text-color2);
 }
 
-.form button {
+.checkButton {
     background-color: var(--button-color3);
     color: white;
     font-family: var(--font-mukta);
@@ -78,9 +78,24 @@
     margin-top: 28px;
     border-radius: 4px;
     width: 100%;
+
+    transition: all 0.3s;
 }
 
-.form button:hover {
+.checkButtonDisable{
+    background-color: rgb(134, 134, 134);
+    color: white;
+    font-family: var(--font-mukta);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 50px;
+    letter-spacing: 0.03em;
+    border: none;
+    margin-top: 28px;
+    border-radius: 4px;
+    width: 100%;
+}
+.checkButton:hover {
     background-color: white;
  color: var(--button-color3);
    outline: 1px solid var(--button-color3);
