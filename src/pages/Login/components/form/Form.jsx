@@ -14,6 +14,7 @@ import { useAuth } from '../../../../context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
+
 function LoginForm() {
     const { t } = useTranslation();
     const schemas = getValidationSchemas(t);
