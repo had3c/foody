@@ -8,8 +8,8 @@ import upload from '../../assets/images/uploadFile.svg';
 import avatar from '../../assets/icons/avatar.svg'
 
 export default function Profile() {
-  const { t } = useTranslation();
-  const { profileImage, fullName, updateProfile,setProfileImage,userData, setUserData  } = useProfile();
+  const { t, i18n } = useTranslation();
+  const { profileImage, fullName, updateProfile, setProfileImage, userData, setUserData } = useProfile();
   const inputFileRef = useRef(null);
 
   useEffect(() => {
@@ -24,25 +24,25 @@ export default function Profile() {
       const reader = new FileReader();
       reader.onloadend = () => {
         const imageURL = reader.result;
-        setProfileImage(imageURL); 
-        localStorage.setItem('profileImage', imageURL); 
+        setProfileImage(imageURL);
+        localStorage.setItem('profileImage', imageURL);
       };
-      reader.readAsDataURL(file); 
+      reader.readAsDataURL(file);
     }
   };
 
- const handleImageClick = () => {
+  const handleImageClick = () => {
     inputFileRef.current.click();
   };
 
-const handleDeleteImage = () => {
-  setProfileImage(avatar);
-  localStorage.removeItem('profileImage'); 
- 
-};
+  const handleDeleteImage = () => {
+    setProfileImage(avatar);
+    localStorage.removeItem('profileImage');
+
+  };
 
   const dataSubmitting = (values) => {
-    const isDuplicate = userData.some(data => 
+    const isDuplicate = userData.some(data =>
       data.contact === values.contact &&
       data.username === values.username &&
       data.fullName === values.fullName &&
@@ -51,15 +51,30 @@ const handleDeleteImage = () => {
     );
 
     if (!isDuplicate) {
-      setUserData([...userData, values]); 
-      updateProfile(profileImage, values.fullName); 
-    } 
+      values.contact = getContactValue() + values.contact
+
+      setUserData([...userData, values]);
+      updateProfile(profileImage, values.fullName);
+
+    }
+  };
+
+  const getContactValue = () => {
+    switch (i18n.language) {
+      case 'az':
+        return '+994';
+      case 'en':
+        return '+44';
+      case 'fr':
+        return '+33';
+      default:
+        return '+1';
+    }
   };
 
   console.log(userData)
   const validationSchema = Yup.object().shape({
-    contact: Yup.string()
-      .matches(/^(?:\+994\d{7}|\+44\d{10}|\+33\d{9})$/, t('Contact is invalid'))
+    contact: Yup.number()
       .required(t('Contact Required')),
     username: Yup.string().required(t('Username Required')),
     fullName: Yup.string().required(t('Fullname Required')),
@@ -70,77 +85,77 @@ const handleDeleteImage = () => {
 
   const handleFormSubmit = (values, { setSubmitting, resetForm }) => {
     dataSubmitting(values);
-    resetForm(); 
-    setSubmitting(false); 
+    resetForm();
+    setSubmitting(false);
   };
 
   return (
     <div className={style.userProfile}>
-          <h2>{t('Profile')}</h2>
-          <div className={style.upload} onClick={handleImageClick}>
-            <img src={upload} alt="" />
-            <p>{t('upload')} </p>
-          </div>
-        <input
-            type="file"
-            accept="image/*"
-            ref={inputFileRef}
-            style={{ display: 'none' }}
-            onChange={handleFileSelect}
-          />
-          <div className={style.deleteImg}>
-              <button onClick={handleDeleteImage}>{t('Delete Profile Photo')}</button>
-          </div>
-        
-    
-          <div className={style.form}>
-            <Formik
-              initialValues={{
-                contact: '',
-                username: '',
-                fullName: '',
-                email: '',
-                address: '',
-              }}
-              validationSchema={validationSchema}
-              onSubmit={handleFormSubmit}
-            >
-              {({ isSubmitting }) => (
-                <Form>
-                  <div className={style.formik}>
-                    <div>
-                      <label>{t('Contact')}</label>
-                      <Field type="number" name="contact" placeholder={t('+44')} className={style.input} />
-                      <ErrorMessage name="contact" component="div" className={style.error} />
-    
-                      <label>{t('User Name')}</label>
-                      <Field type="text" name="username" placeholder={t('User Name')} className={style.input} />
-                      <ErrorMessage name="username" component="div" className={style.error} />
-    
-                      <label>{t('Full Name')}</label>
-                      <Field type="text" name="fullName" placeholder={t('Full Name')} className={style.input} />
-                      <ErrorMessage name="fullName" component="div" className={style.error} />
-                    </div>
-    
-                    <div>
-                      <label>{t('Email')}</label>
-                      <Field type="email" name="email" placeholder={t('Email')} className={style.input} />
-                      <ErrorMessage name="email" component="div" className={style.error} />
-    
-                      <label>{t('Address')}</label>
-                      <Field type="text" name="address" placeholder={t('Address')} className={style.input} />
-                      <ErrorMessage name="address" component="div" className={style.error} />
-    
-                      <button type="submit" disabled={isSubmitting}>
-                        {t('Save')}
-                      </button>
-                    </div>  
-                  </div>
-                </Form>
-               )}
-             </Formik>
-           </div>
-         </div>
+      <h2>{t('Profile')}</h2>
+      <div className={style.upload} onClick={handleImageClick}>
+        <img src={upload} alt="" />
+        <p>{t('upload')} </p>
+      </div>
+      <input
+        type="file"
+        accept="image/*"
+        ref={inputFileRef}
+        style={{ display: 'none' }}
+        onChange={handleFileSelect}
+      />
+      <div className={style.deleteImg}>
+        <button onClick={handleDeleteImage}>{t('Delete Profile Photo')}</button>
+      </div>
+
+
+      <div className={style.form}>
+        <Formik
+          initialValues={{
+            contact: '',
+            username: '',
+            fullName: '',
+            email: '',
+            address: '',
+          }}
+          validationSchema={validationSchema}
+          onSubmit={handleFormSubmit}
+        >
+          {({ isSubmitting }) => (
+            <Form>
+              <div className={style.formik}>
+                <div>
+                  <label>{t('Contact')}</label>
+                  <Field type="number" name="contact" placeholder={t('+44')} className={style.input} />
+                  <ErrorMessage name="contact" component="div" className={style.error} />
+
+                  <label>{t('User Name')}</label>
+                  <Field type="text" name="username" placeholder={t('User Name')} className={style.input} />
+                  <ErrorMessage name="username" component="div" className={style.error} />
+
+                  <label>{t('Full Name')}</label>
+                  <Field type="text" name="fullName" placeholder={t('Full Name')} className={style.input} />
+                  <ErrorMessage name="fullName" component="div" className={style.error} />
+                </div>
+
+                <div>
+                  <label>{t('Email')}</label>
+                  <Field type="email" name="email" placeholder={t('Email')} className={style.input} />
+                  <ErrorMessage name="email" component="div" className={style.error} />
+
+                  <label>{t('Address')}</label>
+                  <Field type="text" name="address" placeholder={t('Address')} className={style.input} />
+                  <ErrorMessage name="address" component="div" className={style.error} />
+
+                  <button type="submit" disabled={isSubmitting}>
+                    {t('Save')}
+                  </button>
+                </div>
+              </div>
+            </Form>
+          )}
+        </Formik>
+      </div>
+    </div>
   );
 }
 
