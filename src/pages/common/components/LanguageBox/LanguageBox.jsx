@@ -10,6 +10,22 @@ import { useState } from "react";
 
 import { useTranslation } from "react-i18next";
 
+function detectLanguageImage(lang) {
+  switch (lang) {
+    case "az":
+      return aze;
+
+    case "fr":
+      return fra;
+
+    case "en":
+      return eng;
+
+    default:
+      return eng;
+  }
+}
+
 const langs = {
   en: eng,
   fr: fra,
@@ -17,12 +33,12 @@ const langs = {
 };
 
 export default function LanguageBox() {
+  const { i18n } = useTranslation();
+
   const [lang, setLang] = useState(
     localStorage.getItem("i18nextLng").slice(0, 2)
   );
   const [show, setShow] = useState(false);
-
-  const { i18n } = useTranslation();
 
   const handleLangSelect = async (value) => {
     await i18n.changeLanguage(value);
@@ -33,12 +49,13 @@ export default function LanguageBox() {
   const liItems = Object.keys(langs).map((key) => (
     <LangItem key={key} data={{ key, langs, handleLangSelect }} />
   ));
+  console.log(i18n.language);
 
   return (
     <div className="LanguageBox">
       <button className="lang_btn" onClick={() => setShow((prev) => !prev)}>
         <figure className="lang_fig_img_btn">
-          <img src={langs[lang]} alt="" />
+          <img src={detectLanguageImage(lang)} alt="" />
         </figure>
       </button>
 
