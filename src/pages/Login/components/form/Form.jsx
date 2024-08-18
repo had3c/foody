@@ -14,8 +14,13 @@ import { useAuth } from '../../../../context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
+import ReCAPTCHA from 'react-google-recaptcha';
 
 function LoginForm() {
+    const onChange = () => {
+        // ReCAPTCHA onChange logic here
+    }
+
     const { t } = useTranslation();
     const schemas = getValidationSchemas(t);
 
@@ -135,17 +140,25 @@ function LoginForm() {
                                             type="password"
                                             placeholder={t("PP")}
                                         />
-                                        <div className={StyleForm.selectField}>
-                                            <label htmlFor="gender">{t("Gender")}</label>
-                                            <Field as="select" name="gender" id="gender">
-                                                <option value="" disabled>{t('Select')}</option>
-                                                <option value="male">{t('Male')}</option>
-                                                <option value="female">{t('Female')}</option>
-                                                <option value="other">{t('Other')}</option>
-                                            </Field>
-                                            {errors.gender && touched.gender && (
-                                                <div className={StyleForm.errorMessage}>{errors.gender}</div>
-                                            )}
+                                        <div className={StyleForm.formRow}>
+                                            <div className={StyleForm.selectField}>
+                                                <label htmlFor="gender">{t("Gender")}</label>
+                                                <Field as="select" name="gender" id="gender">
+                                                    <option value="" disabled>{t('Select')}</option>
+                                                    <option value="male">{t('Male')}</option>
+                                                    <option value="female">{t('Female')}</option>
+                                                    <option value="other">{t('Other')}</option>
+                                                </Field>
+                                                {errors.gender && touched.gender && (
+                                                    <div className={StyleForm.errorMessage}>{errors.gender}</div>
+                                                )}
+                                            </div>
+                                            <div className={StyleForm.recaptchaContainer}>
+                                                <ReCAPTCHA
+                                                    sitekey="6LeNHikqAAAAAKyGkMVWiiX6fSi1hpSng0vQ9aRY"
+                                                    onChange={onChange}
+                                                />
+                                            </div>
                                         </div>
                                     </>
                                 ) : (

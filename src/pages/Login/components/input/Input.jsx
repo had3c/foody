@@ -31,10 +31,10 @@ function Input({ id, label, name, placeholder, type = 'text' }) {
                 {type === 'password' && (
                     <img 
                         src={isPasswordVisible ? EyeSlashInput : EyeInput} 
-                        alt="toggle password visibility" 
+                        alt="" 
                         className={StyleInput.eyeIcon} 
                         onClick={togglePasswordVisibility}
-                        onMouseLeave={hidePassword} // Скрываем пароль при убирании курсора
+                        onMouseLeave={hidePassword} 
                     />
                 )}
             </div>

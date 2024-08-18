@@ -1,3 +1,15 @@
+.formRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+/* .recaptcha {
+    width: 20px;
+    height: 10px;
+} */
+
 .pageContainer {
     width: 100%;
     max-width: 1440px;
@@ -212,11 +224,24 @@ form select {
     margin-top: 5px;
 }
 
-.disableBtn{
+.disableBtn {
     background-color: gray !important;
 }
 
+@media screen and (max-width: 1080px) {
+    .formRow {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 @media screen and (max-width: 768px) {
+    .formRow {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
     .container {
         flex-direction: column;
     }
@@ -234,5 +259,72 @@ form select {
 @media screen and (min-width: 768px) {
     .selectField {
         width: 50%;
+    }
+}
+
+@media screen and (max-width: 547px) {
+    .formRow {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .recaptchaContainer {
+        margin-left: calc(20% - 60px);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .recaptchaContainer {
+        margin-left: calc(20% - 65px);
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .recaptchaContainer {
+        margin-left: calc(20% - 70px);
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .recaptchaContainer {
+        margin-left: calc(20% - 75px);
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .recaptchaContainer {
+        margin-left: calc(20% - 80px);
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .recaptchaContainer {
+        margin-left: calc(20% - 85px);
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .recaptchaContainer {
+        margin-left: calc(20% - 90px);
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .recaptchaContainer {
+        margin-left: calc(20% - 80px);
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .recaptchaContainer {
+        margin-left: calc(20% - 80px);
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .recaptchaContainer {
+        margin-left: calc(20% - 90px);
     }
 }
