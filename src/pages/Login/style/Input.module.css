@@ -36,3 +36,7 @@
     width: 24px;
     height: 24px;
 }
+.error{
+    color: red;
+    font-family: var(--font-roboto);
+}
