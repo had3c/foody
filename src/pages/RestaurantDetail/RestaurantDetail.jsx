@@ -106,6 +106,12 @@ export default function RestaurantDetail() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const handleCheckoutClick = () => {
+    if (basketProducts.length > 0) {
+      navigate('/user/checkout');
+    }
+  };
+
   function openFilterMenu() {
     setIsOpen(!isOpen);
   }
@@ -199,9 +205,9 @@ export default function RestaurantDetail() {
                           </div>
                         </div>
                         <div className={bstyle.itemCount}>
-                          <p onClick={() => handleUpdateQuantity(product.id, product.quantity + 1)} className={bstyle.operation}>＋</p>
+                          <button onClick={() => handleUpdateQuantity(product.id, product.quantity + 1)} className={bstyle.operation}>＋</button>
                           <p>{product.quantity}</p>
-                          <p onClick={() => handleUpdateQuantity(product.id, product.quantity - 1)}className={bstyle.operation}>‒</p>
+                          <button onClick={() => handleUpdateQuantity(product.id, product.quantity - 1)}className={bstyle.operation}>‒</button>
                         </div>
                       </div>
                     </div>
@@ -222,8 +228,9 @@ export default function RestaurantDetail() {
               </div>)}
 
           </div>
-          <Checkout basketProducts={basketProducts}/>
-          
+          <div style={{ cursor: 'pointer' }} onClick={handleCheckoutClick}>
+        <Checkout basketProducts={basketProducts}/>
+      </div>
         </div>
       </div>)}
     </div>

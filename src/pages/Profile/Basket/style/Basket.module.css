@@ -28,15 +28,17 @@
 
 .deleteAll button {
     background-color: transparent;
-    font-size: 14px;
+    font-size: 15px;
     font-family: var(--font-roboto);
     padding: 5px;
     color: #D63626;
     border: none;
+    transition: all .3s;
 }
 .deleteAll button:hover{
     background-color: #D63626;
     color: white;
+    border-radius: 3px;
  }
 
 .basketCount p {
@@ -72,7 +74,10 @@
     margin: 7px 0;
     font-weight: 900;
 }
-
+.itemCount button{
+    background-color: transparent;
+    border: none;
+}
 .listHead {
     display: flex;
     justify-content: flex-end;

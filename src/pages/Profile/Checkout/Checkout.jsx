@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { addProduct, removeProduct, updateQuantity } from '../../../redux/features/basketSlice/basketSlice';
-import { useSelector } from 'react-redux';
+import {removeProduct} from '../../../redux/features/basketSlice/basketSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import style from './style/Checkout.module.css';
 import checked from '../../../assets/images/successCheck.svg';
@@ -11,6 +11,7 @@ export default function Checkout() {
   const [isCheckedOut, setIsCheckedOut] = useState(false);
   const [orders, setOrders] = useState([]);
   const { t, i18n } = useTranslation();
+  const dispatch= useDispatch()
   const basketProducts = useSelector((state) => state.basket.products);
   const getContactValue = () => {
     switch (i18n.language) {
@@ -26,20 +27,15 @@ export default function Checkout() {
   };
 
   const handleCheckout = (values) => {
-    const exists = orders.some(order =>
-      order.address === values.address &&
-      order.contact === values.contact &&
-      order.paymentMethod === values.paymentMethod
-    );
-
-    if (!exists) {
       values.contact = getContactValue() + values.contact
       setOrders([...orders, values]);
-    }
     setIsCheckedOut(true);
     setTimeout(() => {
       setIsCheckedOut(false);
     }, 2500);
+    basketProducts.forEach(product => {
+      dispatch(removeProduct(product.id));
+    });
   };
   console.log(orders)
   const validationSchema = Yup.object().shape({

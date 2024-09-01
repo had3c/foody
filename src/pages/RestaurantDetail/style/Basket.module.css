@@ -56,6 +56,10 @@
     font-weight: 700;
 }
 
+.itemCount button{
+    background-color: transparent;
+    border: none;
+}
 .listHead {
     display: flex;
     justify-content: flex-end;
@@ -116,11 +120,13 @@
     padding: 3px;
     color: #D63626;
     border: none;
+    transition: all .3s;
 }
 
 .deleteAll button:hover{
     background-color: #D63626;
     color: white;
+    border-radius: 3px;
 }
 .basketList::-webkit-scrollbar {
     width: 3px;
