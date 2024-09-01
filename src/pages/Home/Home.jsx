@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom'
 import style from './style/Home.module.css'
+import { useAuth } from '../../context/AuthContext';
 import background from '../../assets/images/bgBlack.svg'
 import burger from '../../assets/images/headerBurger.svg'
 import pizzaHut from '../../assets/images/pizzaHut.svg'
@@ -23,6 +24,7 @@ export default function Home() {
 
   const navigate = useNavigate()
   const { t } = useTranslation();
+  const { user } = useAuth();
   const [searchResult, setSearchResult] = useState('');
   const debouncedSearch = useDebounce(searchResult, 200);
   return <div>
@@ -44,9 +46,14 @@ export default function Home() {
             <SearchResult debouncedSearch={debouncedSearch} />
           </div>
         )}
-            <button className={style.register} onClick={() => navigate('/login')}>
+           
+            {!user ? (
+             <button className={style.register} onClick={() => navigate('/login')}>
               {t('Register')}
             </button>
+          ) : (
+            <></>
+          )}
             <button className={style.orderNow} onClick={() => navigate('/restaurants')}>
               {t('Order now')}
             </button>

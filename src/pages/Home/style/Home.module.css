@@ -606,7 +606,9 @@
         line-height: 27px;
         text-align: center;
     }
-
+     .orderNow{
+        margin-top: 10px;
+     }
     .slogan p {
         display: none;
     }

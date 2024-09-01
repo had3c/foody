@@ -47,9 +47,10 @@ function BasketItems() {
         </div>
 
         <div className={style.basketList}>
-        <div className={style.deleteAll}>
+        {basketProducts.length > 0 ? ( <div className={style.deleteAll}>
                       <button onClick={handleDeleteAll}>{t('Delete all')}</button>
-                  </div>
+                  </div>) : (<></>)}
+       
           {basketProducts.length > 0 ? (
             basketProducts.map((product) => (
               <div key={product.id} className={style.listCard}>
@@ -69,9 +70,9 @@ function BasketItems() {
                     </div>
                   </div>
                   <div className={style.itemCount}>
-                    <p onClick={() => handleUpdateQuantity(product.id, product.quantity + 1)} className={style.operation}>＋</p>
+                    <button onClick={() => handleUpdateQuantity(product.id, product.quantity + 1)} className={style.operation}>＋</button>
                     <p>{product.quantity}</p>
-                    <p onClick={() => handleUpdateQuantity(product.id, product.quantity - 1)} className={style.operation}>‒</p>
+                    <button onClick={() => handleUpdateQuantity(product.id, product.quantity - 1)} className={style.operation}>‒</button>
                   </div>
                 </div>
               </div>
