@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import useOnClickOutside from 'react-cool-onclickoutside';
 import { useAuth } from '../../../../context/AuthContext';
 import navLogo from '../../../../assets/icons/headerLogo.svg';
 import LanguageBox from '../LanguageBox/LanguageBox';
@@ -32,6 +33,12 @@ function Navbar() {
   function dropDownMenu() {
     setDropDown(!dropDown);
   }
+  
+  const ref = useOnClickOutside(() => {
+    if (dropDown) {
+      setDropDown(false);
+    }
+  });
 
   const getNavLinkStyle = (path) => {
     return {
@@ -65,7 +72,7 @@ function Navbar() {
         />
         {searchResult && (
           <div className={navStyle.searchResult}>
-            <SearchResult debouncedSearch={debouncedSearch} />
+            <SearchResult debouncedSearch={debouncedSearch} setSearchResult={setSearchResult}/>
           </div>
         )}
 
@@ -75,7 +82,7 @@ function Navbar() {
             <div className={navStyle.userTrue}>
               <img src={basket} alt="" onClick={() => navigate('/user/basket')} />
               <img src={profileImage || avatar} alt="" onClick={dropDownMenu} className={navStyle.userImg} />
-              {dropDown && <UserMenu setDropDown={setDropDown} />}
+              {dropDown && <UserMenu ref={ref} setDropDown={setDropDown} />}
             </div>
           ) : (
             <button className={navStyle.signupBtn} onClick={() => navigate('/login')}>{t('Sign Up')}</button>

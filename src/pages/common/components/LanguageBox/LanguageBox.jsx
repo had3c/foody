@@ -3,11 +3,10 @@ import "./LanguageBox.css";
 import eng from "../../../../assets/images/langEng.svg";
 import aze from "../../../../assets/images/langAze.svg";
 import fra from "../../../../assets/images/langFrance.svg";
-
 import LangItem from "./components/LangItem";
 import { motion } from "framer-motion";
 import { useState } from "react";
-
+import useOnclickOutside from "react-cool-onclickoutside";
 import { useTranslation } from "react-i18next";
 
 function detectLanguageImage(lang) {
@@ -46,6 +45,11 @@ export default function LanguageBox() {
     setShow(false);
   };
 
+  const ref = useOnclickOutside(() => {
+    if (show) {
+      setShow(false);
+    }
+  });
   const liItems = Object.keys(langs).map((key) => (
     <LangItem key={key} data={{ key, langs, handleLangSelect }} />
   ));
@@ -61,6 +65,7 @@ export default function LanguageBox() {
 
       {show && (
         <motion.ul
+        ref={ref}
           initial={{ scale: 0, x: 30 }}
           animate={{ scale: 1, x: 30 }}
           transition={{

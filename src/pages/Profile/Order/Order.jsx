@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import style from './style/Order.module.css';
 import { useTranslation } from 'react-i18next'
+import useOnclickOutside from 'react-cool-onclickoutside';
 import setting from '../../../assets/icons/showDel.svg';
 import prev from '../../../assets/icons/prevTable.svg';
 import next from '../../../assets/icons/nextTable.svg';
@@ -16,7 +17,6 @@ export default function Order() {
   const toggleShowDel = (id) => {
     setShowDel(showDel === id ? null : id);
   };
-
 
   const [data, setData] = useState([
     { id: '9177', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
@@ -57,6 +57,11 @@ export default function Order() {
     setCurrentPage(1);
   };
 
+  const ref =useOnclickOutside(() => {
+    if (showDel) {
+      setShowDel(false);
+    }
+  });
   const handleDelete = (id) => {
     const updatedData = data.filter(item => item.id !== id);
     setData(updatedData);
@@ -64,6 +69,7 @@ export default function Order() {
     //   setCurrentPage(Math.ceil(updatedData.length / perPage));
     // }
   };
+  
   return (
     <div className={style.userOrder}>
       <h2>{t('Your Orders')}</h2>
@@ -87,7 +93,7 @@ export default function Order() {
                 <td className={style.hidden}>
                   <img src={setting} alt="Settings" onClick={() => toggleShowDel(item.id)} />
                   {showDel === item.id && (
-                    <ShowDel setShowDel={setShowDel} handleDelete={handleDelete} itemId={item.id} />
+                    <ShowDel setShowDel={setShowDel} ref={ref} handleDelete={handleDelete} itemId={item.id} />
                   )}
                 </td>
                 <td className={style.Id}><span>{item.id}</span></td>
@@ -99,7 +105,7 @@ export default function Order() {
                 <td className={style.show}>
                   <img src={setting} alt="Settings" onClick={() => toggleShowDel(item.id)} />
                   {showDel === item.id && (
-                    <ShowDel setShowDel={setShowDel} handleDelete={handleDelete} itemId={item.id} />
+                    <ShowDel setShowDel={setShowDel}  ref={ref} handleDelete={handleDelete} itemId={item.id} />
                   )}
                 </td>
               </tr>
@@ -135,8 +141,8 @@ export default function Order() {
             alt="Next"
             onClick={handleNextPage}
           />
+          <p className={style.activePage}>{t("Page")}:{currentPage}</p>
         </div>
-
 
         <div className={style.selectPage}>
           <p>{t('Rows per page')}</p>
