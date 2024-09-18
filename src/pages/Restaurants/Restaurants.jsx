@@ -8,10 +8,10 @@ import closeModal from '../../assets/icons/close_modal.svg';
 import { useNavigate } from 'react-router-dom';
 
 export default function Restaurants() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(true);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [selectedCuisine, setSelectedCuisine] = useState('All');
-  const { t } = useTranslation();
+  const [selectedCuisine, setSelectedCuisine] = useState(t('All'));
   const navigate = useNavigate()
 
   const restaurantData = [
@@ -106,7 +106,7 @@ export default function Restaurants() {
   }
 
   function filterRestaurants() {
-    if (selectedCuisine === 'All') {
+    if (selectedCuisine === t('All')) {
       setFilteredRestaurants(restaurantData);
     } else {
       const filtered = restaurantData.filter((restaurant) =>
@@ -121,7 +121,7 @@ export default function Restaurants() {
     const uniqueCuisines = cuisinesArray.filter((value, index, arr) => 
       arr.indexOf(value) === index
     );
-    return ['All', ...uniqueCuisines];
+    return [t('All'), ...uniqueCuisines];
   }
   
   return (

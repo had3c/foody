@@ -201,6 +201,19 @@
     border: none;
 }
 
+.sortingRest{
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 4%;
+}
+.sortingRest select{
+    padding: 4px 8px;
+    font-family: var(--font-roboto);
+    font-size: 15px;
+    border: none;
+    border-radius: 2px;
+    outline: 1px solid #BDBDBD;
+}
 
 /*          Css Media         */
 @media only screen and (min-width: 1441px){
