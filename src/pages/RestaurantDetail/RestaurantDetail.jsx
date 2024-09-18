@@ -21,6 +21,7 @@ export default function RestaurantDetail() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(true);
+  const [sortOption, setSortOption] = useState('');
   const dispatch = useDispatch();
   const basketProducts = useSelector((state) => state.basket.products);
 
@@ -112,6 +113,22 @@ export default function RestaurantDetail() {
     }
   };
 
+  
+  const sortedProducts = [...productData].sort((a, b) => {
+    switch (sortOption) {
+      case 'A-Z':
+        return a.name.localeCompare(b.name);
+      case 'Z-A':
+        return b.name.localeCompare(a.name);
+      case 'priceAsc':
+        return a.price - b.price;
+      case 'priceDesc':
+        return b.price - a.price;
+      default:
+        return 0;
+    }
+  });
+
   function openFilterMenu() {
     setIsOpen(!isOpen);
   }
@@ -138,11 +155,24 @@ export default function RestaurantDetail() {
       </div>
     </div>
 
+    <div className={style.sortingRest}>
+        <select
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value)}
+        >
+          <option value="">{t('Sort by')}</option>
+          <option value="A-Z">A-Z</option>
+          <option value="Z-A">Z-A</option>
+          <option value="priceAsc">{t('Price: Low to High')}</option>
+          <option value="priceDesc">{t('Price: High to Low')}</option>
+        </select>
+      </div>
+
     <div className={style.items}>
       <div className={style.products}>
         <h2>{t('Products')}</h2>
         <div className={style.prdctCards}>
-          {productData.map((product) => (
+          {sortedProducts.map((product) => (
             <div key={product.id} className={style.prdctCard}>
               <img src={product.image} alt={product.name} className={style.prdctImg} />
               <div className={style.feature}>
