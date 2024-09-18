@@ -8,7 +8,7 @@ import { useProfile } from '../../../../context/ProfileContext';
 import { useTranslation } from 'react-i18next';
 
 
-const UserMenu = ({ setDropDown }) => {
+const UserMenu = React.forwardRef(({ setDropDown }, ref) =>  {
   const { t } = useTranslation();
   const { generateUserLogoutDatas } = useAuth();
   const { fullName } = useProfile();
@@ -39,7 +39,7 @@ const UserMenu = ({ setDropDown }) => {
     }
   };
   return (
-    <div className={style.dropDown}>
+    <div className={style.dropDown} ref={ref}>
       <ul>
         <li> <span>{fullName || t('User')}</span></li>
         <li><NavLink to="/user" onClick={() => setDropDown(false)}>{t('Profile')}</NavLink></li>
@@ -52,6 +52,6 @@ const UserMenu = ({ setDropDown }) => {
       </ul>
     </div>
   );
-};
+});
 
 export default UserMenu;

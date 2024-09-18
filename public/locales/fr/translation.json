@@ -239,6 +239,11 @@
    "More": "Plus",
    "No results found":"Aucun résultat trouvé",
    "Delete all":"Supprimer tout",
+   "Sort by":"Trier par",
+   "Price: Low to High":"Prix : faible à élevé",
+   "Price: High to Low":"Prix : haut à bas",
+   "All":"Toute",
+   "Page": "Page",
   "+44":"+33",
 
   "Website reponse taking time, how to improve?": "La réponse d'un site Web prend du temps, comment s'améliorer ?",

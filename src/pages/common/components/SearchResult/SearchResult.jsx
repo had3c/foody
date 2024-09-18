@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import React from 'react';
+import useOnClickOutside from 'react-cool-onclickoutside';
 import { MdKeyboardDoubleArrowRight } from 'react-icons/md';
 import { useNavigate } from "react-router-dom"
 import {useTranslation} from 'react-i18next'
 
 import style from './Search.module.css';
 
-function SearchResult({ debouncedSearch }) {
+function SearchResult({ debouncedSearch,setSearchResult}) {
     const [shouldShow, setShouldShow]=useState(true)
     const navigate = useNavigate();
     const { t } = useTranslation();
@@ -148,12 +149,18 @@ function SearchResult({ debouncedSearch }) {
         const handleRestaurantClick = (restaurantId) => {
             navigate(`/restaurants/${restaurantId}`);
             setShouldShow(false);
+            setSearchResult('');
         };
     
-
+          
+  const ref = useOnClickOutside(() => {
+    if (shouldShow) {
+      setShouldShow(false);
+    }
+  });
     return  shouldShow &&(
         
-            <div className={style.search}>
+            <div className={style.search} ref={ref}>
                 {filteredRestaurants.length > 0 ? (
                     filteredRestaurants.slice(0, nextItems).map((restaurant, index) => (
                         <div key={index} className={style.restaurant} onClick={() => handleRestaurantClick(restaurant.id)}>

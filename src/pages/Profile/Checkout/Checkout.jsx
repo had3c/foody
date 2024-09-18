@@ -26,6 +26,8 @@ export default function Checkout() {
     }
   };
 
+  const isFriday = new Date().getDay() === 3; 
+
   const handleCheckout = (values) => {
       values.contact = getContactValue() + values.contact
       setOrders([...orders, values]);
@@ -131,6 +133,7 @@ export default function Checkout() {
 
       {!isCheckedOut && (
         <div className={style.orderTotal}>
+           {isFriday ? <div className={style.discount}>Friday discount - 15%</div> : null}
           <div>
             <h4>{t('Your Order')}</h4>
             <ul>
@@ -145,14 +148,16 @@ export default function Checkout() {
               ))}
             </ul>
           </div>
+          <div>
+          </div>
           <div className={style.total}>
             <h5>{t('Total')}</h5>
             <p>
               ${basketProducts.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)}
             </p>
+            {isFriday ? <span className={style.lastTotal}>${(basketProducts.reduce((total, product) => total + product.price * product.quantity, 0) * 0.85).toFixed(2)}</span> : null}
           </div>
         </div>
-
       )}
 
       {isCheckedOut && (

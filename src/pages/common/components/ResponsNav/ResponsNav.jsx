@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Swal from 'sweetalert2';
+import useOnClickOutside from 'react-cool-onclickoutside';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import style from './ResponsNav.module.css';
 import '../../style/Swal.css'
@@ -47,6 +48,11 @@ function ResponsNav({ setOpenMenu, openMenu }) {
     const closeResponsMenu = () => {
         setOpenMenu(false);
     }
+    const ref = useOnClickOutside(() => {
+        if (openMenu) {
+          setOpenMenu(false);
+        }
+      });
     const getNavLinkStyle = (path) => {
         return {
             color: location.pathname === path || (location.pathname === '/' && path === '/') ? '#d63626' : '#828282',
@@ -57,6 +63,7 @@ function ResponsNav({ setOpenMenu, openMenu }) {
             {openMenu && (
                 <motion.div
                     className={style.navbarBg}
+                    ref={ref}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}

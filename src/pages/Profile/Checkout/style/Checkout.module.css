@@ -147,11 +147,24 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
-
+.discount{
+    position: absolute;
+    font-family: var(--font-roboto);
+    font-weight: 400;
+    color: white;
+    border-radius: 3px;
+    font-size: 15px;
+    background-color: #d63526e2;
+    padding: 5px 10px;
+    top: 0;
+    right: 0;
+}
 .orderTotal h4 {
     font-family: var(--font-roboto);
     font-size: 18px;
+    margin-top: 10px;
     font-weight: 500;
     line-height: 30px;
     letter-spacing: 0.03em;
@@ -212,9 +225,18 @@
     justify-content: space-between;
     align-items: center;
     padding-inline: 3%;
+    position: relative;
     border-top: 1px solid #E0E0E0;
 }
-
+.lastTotal{
+position: absolute;
+font-family: var(--font-roboto);
+font-size: 15px;
+right: 10px;
+bottom: 8px;
+font-weight: 500;
+color: red;
+}
 .total h5 {
     font-family: var(--font-roboto);
     color: var(--text-color2);
@@ -262,6 +284,13 @@
         font-size: 12px;
         line-height: 40px;
     }
+    .discount{
+        font-size: 12px;
+        padding: 3px 10px;
+    }
+    .lastTotal{
+        font-size: 12px;
+    }
 }
 
 @media only screen and (max-width: 1146px) {
@@ -278,12 +307,8 @@
     .orderTotal li span:first-child {
         font-size: 14px;
     }
-
+    
     .orderTotal li span:last-child {
-        font-size: 11px;
-    }
-
-    .orderTotal p {
         font-size: 11px;
     }
     .error{
@@ -291,7 +316,11 @@
         font-size: 12px;
         margin-top: 8px;
     }
+    .lastTotal{
+        right: 8px;
+    }
 }
+
 
 @media only screen and (max-width: 960px) {
     .checkOut {
@@ -423,6 +452,12 @@
         width: 18px;
         height: 18px;
     }
+    .discount{
+        font-size: 11px;
+    }
+    .lastTotal{
+       bottom: 0;
+    }
 }
 
 @media only screen and (max-width: 690px) {
@@ -530,5 +565,28 @@
         font-weight: 500;
         font-size: 16px;
         margin-top: 10px;
+    }
+    .discount{
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+    .lastTotal{
+      font-size: 14px;
+      right: 19px;
+      bottom: 0;
+    }
+}
+@media only screen and (max-width: 690px) {
+    .lastTotal{
+        right: 15px;
+    }
+}
+@media only screen and (max-width: 465px) {
+    .lastTotal{
+        right: 11.5px;
+    }
+    .discount{
+        font-size: 11.5px;
+        padding: 4px 10px;
     }
 }
