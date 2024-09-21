@@ -14,9 +14,14 @@
 }
 
 .promoTxt {
-    width: 45%;
+    width: 55%;
 }
-
+.promoImg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+width: 40%;
+}
 .promo h2 {
     font-family: var(--font-roboto);
     font-size: 50px;
@@ -40,8 +45,11 @@
 
 @media only screen and (max-width: 1290px) {
 .promoTxt{
-    width: 70%;
-    margin-left: 20px;
+    width: 60%;
+    margin-left: 40px;
+}
+.promoImg{
+    width: 38%;
 }
 }
 
@@ -51,13 +59,14 @@
     .promo h2 {
         font-size: 43px;
     }
-
     .promo p {
         font-size: 17px;
     }
-
-    .promoImg img {
-        width: 80%;
+    .promoImg{
+        width: 40%;
+    }
+    .promoTxt{
+        width: 58%;
     }
 }
 
@@ -73,13 +82,11 @@
     .promo p {
         font-size: 14px;
     }
-
-    .promoImg img {
-        width: 85%;
-    }
-
     .promoTxt {
-        width: 85%;
+        width: 60%;
+    }
+    .promoImg{
+        width: 38%;
     }
 }
 
@@ -88,20 +95,11 @@
     .offers {
         padding: 2% 6%;
     }
-
     .promo {
         display: flex;
         justify-content: space-between;
         margin-top: 13%;
         align-items: center;
-    }
-
-    .promoTxt {
-        width: 98%;
-        margin-right: 20px;
-    }
-    .promoImg img{
-        width: 94%;
     }
     .promo h2 {
         font-size: 27px;
@@ -118,6 +116,12 @@
         margin-top: 25px;
         width: 100%;
     }
+    .promoTxt{
+        width: 63%;
+    }
+    .promoImg{
+        width: 36%;
+    }
 
 }
 
@@ -126,7 +130,6 @@
     .offers {
         padding: 4% 6%;
     }
-
     .promo {
         display: flex;
         flex-direction: column;
@@ -135,19 +138,17 @@
     }
 
     .promoTxt {
+       margin: 0 auto;
         width: 90%;
     }
-    .promoImg img{
-        width: 70%;
-        margin: 13px auto;
+    .promoImg{
+        width: 56%;
+        margin: 15px auto;
     }
 
 }
 @media only screen and (max-width: 320px) {
     .promoTxt {
         width: auto;
-    }
-    .promoImg img{
-        width: 90%;
     }
 }
