@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 import { addProduct, removeProduct, updateQuantity } from '../../redux/features/basketSlice/basketSlice';
 import { useAuth } from '../../context/AuthContext';
 import Swal from 'sweetalert2';
@@ -22,48 +23,65 @@ export default function RestaurantDetail() {
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(true);
   const [sortOption, setSortOption] = useState('');
+  const [restaurantDetail, setRestaurantDetail] = useState(null);
+  const [products, setProducts] = useState([]);
+  const { id } = useParams();
   const dispatch = useDispatch();
   const basketProducts = useSelector((state) => state.basket.products);
 
+  const fetchRestaurantDetail = async () => {
+    const restaurantUrl = `https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/restaurants/${id}`;
+    
+    try {
+      const response = await axios.get(restaurantUrl);
+      const data = response.data;
+      setRestaurantDetail({
+        id: data.fields.id.stringValue,
+        name: data.fields.name.stringValue,
+        address: data.fields.address.stringValue,
+        cuisine: data.fields.cuisine.stringValue,
+        category: data.fields.category.stringValue,
+        price: data.fields.price.stringValue,
+        minute: data.fields.minute.stringValue,
+        image: data.fields.image.stringValue,
+      });
+    } catch (error) {
+      console.error('Error fetching restaurants:', error);
+    }
+  };
 
-  const productData = [
-    {
-      id: 1,
-      image: margarita,
-      name: "KFC",
-      price: 7.90
-    },
-    {
-      id: 2,
-      image: margarita,
-      name: "Papa John’s Pizza",
-      price: 7.00
-    },
-    {
-      id: 3,
-      image: margarita,
-      name: "Pizza",
-      price: 7.70
-    },
-    {
-      id: 4,
-      image: margarita,
-      name: "Papa John’s",
-      price: 7.10
-    },
-    {
-      id: 5,
-      image: margarita,
-      name: "John’s Pizza",
-      price: 7.20
-    },
-    {
-      id: 6,
-      image: margarita,
-      name: "Coffee",
-      price: 3.20
-    },
-  ];
+  useEffect(() => {
+    fetchRestaurantDetail();
+  }, [id]);
+
+  
+  const fetchRestaurantProducts = async () => {
+    const productsUrl = `https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/products`;
+    
+    try {
+      const response = await axios.get(productsUrl);
+      const data = response.data.documents;
+      const filteredProducts = data
+        .map(doc => ({
+          id: doc.fields.id.stringValue,
+          name: doc.fields.name.stringValue,
+          price:doc.fields.price.stringValue,
+          restaurant: doc.fields.restaurant.stringValue,
+          image: doc.fields.image.stringValue,
+        }))
+        .filter(product => product.restaurant === restaurantDetail?.name);
+
+      setProducts(filteredProducts);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+  useEffect(() => {
+    if (restaurantDetail) {
+      fetchRestaurantProducts();
+    }
+  }, [restaurantDetail]);
+
   const handleAddProduct = (product) => {
     if (user) {
       dispatch(addProduct(product));
@@ -114,7 +132,7 @@ export default function RestaurantDetail() {
   };
 
   
-  const sortedProducts = [...productData].sort((a, b) => {
+  const sortedProducts = [...products].sort((a, b) => {
     switch (sortOption) {
       case 'A-Z':
         return a.name.localeCompare(b.name);
@@ -129,31 +147,33 @@ export default function RestaurantDetail() {
     }
   });
 
+
   function openFilterMenu() {
     setIsOpen(!isOpen);
   }
 
   return <div>
-    <div className={style.details}>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Papa_John%27s_Logo_2019.svg" alt="" />
-      <div className={style.information}>
-        <div className={style.location}>
-          <h5>Papa John’s Pizza Restaurant</h5>
-          <p>19 Nizami street, Sabail, Baku</p>
-        </div>
-        <div className={style.foods}>
-          <div>
-            <p>Cuisine</p>
-            <span>pizza, drink, hotdog, sendvich, roll</span>
+   {restaurantDetail && (
+        <div className={style.details}>
+          <img src={restaurantDetail.image}/>
+          <div className={style.information}>
+            <div className={style.location}>
+              <h5>{restaurantDetail.name}</h5>
+              <p>{restaurantDetail.address}</p>
+            </div>
+            <div className={style.foods}>
+              <div>
+                <p>Cuisine</p>
+                <span>{restaurantDetail.cuisine}</span>
+              </div>
+              <div className={style.delivery}>
+                <p>${restaurantDetail.price} {t('Delivery')}</p>
+                <button onClick={() => navigate('/restaurants')}>{t('Go Back')}</button>
+              </div>
+            </div>
           </div>
-
-          <div className={style.delivery}>
-            <p>$5 {t('Delivery')}</p>
-            <button onClick={() => navigate('/restaurants')}>{t('Go Back')}</button>
-          </div>
         </div>
-      </div>
-    </div>
+      )}
 
     <div className={style.sortingRest}>
         <select
@@ -172,26 +192,26 @@ export default function RestaurantDetail() {
       <div className={style.products}>
         <h2>{t('Products')}</h2>
         <div className={style.prdctCards}>
-          {sortedProducts.map((product) => (
-            <div key={product.id} className={style.prdctCard}>
-              <img src={product.image} alt={product.name} className={style.prdctImg} />
-              <div className={style.feature}>
-                <p>{product.name}</p>
-                <span>Prepared with a patty, a slice of cheese and special sauce</span>
-              </div>
-              <div className={style.price}>
-                <span>From </span>
-                <span>${product.price.toFixed(2)}</span>
-              </div>
-              <img
-                src={addPrdct}
-                alt="Add to Basket"
-                className={style.addPrdct}
-                onClick={() => handleAddProduct(product)}
-              />
-            </div>
-          ))}
-        </div>
+              {sortedProducts.map((product) => (
+                <div key={product.id} className={style.prdctCard}>
+                  <img src={product.image} alt="" className={style.prdctImg} />
+                  <div className={style.feature}>
+                    <p>{product.name}</p>
+                    <span>Lorem ipsum dolor sit amet elit. Consaeqatur, est reprehenderit.</span>
+                  </div>
+                  <div className={style.price}>
+                    <span>From </span>
+                    <span>${product.price}</span>
+                  </div>
+                  <img
+                    src={addPrdct}
+                    alt="Add to Basket"
+                    className={style.addPrdct}
+                    onClick={() => handleAddProduct(product)}
+                  />
+                </div>
+              ))}
+          </div>
         <div className={style.checkout} onClick={openFilterMenu}>
           <p>{basketProducts.length} {t('items')}</p>
           <div>
@@ -266,4 +286,3 @@ export default function RestaurantDetail() {
     </div>
   </div>;
 }
-

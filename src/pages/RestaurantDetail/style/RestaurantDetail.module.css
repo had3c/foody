@@ -3,7 +3,8 @@
     border-bottom: 1px solid #F3F4F6;
 }
 .details img {
-    margin: 0 auto;
+    width: 84%;
+    margin: 20px auto;
 }
 .location {
     margin-left: 15px;
@@ -192,13 +193,13 @@
 }
 .addPrdct{
     border-radius: 50%;
-    border: 2px solid #BDBDBD;
+    outline: 2px solid #BDBDBD;
     padding: 5px;
     cursor: pointer;
 }
 .addPrdct:hover{
     background-color: #8acda6;
-    border: none;
+    outline: none;
 }
 
 .sortingRest{
