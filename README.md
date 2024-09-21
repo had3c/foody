@@ -4,7 +4,7 @@
 
 </br>
 
-Foody is an online food ordering website. Here, customers can register, log in, choose a restaurant, add food to cart, place an order, account settings and many more features. This project is a Foody Admin project that collects Foody's restaurants, food, categories, offers, orders, order history, real-time user information, reports and many more similar events.
+Are you hungry? Let's cook and eat. But wait, there's a problem, you're too tired or don't have enough time. Then it's time to order food from outside. Come meet Foody. Foody is an online food ordering site. Here, customers can register, log in, choose a restaurant, add food to cart, place an order, make account settings and use many more features.
 
 </br>
 
