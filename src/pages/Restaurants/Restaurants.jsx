@@ -6,84 +6,49 @@ import margarita from '../../assets/images/margarita.svg';
 import filter from '../../assets/icons/filter_list.svg';
 import closeModal from '../../assets/icons/close_modal.svg';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Restaurants() {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(true);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [allRestaurants, setAllRestaurants] = useState([]);
   const [selectedCuisine, setSelectedCuisine] = useState(t('All'));
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const restaurantData = [
-    {
-      id: 1,
-      name: 'Papa Johns',
-      delivery: '5',
-      location: 'Baku',
-      time: '30',
-      cuisine: 'Chinese, Sea-food, Thai, Caribbean',
-      foods: [
-        { id: 1, name: 'Margarita' },
-        { id: 2, name: 'Pizza Roll' }
-      ]
-    },
-    {
-      id: 2,
-      name: 'Bella Italia',
-      delivery: '4',
-      location: 'New York',
-      time: '20',
-      cuisine: 'Italian, Mediterranean',
-      foods: [
-        { id: 1, name: 'Margherita Pizza' },
-        { id: 2, name: 'Lasagna' }
-      ]
-    },
-    {
-      id: 3,
-      name: 'Sushi World',
-      delivery: '3',
-      location: 'Tokyo',
-      time: '25',
-      cuisine: 'Japanese, Sushi',
-      foods: [
-        { id: 1, name: 'California Roll' },
-        { id: 2, name: 'Sashimi' }
-      ]
-    },
-    {
-      id: 4,
-      name: 'Tacos Fiesta',
-      delivery: '6',
-      location: 'Los Angeles',
-      time: '15',
-      cuisine: 'Mexican, Tacos',
-      foods: [
-        { id: 1, name: 'Beef Tacos' },
-        { id: 2, name: 'Guacamole' }
-      ]
-    },
-    {
-      id: 5,
-      name: 'Café Parisien',
-      delivery: '4',
-      location: 'Paris',
-      time: '40',
-      cuisine: 'French, Café',
-      foods: [
-        { id: 1, name: 'Croissant' },
-        { id: 2, name: 'Quiche Lorraine' }
-      ]
+  const fetchRestaurants = async () => {
+    const restaurantsUrl = 'https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/restaurants';
+    
+    try {
+      const response = await axios.get(restaurantsUrl);
+      const restaurantsData = response.data.documents.map(doc => ({
+        id: doc.fields.id.stringValue,
+        name: doc.fields.name.stringValue,
+        price: doc.fields.price.stringValue,
+        minute: doc.fields.minute.stringValue,
+        cuisine: doc.fields.cuisine.stringValue,
+        image: doc.fields.image.stringValue,
+        createTime: new Date(doc.createTime)
+      }));
+      
+      setAllRestaurants(restaurantsData);
+      setFilteredRestaurants(restaurantsData);
+    } catch (error) {
+      console.error('Error fetching restaurants:', error);
     }
-  ];
+  };
+
+  useEffect(() => {
+    fetchRestaurants();
+  }, []);
+
+  useEffect(() => {
+    filterRestaurants();
+  }, [selectedCuisine]);
 
   useEffect(() => {
     function handleResize() {
-      if (window.innerWidth <= 576) {
-        setIsOpen(false);
-      } else {
-        setIsOpen(true);
-      }
+      setIsOpen(window.innerWidth > 576);
     }
 
     handleResize();
@@ -91,39 +56,34 @@ export default function Restaurants() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    filterRestaurants();
-  }, [selectedCuisine]);
-
   function openFilterMenu() {
     setIsOpen(!isOpen);
   }
 
   function closeAfterFilter() {
-    if((window.innerWidth <= 576)){
+    if (window.innerWidth <= 576) {
       setIsOpen(false);
     }
   }
 
   function filterRestaurants() {
     if (selectedCuisine === t('All')) {
-      setFilteredRestaurants(restaurantData);
+      setFilteredRestaurants(allRestaurants);
     } else {
-      const filtered = restaurantData.filter((restaurant) =>
+      const filtered = allRestaurants.filter((restaurant) =>
         restaurant.cuisine.includes(selectedCuisine)
       );
       setFilteredRestaurants(filtered);
     }
   }
+
   function getUniqueCuisines() {
-    const cuisinesArray = restaurantData
+    const cuisinesArray = allRestaurants
       .flatMap((restaurant) => restaurant.cuisine.split(', '));
-    const uniqueCuisines = cuisinesArray.filter((value, index, arr) => 
-      arr.indexOf(value) === index
-    );
+    const uniqueCuisines = [...new Set(cuisinesArray)].sort(); 
     return [t('All'), ...uniqueCuisines];
   }
-  
+
   return (
     <div className={style.restaurants}>
       <AnimatePresence>
@@ -166,13 +126,14 @@ export default function Restaurants() {
 
       <div className={style.cards}>
         {filteredRestaurants.map((restaurant) => (
-          <div key={restaurant.id} className={style.card}  onClick={() => navigate(`/restaurants/${restaurant.id}`)}>
-            <img src={margarita} alt="" />
+          <div key={restaurant.id} className={style.card} onClick={() => navigate(`/restaurants/${restaurant.id}`)}>
+            {restaurant.createTime >= new Date('2024-09-20') && <div className={style.newRest}>NEW</div>}
+            <img src={restaurant.image}/>
             <h6 className={style.cardTitle}>{restaurant.name}</h6>
             <p>{restaurant.cuisine}</p>
             <div className={style.cardFooter}>
-              <span className={style.delivery}>${restaurant.delivery} {t('Delivery')}</span>
-              <span className={style.time}>{restaurant.time} {t('Min')}</span>
+              <span className={style.delivery}>${restaurant.price} {t('Delivery')}</span>
+              <span className={style.time}>{restaurant.minute} {t('Min')}</span>
             </div>
           </div>
         ))}
