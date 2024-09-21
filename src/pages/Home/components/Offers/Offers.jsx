@@ -39,7 +39,8 @@ function Offers() {
               <p>{offer.description}</p>
             </div>
             <div className={style.promoImg}>
-              <img src={offer.image} alt={offer.title} />
+            <div className={`${style.imgBg} ${index % 2 !== 0 ? style.scaleX : ''}`}></div>  
+            <img src={offer.image} alt={offer.title} />
             </div>
           </div>
         ))}

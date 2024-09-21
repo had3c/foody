@@ -20,7 +20,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-width: 40%;
+    width: 42%;
+    position: relative;
+}
+.promoImg img{
+    position: absolute;
+    z-index: 5;
+}
+.imgBg{
+    background-color: #d63626;
+    width: 370px;
+    height: 480px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 50px;
+    transform: rotate(22deg);
+}
+.scaleX{
+    transform: rotate(-22deg);
 }
 .promo h2 {
     font-family: var(--font-roboto);
@@ -51,6 +69,13 @@ width: 40%;
 .promoImg{
     width: 38%;
 }
+.promoImg img{
+    width: 80%;
+}
+.imgBg{
+    height: 390px;
+    width: 300px;
+}
 }
 
 /* Media Css -1210 px */
@@ -63,10 +88,14 @@ width: 40%;
         font-size: 17px;
     }
     .promoImg{
-        width: 40%;
+        width: 39%;
     }
     .promoTxt{
         width: 58%;
+    }
+    .imgBg{
+        height: 300px;
+        width: 260px;
     }
 }
 
@@ -87,6 +116,13 @@ width: 40%;
     }
     .promoImg{
         width: 38%;
+    }
+    .promoImg img{
+        width: 100%;
+    }
+    .imgBg{
+        height: 300px;
+        width: 230px;
     }
 }
 
@@ -117,12 +153,17 @@ width: 40%;
         width: 100%;
     }
     .promoTxt{
-        width: 63%;
+        width: 60%;
+        margin-right: 40px;
     }
     .promoImg{
-        width: 36%;
+        width: 39%;
     }
-
+    .imgBg{
+        height: 220px;
+        width: 180px;
+        border-radius: 35px;
+    }
 }
 
  /*       Media Css   -   Mobile Mode */
@@ -142,13 +183,37 @@ width: 40%;
         width: 90%;
     }
     .promoImg{
-        width: 56%;
+        width: 58%;
         margin: 15px auto;
+    }
+    .imgBg{
+        height: 255px;
+        width: 230px;
+        margin-block: 20px;
     }
 
 }
-@media only screen and (max-width: 320px) {
+
+@media only screen and (max-width: 510px) {
+    .imgBg{
+        height: 230px;
+        width: 195px;
+    }
+}
+@media only screen and (max-width:425px) {
+    .imgBg{
+        height: 215px;
+        width: 180px;
+    }
+    .promoImg{
+        width: 62%;
+    }
+}
+@media only screen and (max-width: 375px) {
     .promoTxt {
         width: auto;
+    }
+    .promoImg{
+        width: 72%;
     }
 }
