@@ -170,4 +170,5 @@ This project is the admin side of Foody. In short, Foody is an online food order
 
 ---
 
-**_All rights2024 FOODY_** reserved ©
+<h6 align="center">© Foody, TEAM 3E All rights reserved.</h6>
+ 
