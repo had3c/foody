@@ -2,7 +2,7 @@ import axios from 'axios';
 import { addUserToFS } from './RegisterAPI';
 
 export const handleSubmit = async (values, { setSubmitting }) => {
-    const apiKey = "AIzaSyBlf7gaOQzefjcGu2PME6MjfmQaIiOZaWI";
+    const apiKey = "AIzaSyDVi1kKlEiv3cmavo83rlOc20ki56PnnHw";
     const signUpUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`;
     console.log(values)
     try {

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const addUserToFS = async (userId, userData, token) => {
-    const firestoreUrl = `https://firestore.googleapis.com/v1/projects/ttttesst-87d6e/databases/(default)/documents/users/${userId}`;
+    const firestoreUrl = `https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/users/${userId}`;
 
     try {
         const response = await axios.patch(firestoreUrl, {
