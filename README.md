@@ -34,18 +34,52 @@ Are you hungry? Let's cook and eat. But wait, there's a problem, you're too tire
 
 ## Technologies 🚀
 
-<div style="display: flex; gap: 20px; align-items: center">
-  <img src ="/src/assets/readmeIcons/react.svg" alt="react" width="5%" title='react'/>
-<img src ="/src/assets/readmeIcons/redux.svg" alt="redux" width="5%" title='redux'/>
-<img src ="/src/assets/readmeIcons/formik.png" alt="formik" width="5%" title='formik'/>
-<img src ="/src/assets/readmeIcons/framer-motion.svg" alt="framer motion" width="5%" title='framer motion'/>
-<img src ="/src/assets/readmeIcons/react-icons.svg" alt="react icons" width="5%" title='react icons'/>
-<img src ="/src/assets/readmeIcons/react-query.png" alt="react query" width="5%" title='react query'/>
-<img src ="/src/assets/readmeIcons/firebase.png" alt="firebase" width="5%" title='firebase'/>
-<img src ="/src/assets/readmeIcons/react-router.png" alt="react router" width="8%" title='react router'/>
-<img src ="/src/assets/readmeIcons/i18n.png" alt="i18n" width="5%" title='i18n'/>
-<img src ="/src/assets/readmeIcons/axios.png" alt="axios" width="3%" title='axios'/>
-<img src ="/src/assets/readmeIcons/pdf-lib.svg" alt="pdf lib" width="8%" title='pdf lib'/>
-<img src ="/src/assets/readmeIcons/react-toastify.png" alt="react toastify" width="15%" title='react toastify'/>
-<img src ="/src/assets/readmeIcons/sweet-alert2.png" alt="sweet alert" width="15%" title='sweet alert'/>
-</div>
+<table>
+  <tr>
+    <td align="center" ><img src ="/src/assets/readmeIcons/react.svg" alt="react" width="40px" height="40px" title='react'/></td>
+    <td>React</td>
+  </tr>
+  <tr>
+   <td align="center" ><img src ="/src/assets/readmeIcons/redux.svg" alt="redux" width="40px" height="40px" title='redux'/></td>
+    <td>Redux</td>
+  </tr>
+  <td align="center" ><img src ="/src/assets/readmeIcons/react-query.png" alt="react-query" width="40px" height="40px" title='react-query'/></td>
+    <td>React Query</td>
+  </tr>
+    <tr>
+  <td align="center" ><img src ="/src/assets/readmeIcons/firebase.png" alt="firebase" width="40px" height="40px" title='firebase'/></td>
+    <td>Firebase</td>
+  </tr>
+    <tr>
+  <td align="center" ><img src ="/src/assets/readmeIcons/formik.png" alt="formik" width="40px" height="40px" title='formik'/></td>
+    <td>Formik</td>
+  </tr>
+    <tr>
+  <td align="center" ><img src ="/src/assets/readmeIcons/framer-motion.svg" alt="framer-motion" width="40px" height="40px" title='framer-motion'/></td>
+    <td>Framer Motion</td>
+  </tr>
+    <tr>
+  <td align="center" ><img src ="/src/assets/readmeIcons/react-icons.svg" alt="react-icons" width="40px" height="40px" title='react-icons'/></td>
+    <td>React icons</td>
+  </tr>
+    <tr>
+  <td align="center" ><img src ="/src/assets/readmeIcons/react-router.png" alt="react-router" width="80px" height="40px" title='react-router'/></td>
+    <td>React Router</td>
+  </tr>
+    <tr>
+  <td align="center" ><img src ="/src/assets/readmeIcons/i18n.png" alt="i18n" width="40px" height="40px" title='i18n'/></td>
+    <td>i18n</td>
+  </tr>
+    <tr>
+  <td align="center" ><img src ="/src/assets/readmeIcons/axios.png" alt="axios" width="30px" height="40px" title='axios'/></td>
+    <td>Axios</td>
+  </tr>
+  <td align="center" ><img src ="/src/assets/readmeIcons/react-toastify.png" alt="react-toastify" width="120px" height="40px" title='react-toastify'/></td>
+    <td>React Toastify</td>
+  </tr>
+    <tr>
+  <td align="center" ><img src ="/src/assets/readmeIcons/sweet-alert2.png" alt="sweet-alert2" width="120px" height="40px" title='sweet-alert2'/></td>
+    <td>Sweet Alert 2</td>
+  </tr>
+
+</table>
