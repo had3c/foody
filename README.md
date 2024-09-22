@@ -41,6 +41,7 @@ Are you hungry? Let's cook and eat. But wait, there's a problem, you're too tire
 <img src ="/src/assets/readmeIcons/framer-motion.svg" alt="framer motion" width="5%" title='framer motion'/>
 <img src ="/src/assets/readmeIcons/react-icons.svg" alt="react icons" width="5%" title='react icons'/>
 <img src ="/src/assets/readmeIcons/react-query.png" alt="react query" width="5%" title='react query'/>
+<img src ="/src/assets/readmeIcons/firebase.png" alt="firebase" width="5%" title='firebase'/>
 <img src ="/src/assets/readmeIcons/react-router.png" alt="react router" width="8%" title='react router'/>
 <img src ="/src/assets/readmeIcons/i18n.png" alt="i18n" width="5%" title='i18n'/>
 <img src ="/src/assets/readmeIcons/axios.png" alt="axios" width="3%" title='axios'/>
