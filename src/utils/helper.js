@@ -9,7 +9,7 @@ const regEx = {
 export function getValidationSchemas(t) {
   const userName = Yup.string()
     .matches(regEx.email, t('Error'))
-    .required(t('WUN'));
+    .required(t('WE'));
 
   const userName2 = Yup.string()
     .matches(regEx.name, t('Error'))

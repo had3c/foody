@@ -15,98 +15,11 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import ReCAPTCHA from 'react-google-recaptcha';
-import axios from 'axios';
+
+import { handleSubmit } from '../restAPI/FireStoreAPI';
+import { handleLoginSubmit } from '../restAPI/LoginAPI';
 
 function LoginForm() {
-    const addUserToFS = async (userId, userData, token) => {
-        const firestoreUrl = `https://firestore.googleapis.com/v1/projects/ttttesst-87d6e/databases/(default)/documents/users/${userId}`;
-
-
-        try {
-            const response = await axios.patch(firestoreUrl, {
-                fields: {
-                    fullName: { stringValue: userData.fullName },
-                    gender: { stringValue: userData.gender },
-                    password: { stringValue: userData.passwordReg },
-                    email: { stringValue: userData.email },
-                    userName: { stringValue: userData.userName2 }
-                }
-            }, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-
-            console.log('User added FS', response.data);
-        } catch (err) {
-            console.error('Error FS', err);
-
-        }
-    };
-    // recaptcha
-    const onChange = () => {
-    };
-    // 
-
-    const handleSubmit = async (values, { setSubmitting }) => {
-        const apiKey = "AIzaSyBlf7gaOQzefjcGu2PME6MjfmQaIiOZaWI";
-        const signUpUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`;
-        console.log(values)
-        try {
-            const response = await axios.post(signUpUrl, {
-                email: values.email,
-                password: values.passwordReg,
-                displayName: values.userName2,
-                returnSecureToken: true
-            });
-
-            console.log('User registered', response.data);
-
-            const userId = await response.data.localId;
-            const token = await response.data.idToken;
-
-
-            await addUserToFS(userId, values, token);
-
-
-
-        } catch (err) {
-            console.error('Error', err.message);
-
-
-        }
-        setSubmitting(false);
-    };
-
-    const handleLoginSubmit = async (values, setSubmitting) => {
-        const apiKey = "AIzaSyBlf7gaOQzefjcGu2PME6MjfmQaIiOZaWI";
-        const signInUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`;
-        console.log(values)
-        try {
-            const response = await axios.post(signInUrl, {
-                email: values.userName,
-                password: values.password,
-                returnSecureToken: true
-            });
-
-            console.log('User logged in', response.data);
-
-            const userId = await response.data.localId;
-            const token = await response.data.idToken;
-
-            generateUserLoginDatas({ userId, token });
-            navigate("/");
-
-            toastiyLog(t('T4'));
-        } catch (err) {
-            console.error('Error', err.message);
-            toast.error(t("T5"));
-        }
-        setSubmitting(false);
-    };
-
-
-
     const { t } = useTranslation();
     const schemas = getValidationSchemas(t);
 
@@ -119,9 +32,11 @@ function LoginForm() {
     const toasityReg = () => toast.success(t("T3"));
 
     const handleLogin = async (userData, setSubmitting) => {
+        await handleLoginSubmit(userData, setSubmitting, t, generateUserLoginDatas, navigate);
+    };
 
-        await handleLoginSubmit(userData, setSubmitting)
-
+    const onChange = () => {
+        // recaptcha onChange
     };
 
     return (
@@ -230,14 +145,11 @@ function LoginForm() {
                                 ) : (
                                     <>
                                         <Input
-                                            // label={t("User Name")}
                                             name="userName"
                                             id="userName"
-                                            // placeholder={t("PU")}
                                             label={t("E-mail")}
                                             type='email'
-
-                                            placeholder={t("PE")}
+                                            placeholder={t("WE")}
                                         />
                                         <Input
                                             label={t("Password")}
