@@ -1,32 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './Show.module.css';
 import { useTranslation } from 'react-i18next';
 import margarita from '../../../../../assets/images/margarita.svg';
 import prev from '../../../../../assets/icons/prevTable.svg';
 import next from '../../../../../assets/icons/nextTable.svg';
 import close from '../../../../../assets/icons/close.svg';
+import axios from 'axios'
 
-function ShowModal({ closeModal, setShowDel }) {
+function ShowModal({ closeModal, setShowDel,id }) {
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(2);
+   const [orders,setOrders]= useState([])
+ 
+   const fetchOrders = async () => {
+    try {
+      const response = await axios.get(`https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/orders/${id}`);
+      
+      const fetchedOrders = response.data.fields.basket.arrayValue.values.map(item => ({
+        id: item.mapValue.fields.id.stringValue,
+        image: item.mapValue.fields.image.stringValue,
+        name: item.mapValue.fields.name.stringValue,
+        price:parseFloat(item.mapValue.fields.price.stringValue) ,
+        quantity:parseInt(item.mapValue.fields.quantity.stringValue),
+      }));
+  
+      setOrders(fetchedOrders);
+      console.log(fetchedOrders);
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+    }
+  };
+  
 
-  const data = [
-    { id: 1, image: margarita, name: "Papa John’s Pizza", price: 7.90, count: 2, amount: 15.80 },
-    { id: 2, image: margarita, name: "Papa John’s Pizza", price: 7.90, count: 3, amount: 15.80 },
-    { id: 3, image: margarita, name: "Papa John’s Pizza", price: 7.90, count: 4, amount: 15.80 },
-    { id: 4, image: margarita, name: "Papa John’s Pizza", price: 7.90, count: 5, amount: 15.80 },
-    { id: 5, image: margarita, name: "Papa John’s Pizza", price: 7.90, count: 6, amount: 15.80 },
-    { id: 6, image: margarita, name: "Papa John’s Pizza", price: 7.90, count: 7, amount: 15.80 },
-    { id: 7, image: margarita, name: "Papa John’s Pizza", price: 7.90, count: 8, amount: 15.80 },
-    { id: 8, image: margarita, name: "Papa John’s Pizza", price: 7.90, count: 9, amount: 15.80 },
-  ];
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+
 
   const indexOfLastItem = currentPage * perPage;
   const indexOfFirstItem = indexOfLastItem - perPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = orders.slice(indexOfFirstItem, indexOfLastItem);
 
-  const totalPages = Math.ceil(data.length / perPage);
+  const totalPages = Math.ceil(orders.length / perPage);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -78,8 +95,8 @@ function ShowModal({ closeModal, setShowDel }) {
                   </td>
                   <td>{item.name}</td>
                   <td>{item.price}</td>
-                  <td>{item.count}</td>
-                  <td>{(item.price * item.count).toFixed(2)}</td>
+                  <td>{item.quantity}</td>
+                  <td>{(item.price * item.quantity).toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import style from './style/Order.module.css';
 import { useTranslation } from 'react-i18next'
 import useOnclickOutside from 'react-cool-onclickoutside';
@@ -6,11 +6,13 @@ import setting from '../../../assets/icons/showDel.svg';
 import prev from '../../../assets/icons/prevTable.svg';
 import next from '../../../assets/icons/nextTable.svg';
 import ShowDel from './components/ShowDelete/ShowDel';
+import axios from 'axios'
 import ShowModal from './components/ShowModal/ShowModal';
 
 export default function Order() {
   const { t } = useTranslation()
   const [showDel, setShowDel] = useState(null);
+  const [orders, setOrders] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(2);
 
@@ -18,23 +20,33 @@ export default function Order() {
     setShowDel(showDel === id ? null : id);
   };
 
-  const [data, setData] = useState([
-    { id: '9177', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
-    { id: '2', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
-    { id: '3', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
-    { id: '4', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
-    { id: '5', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
-    { id: '6', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
-    { id: '7', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
-    { id: '8', time: '25 Dec 2021', address: '29 Eve Street, 543 Evenue Road, Ny 87876', amount: '$249.7', payment: 'Cash on Delivery', contact: '994-51-410-3130' },
-  ]);
+  const fetchOrders = async () => {
+    try {
+      const response = await axios.get('https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/orders');
+      const fetchedOrders = response.data.documents.map(doc => ({
+        id: doc.fields.id.stringValue,
+        time: doc.fields.time.stringValue,
+        address: doc.fields.deliveryAddress.stringValue,
+        amount: doc.fields.totalPrice.stringValue,
+        payment: doc.fields.paymentMethod.stringValue,
+        contact: doc.fields.contactNumber.stringValue,
+      }));
+      setOrders(fetchedOrders);
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
 
 
   const indexOfLastItem = currentPage * perPage;
   const indexOfFirstItem = indexOfLastItem - perPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = orders.slice(indexOfFirstItem, indexOfLastItem);
 
-  const totalPages = Math.ceil(data.length / perPage);
+  const totalPages = Math.ceil(orders.length / perPage);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -62,9 +74,10 @@ export default function Order() {
       setShowDel(false);
     }
   });
+
   const handleDelete = (id) => {
-    const updatedData = data.filter(item => item.id !== id);
-    setData(updatedData);
+    const updatedData = orders.filter(item => item.id !== id);
+    setOrders(updatedData);
     // if (currentPage > Math.ceil(updatedData.length / perPage)) {
     //   setCurrentPage(Math.ceil(updatedData.length / perPage));
     // }
@@ -93,7 +106,7 @@ export default function Order() {
                 <td className={style.hidden}>
                   <img src={setting} alt="Settings" onClick={() => toggleShowDel(item.id)} />
                   {showDel === item.id && (
-                    <ShowDel setShowDel={setShowDel} ref={ref} handleDelete={handleDelete} itemId={item.id} />
+                    <ShowDel setShowDel={setShowDel} ref={ref} handleDelete={handleDelete} id={item.id} />
                   )}
                 </td>
                 <td className={style.Id}><span>{item.id}</span></td>
@@ -105,7 +118,7 @@ export default function Order() {
                 <td className={style.show}>
                   <img src={setting} alt="Settings" onClick={() => toggleShowDel(item.id)} />
                   {showDel === item.id && (
-                    <ShowDel setShowDel={setShowDel}  ref={ref} handleDelete={handleDelete} itemId={item.id} />
+                    <ShowDel setShowDel={setShowDel}  ref={ref} handleDelete={handleDelete} id={item.id} />
                   )}
                 </td>
               </tr>

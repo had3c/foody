@@ -40,6 +40,11 @@
   border-radius: 8px;
   border: 1px solid #DFE2E9;
   padding: 2px 12px;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  width: 55px; 
+  white-space: nowrap;
 }
 
 .orderTable tbody img {

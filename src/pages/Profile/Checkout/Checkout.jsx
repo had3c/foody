@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useTranslation } from 'react-i18next';
-import {removeProduct} from '../../../redux/features/basketSlice/basketSlice';
+import { removeProduct } from '../../../redux/features/basketSlice/basketSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import style from './style/Checkout.module.css';
 import checked from '../../../assets/images/successCheck.svg';
+import axios from 'axios'
+import { v4 } from "uuid";
+
 
 export default function Checkout() {
   const [isCheckedOut, setIsCheckedOut] = useState(false);
   const [orders, setOrders] = useState([]);
   const { t, i18n } = useTranslation();
-  const dispatch= useDispatch()
+  const dispatch = useDispatch()
   const basketProducts = useSelector((state) => state.basket.products);
   const getContactValue = () => {
     switch (i18n.language) {
@@ -26,20 +29,82 @@ export default function Checkout() {
     }
   };
 
-  const isFriday = new Date().getDay() === 3; 
+  const isFriday = new Date().getDay() === 5;
 
-  const handleCheckout = (values) => {
-      values.contact = getContactValue() + values.contact
-      setOrders([...orders, values]);
+  const uuid = v4().replace(/-/g, "");
+  const customerID = JSON.parse(localStorage.getItem('user')).userId;
+  const postOrderData = async (values) => {
+
+    const totalPrice = isFriday
+      ? (basketProducts.reduce((total, product) => total + product.price * product.quantity, 0) * 0.85).toFixed(2)
+      : (basketProducts.reduce((total, product) => total + product.price * product.quantity, 0)).toFixed(2);
+
+    const newContact = getContactValue() + values.contact + "";
+    const orderData = {
+      "fields": {
+        "amount": {
+          "stringValue": totalPrice + ""
+        },
+        "contactNumber": {
+          "stringValue": newContact
+        },
+        "customerID": {
+          "stringValue": customerID + ""
+        },
+        "deliveryAddress": {
+          "stringValue": values.address
+        },
+        "id": {
+          "stringValue": uuid + ""
+        },
+        "paymentMethod": {
+          "stringValue": values.paymentMethod
+        },
+        "time": {
+          "stringValue": new Date().getTime() + ""
+        },
+        "restaurantName": {
+          "stringValue": basketProducts[0].restaurant
+        },
+        "totalPrice": {
+          "stringValue": totalPrice },
+        basket: {
+          arrayValue: {
+            values: basketProducts.map(product => ({
+              mapValue: {
+                fields: {
+                  id: { stringValue: product.id.toString() },  
+                  name: { stringValue: product.name },
+                  price: { stringValue: product.price + "" }, 
+                  quantity: { stringValue: product.quantity + "" },
+                  image: { stringValue: product.image},
+                }
+              }
+            })),
+          },
+        },
+      }
+    };
+    try {
+      await axios.patch('https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/orders/' + uuid + "", orderData);
+    } catch (error) {
+      console.error('Error sending order to Firestore:', error);
+    }
+  };
+
+
+  const handleCheckout = async (values) => {
+    await postOrderData(values);
     setIsCheckedOut(true);
     setTimeout(() => {
       setIsCheckedOut(false);
     }, 2500);
+
     basketProducts.forEach(product => {
       dispatch(removeProduct(product.id));
     });
   };
-  console.log(orders)
+
   const validationSchema = Yup.object().shape({
     address: Yup.string().required(t('Address Required')),
     contact: Yup.number()
@@ -60,12 +125,10 @@ export default function Checkout() {
                 paymentMethod: '',
               }}
               validationSchema={validationSchema}
-              onSubmit={(values, { setSubmitting, resetForm }) => {
-                setTimeout(() => {
-                  handleCheckout(values);
-                  resetForm();
-                  setSubmitting(false);
-                }, 200);
+              onSubmit={async (values, { setSubmitting, resetForm }) => {
+                await handleCheckout(values);
+                resetForm();
+                setSubmitting(false);
               }}
             >
               {({ isSubmitting }) => (
@@ -81,9 +144,6 @@ export default function Checkout() {
                     />
                     <ErrorMessage name="address" component="div" className={style.error} />
                   </div>
-
-
-
                   <div className={style.formik}>
                     <label htmlFor="contact">{t('Contact Number')}</label>
                     <Field
@@ -95,10 +155,6 @@ export default function Checkout() {
                     />
                     <ErrorMessage name="contact" component="div" className={style.error} />
                   </div>
-
-
-
-
                   <label>{t('Payment Method')}</label>
                   <div className={style.payment}>
                     <div className={style.pay}>
@@ -133,7 +189,7 @@ export default function Checkout() {
 
       {!isCheckedOut && (
         <div className={style.orderTotal}>
-           {isFriday ? <div className={style.discount}>Friday discount - 15%</div> : null}
+          {isFriday ? <div className={style.discount}>Friday discount - 15%</div> : null}
           <div>
             <h4>{t('Your Order')}</h4>
             <ul>
