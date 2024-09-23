@@ -5,7 +5,7 @@ import DeleteModal from '../DeleteModal/DeleteModal';
 import ShowModal from '../ShowModal/ShowModal';
 import useOnclickOutside from 'react-cool-onclickoutside'; 
 
-const ShowDel = forwardRef(({ setShowDel, handleDelete, itemId }, ref) => {
+const ShowDel = forwardRef(({ setShowDel, handleDelete, id }, ref) => {
   const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
@@ -26,8 +26,8 @@ const ShowDel = forwardRef(({ setShowDel, handleDelete, itemId }, ref) => {
 
   return (
     <div ref={ref}>
-      {showModal && <ShowModal closeModal={handleShow} setShowDel={setShowDel} />}
-      {deleteModal && <DeleteModal closeModal={toggleDeleteModal} setShowDel={setShowDel} handleDelete={handleDelete} itemId={itemId} />}
+      {showModal && <ShowModal closeModal={handleShow} setShowDel={setShowDel} id={id}/>}
+      {deleteModal && <DeleteModal closeModal={toggleDeleteModal} setShowDel={setShowDel} handleDelete={handleDelete} id={id} />}
       <ul className={style.showDel}>
         <li className={style.show} onClick={handleShow}>
           {t('Show')}

@@ -1,9 +1,20 @@
 import React from 'react';
 import style from './Delete.module.css';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 
-function DeleteModal({ closeModal, setShowDel, handleDelete, itemId }) {
+function DeleteModal({ closeModal, setShowDel, handleDelete, id }) {
   const { t } = useTranslation();
+
+  const deleteOrdersFromFirebase = async () => {
+    const url = `https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/orders/${id}`;
+    try {
+      const response = await axios.delete(url);
+      console.log('order data deleted successfully', response.data);
+    } catch (error) {
+      console.error('Error deleting data:', error.response ? error.response.data : error.message);
+    }
+  };
   return (
     <div className={style.delModal}>
       <div className={style.modal}>
@@ -16,10 +27,11 @@ function DeleteModal({ closeModal, setShowDel, handleDelete, itemId }) {
           }}>
             {t('Cancel')}
           </button>
-          <button className={style.delete} onClick={() => {
-            handleDelete(itemId);
-            closeModal();
-          }} >{t('Delete')} </button>
+          <button className={style.delete} onClick={() =>{
+            deleteOrdersFromFirebase()
+             closeModal()
+          }
+           } >{t('Delete')} </button>
         </div>
       </div>
     </div>
