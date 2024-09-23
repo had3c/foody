@@ -4,15 +4,14 @@ import Swal from 'sweetalert2';
 import style from './User.module.css';
 import '../../style/Swal.css'
 import { useAuth } from '../../../../context/AuthContext';
-import { useProfile } from '../../../../context/ProfileContext';
 import { useTranslation } from 'react-i18next';
 
 
-const UserMenu = React.forwardRef(({ setDropDown }, ref) =>  {
+const UserMenu = React.forwardRef(({ setDropDown, fullName}, ref) =>  {
   const { t } = useTranslation();
   const { generateUserLogoutDatas } = useAuth();
-  const { fullName } = useProfile();
 
+console
   const handleLogout = async (e) => {
     e.preventDefault()
     const result = await Swal.fire({
