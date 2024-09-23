@@ -8,15 +8,13 @@ import '../../style/Swal.css'
 import closeMenuIcon from '../../../../assets/icons/Vector.svg';
 import avatar from '../../../../assets/icons/avatar.svg'
 import { useAuth } from '../../../../context/AuthContext';
-import { useProfile } from '../../../../context/ProfileContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
-function ResponsNav({ setOpenMenu, openMenu }) {
+function ResponsNav({ setOpenMenu, openMenu, profilePicture, fullName }) {
     const { user } = useAuth();
     const navigate = useNavigate()
     const location = useLocation();
     const { t } = useTranslation();
-    const { profileImage, fullName } = useProfile();
     const { generateUserLogoutDatas } = useAuth();
 
     const handleLogout = async (e) => {
@@ -80,7 +78,7 @@ function ResponsNav({ setOpenMenu, openMenu }) {
                         <img src={closeMenuIcon} alt="Close menu" onClick={closeResponsMenu} />
                         <div className={style.sign}>
                             {user ? (<div className={style.user}>
-                                <img src={profileImage || avatar} alt="" />
+                                <img src={profilePicture || avatar} alt="" />
                                 <span>{fullName || t('User')}</span>
                             </div>
 

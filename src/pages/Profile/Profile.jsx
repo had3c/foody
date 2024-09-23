@@ -1,63 +1,15 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import style from './style/Profile.module.css';
 import { useTranslation } from 'react-i18next';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useProfile } from '../../context/ProfileContext';
 import upload from '../../assets/images/uploadFile.svg';
-import avatar from '../../assets/icons/avatar.svg'
+import axios from 'axios';
 
 export default function Profile() {
   const { t, i18n } = useTranslation();
-  const { profileImage, fullName, updateProfile, setProfileImage, userData, setUserData } = useProfile();
   const inputFileRef = useRef(null);
-
-  useEffect(() => {
-    const savedImage = localStorage.getItem('profileImage') || avatar;
-    const savedName = localStorage.getItem('fullName') || '';
-    updateProfile(savedImage, savedName);
-  }, [updateProfile]);
-
-  const handleFileSelect = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const imageURL = reader.result;
-        setProfileImage(imageURL);
-        localStorage.setItem('profileImage', imageURL);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleImageClick = () => {
-    inputFileRef.current.click();
-  };
-
-  const handleDeleteImage = () => {
-    setProfileImage(avatar);
-    localStorage.removeItem('profileImage');
-
-  };
-
-  const dataSubmitting = (values) => {
-    const isDuplicate = userData.some(data =>
-      data.contact === values.contact &&
-      data.username === values.username &&
-      data.fullName === values.fullName &&
-      data.email === values.email &&
-      data.address === values.address
-    );
-
-    if (!isDuplicate) {
-      values.contact = getContactValue() + values.contact
-
-      setUserData([...userData, values]);
-      updateProfile(profileImage, values.fullName);
-
-    }
-  };
+  const [fileName, setFileName] = useState('');
 
   const getContactValue = () => {
     switch (i18n.language) {
@@ -72,7 +24,70 @@ export default function Profile() {
     }
   };
 
-  console.log(userData)
+  const uploadImageToFirebase = async (file) => {
+    const folderName = 'profile_images';
+    const pictureName = `${Date.now()}_${file.name}`;
+    const fileName = encodeURIComponent(pictureName);
+    setFileName(fileName);
+
+    const url = `https://firebasestorage.googleapis.com/v0/b/foody-b6c94.appspot.com/o/${folderName}%2F${fileName}?uploadType=media`;
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      await axios.post(url, file, {
+        headers: {
+          'Content-Type': file.type,
+        },
+      });
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
+  };
+
+  const sendUserData = async (values) => {
+    const contact = getContactValue() + values.contact;
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userId = user.userId;
+    const userData = {
+      fields: {
+        imageURL: { stringValue: `https://firebasestorage.googleapis.com/v0/b/foody-b6c94.appspot.com/o/profile_images%2F${fileName}?alt=media` },
+        address: { stringValue: values.address },
+        contact: { stringValue: contact.toString() },
+        username: { stringValue: values.username },
+        fullName: { stringValue: values.fullName },
+        email: { stringValue: values.email },
+      },
+    };
+
+    try {
+      await axios.patch(`https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/users/${userId}`, userData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    } catch (error) {
+      console.error('Error sending user data to Firestore:', error);
+    }
+  };
+
+  const handleFileSelect = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const imageURL = reader.result;
+      };
+      await uploadImageToFirebase(file);
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleImageClick = () => {
+    inputFileRef.current.click();
+  };
+
   const validationSchema = Yup.object().shape({
     contact: Yup.number()
       .required(t('Contact Required')),
@@ -83,8 +98,8 @@ export default function Profile() {
   });
 
 
-  const handleFormSubmit = (values, { setSubmitting, resetForm }) => {
-    dataSubmitting(values);
+  const handleFormSubmit = async (values, { setSubmitting, resetForm }) => {
+    await sendUserData(values);
     resetForm();
     setSubmitting(false);
   };
@@ -104,10 +119,7 @@ export default function Profile() {
         onChange={handleFileSelect}
       />
       <div className={style.deleteImg}>
-        <button onClick={handleDeleteImage}>{t('Delete Profile Photo')}</button>
       </div>
-
-
       <div className={style.form}>
         <Formik
           initialValues={{
@@ -158,5 +170,4 @@ export default function Profile() {
     </div>
   );
 }
-
 
