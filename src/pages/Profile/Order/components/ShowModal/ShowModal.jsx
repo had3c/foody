@@ -26,7 +26,6 @@ function ShowModal({ closeModal, setShowDel,id }) {
       }));
   
       setOrders(fetchedOrders);
-      console.log(fetchedOrders);
     } catch (error) {
       console.error('Error fetching orders:', error);
     }

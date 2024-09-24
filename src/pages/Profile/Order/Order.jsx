@@ -15,9 +15,16 @@ export default function Order() {
   const [orders, setOrders] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(2);
+  const userID = JSON.parse(localStorage.getItem('user')).userId;
 
   const toggleShowDel = (id) => {
     setShowDel(showDel === id ? null : id);
+  };
+  
+  const formatDate = (timestamp) => {
+    const date = new Date(Number(timestamp));
+    const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    return date.toLocaleDateString('tr-TR', options);
   };
 
   const fetchOrders = async () => {
@@ -25,17 +32,19 @@ export default function Order() {
       const response = await axios.get('https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/orders');
       const fetchedOrders = response.data.documents.map(doc => ({
         id: doc.fields.id.stringValue,
-        time: doc.fields.time.stringValue,
+        time:formatDate(doc.fields.time.stringValue),
         address: doc.fields.deliveryAddress.stringValue,
         amount: doc.fields.totalPrice.stringValue,
         payment: doc.fields.paymentMethod.stringValue,
         contact: doc.fields.contactNumber.stringValue,
-      }));
+        customerId: doc.fields.customerID.stringValue,
+      })).filter(order => order.customerId === userID); 
       setOrders(fetchedOrders);
     } catch (error) {
       console.error('Error fetching orders:', error);
     }
   };
+
 
   useEffect(() => {
     fetchOrders();
@@ -45,7 +54,6 @@ export default function Order() {
   const indexOfLastItem = currentPage * perPage;
   const indexOfFirstItem = indexOfLastItem - perPage;
   const currentItems = orders.slice(indexOfFirstItem, indexOfLastItem);
-
   const totalPages = Math.ceil(orders.length / perPage);
 
   const handlePageChange = (pageNumber) => {

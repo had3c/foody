@@ -43,7 +43,7 @@
   display: block;
   text-overflow: ellipsis;
   overflow: hidden; 
-  width: 55px; 
+  width: 70px; 
   white-space: nowrap;
 }
 
@@ -169,6 +169,10 @@
   .userOrder {
     height: 620px;
   }
+  .Id span{
+    width: 65px;
+  }
+  
 }
 
 @media only screen and (max-width: 1150px) {
@@ -190,6 +194,9 @@
 
   .delivery {
     width: 26%;
+  }
+  .Id span{
+    width: 60px;
   }
 }
 
