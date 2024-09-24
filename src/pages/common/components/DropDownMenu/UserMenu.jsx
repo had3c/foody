@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import style from './User.module.css';
 import '../../style/Swal.css'
@@ -10,8 +10,7 @@ import { useTranslation } from 'react-i18next';
 const UserMenu = React.forwardRef(({ setDropDown, fullName}, ref) =>  {
   const { t } = useTranslation();
   const { generateUserLogoutDatas } = useAuth();
-
-console
+  const { navigate } = useNavigate();
   const handleLogout = async (e) => {
     e.preventDefault()
     const result = await Swal.fire({

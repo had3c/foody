@@ -46,10 +46,22 @@ export default function Profile() {
     }
   };
 
+  const handleFileSelect = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const imageURL = reader.result;
+      };
+      await uploadImageToFirebase(file);
+      reader.readAsDataURL(file);
+    }
+  };
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userId = user.userId;
+  const userURL = `https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/users/${userId}`;
   const sendUserData = async (values) => {
     const contact = getContactValue() + values.contact;
-    const user = JSON.parse(localStorage.getItem('user'));
-    const userId = user.userId;
     const userData = {
       fields: {
         imageURL: { stringValue: `https://firebasestorage.googleapis.com/v0/b/foody-b6c94.appspot.com/o/profile_images%2F${fileName}?alt=media` },
@@ -60,27 +72,14 @@ export default function Profile() {
         email: { stringValue: values.email },
       },
     };
-
     try {
-      await axios.patch(`https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/users/${userId}`, userData, {
+      await axios.patch(userURL, userData, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
     } catch (error) {
       console.error('Error sending user data to Firestore:', error);
-    }
-  };
-
-  const handleFileSelect = async (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const imageURL = reader.result;
-      };
-      await uploadImageToFirebase(file);
-      reader.readAsDataURL(file);
     }
   };
 

@@ -46,7 +46,6 @@ function Navbar() {
       color: location.pathname === path || (location.pathname === '/' && path === '/') ? '#d63626' : '#828282',
     };
   };
-
   const fetchUserData = async () => {
     if (!user) return;
     const url = `https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/users/${user.userId}`;
@@ -55,13 +54,11 @@ function Navbar() {
       const userData = response.data.fields;  
       setFullName(userData.fullName.stringValue);
       const image = userData.imageURL?.stringValue || avatar;
-
       setProfilePicture(image);
     } catch (error) {
       console.error('Error fetching user data:', error);
     }
   };
-   console.log(user.userId)
   useEffect(() => {
     fetchUserData();
   }, [user]);

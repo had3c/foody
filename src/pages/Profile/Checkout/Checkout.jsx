@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { removeProduct } from '../../../redux/features/basketSlice/basketSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +13,7 @@ import { v4 } from "uuid";
 
 export default function Checkout() {
   const [isCheckedOut, setIsCheckedOut] = useState(false);
+  const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch()
@@ -30,7 +32,6 @@ export default function Checkout() {
   };
 
   const isFriday = new Date().getDay() === 5;
-
   const uuid = v4().replace(/-/g, "");
   const customerID = JSON.parse(localStorage.getItem('user')).userId;
   const postOrderData = async (values) => {
@@ -91,8 +92,6 @@ export default function Checkout() {
       console.error('Error sending order to Firestore:', error);
     }
   };
-
-
   const handleCheckout = async (values) => {
     await postOrderData(values);
     setIsCheckedOut(true);
