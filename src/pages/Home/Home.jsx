@@ -36,7 +36,7 @@ export default function Home() {
 
       <div className={style.slogan}>
         <h1>{t('Our Food site makes it easy to find local food')}</h1>
-          <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+          <p>{t('About our website')}</p>
           <div className={style.btns}>
             
           <input type="text" placeholder={t('Search')} className={style.search}  value={searchResult}
