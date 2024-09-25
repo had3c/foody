@@ -30,7 +30,7 @@ export default function RestaurantDetail() {
   const basketProducts = useSelector((state) => state.basket.products);
 
   const fetchRestaurantDetail = async () => {
-    const restaurantUrl = `https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/restaurants/${id}`;
+    const restaurantUrl = `https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/restaurants/${id}`;
     
     try {
       const response = await axios.get(restaurantUrl);

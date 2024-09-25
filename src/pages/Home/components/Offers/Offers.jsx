@@ -6,7 +6,7 @@ function Offers() {
   const [offers, setOffers] = useState([]);
 
   const fetchOffers = async () => {
-    const offersUrl = `https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/offers`;
+    const offersUrl = `https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/offers`;
 
     try {
       const response = await axios.get(offersUrl);
