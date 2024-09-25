@@ -10,6 +10,7 @@ export default function Profile() {
   const { t, i18n } = useTranslation();
   const inputFileRef = useRef(null);
   const [fileName, setFileName] = useState('');
+  const [users, setUsers] = useState([]);
 
   const getContactValue = () => {
     switch (i18n.language) {
@@ -67,9 +68,11 @@ export default function Profile() {
         imageURL: { stringValue: `https://firebasestorage.googleapis.com/v0/b/foody-b6c94.appspot.com/o/profile_images%2F${fileName}?alt=media` },
         address: { stringValue: values.address },
         contact: { stringValue: contact.toString() },
-        username: { stringValue: values.username },
+        userName: { stringValue: values.username },
         fullName: { stringValue: values.fullName },
         email: { stringValue: values.email },
+        gender: { stringValue: users.gender},
+        password: { stringValue: users.password},
       },
     };
     try {
@@ -82,6 +85,24 @@ export default function Profile() {
       console.error('Error sending user data to Firestore:', error);
     }
   };
+
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get(userURL);
+      const userInformation = {
+        gender: response.data.fields.gender.stringValue,
+        password: response.data.fields.password.stringValue,
+      };
+      setUsers(userInformation);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  };
+  
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
   const handleImageClick = () => {
     inputFileRef.current.click();

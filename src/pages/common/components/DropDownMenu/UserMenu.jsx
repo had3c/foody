@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 const UserMenu = React.forwardRef(({ setDropDown, fullName}, ref) =>  {
   const { t } = useTranslation();
   const { generateUserLogoutDatas } = useAuth();
-  const { navigate } = useNavigate();
+  const navigate = useNavigate();
   const handleLogout = async (e) => {
     e.preventDefault()
     const result = await Swal.fire({
@@ -32,7 +32,7 @@ const UserMenu = React.forwardRef(({ setDropDown, fullName}, ref) =>  {
         icon: 'success',
         confirmButtonText: t('OK')
       }).then(() => {
-        navigate('/')
+        navigate('/');
       });
     }
   };
