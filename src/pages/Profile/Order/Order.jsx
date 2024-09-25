@@ -29,7 +29,7 @@ export default function Order() {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get('https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/orders');
+      const response = await axios.get(`https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/orders`);
       const fetchedOrders = response.data.documents.map(doc => ({
         id: doc.fields.id.stringValue,
         time:formatDate(doc.fields.time.stringValue),

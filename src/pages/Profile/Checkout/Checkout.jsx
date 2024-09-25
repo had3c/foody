@@ -87,7 +87,7 @@ export default function Checkout() {
       }
     };
     try {
-      await axios.patch('https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/orders/' + uuid + "", orderData);
+      await axios.patch(`https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/orders/` + uuid + "", orderData);
     } catch (error) {
       console.error('Error sending order to Firestore:', error);
     }
