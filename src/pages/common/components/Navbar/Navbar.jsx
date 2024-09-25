@@ -48,7 +48,7 @@ function Navbar() {
   };
   const fetchUserData = async () => {
     if (!user) return;
-    const url = `https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/users/${user.userId}`;
+    const url = `https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/users/${user.userId}`;
     try {
       const response = await axios.get(url);
       const userData = response.data.fields;  

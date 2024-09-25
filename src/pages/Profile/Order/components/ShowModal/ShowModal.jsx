@@ -15,7 +15,7 @@ function ShowModal({ closeModal, setShowDel,id }) {
  
    const fetchOrders = async () => {
     try {
-      const response = await axios.get(`https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/orders/${id}`);
+      const response = await axios.get(`https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/orders/${id}`);
       
       const fetchedOrders = response.data.fields.basket.arrayValue.values.map(item => ({
         id: item.mapValue.fields.id.stringValue,

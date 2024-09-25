@@ -31,7 +31,7 @@ export default function Profile() {
     const fileName = encodeURIComponent(pictureName);
     setFileName(fileName);
 
-    const url = `https://firebasestorage.googleapis.com/v0/b/foody-b6c94.appspot.com/o/${folderName}%2F${fileName}?uploadType=media`;
+    const url = `https://firebasestorage.googleapis.com/v0/b/${import.meta.env.VITE_PROJECT_ID}.appspot.com/o/${folderName}%2F${fileName}?uploadType=media`;
 
     const formData = new FormData();
     formData.append('file', file);
@@ -60,12 +60,12 @@ export default function Profile() {
   };
   const user = JSON.parse(localStorage.getItem('user'));
   const userId = user.userId;
-  const userURL = `https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/users/${userId}`;
+  const userURL = `https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/users/${userId}`;
   const sendUserData = async (values) => {
     const contact = getContactValue() + values.contact;
     const userData = {
       fields: {
-        imageURL: { stringValue: `https://firebasestorage.googleapis.com/v0/b/foody-b6c94.appspot.com/o/profile_images%2F${fileName}?alt=media` },
+        imageURL: { stringValue: `https://firebasestorage.googleapis.com/v0/b/${import.meta.env.VITE_PROJECT_ID}.appspot.com/o/profile_images%2F${fileName}?alt=media` },
         address: { stringValue: values.address },
         contact: { stringValue: contact.toString() },
         userName: { stringValue: values.username },

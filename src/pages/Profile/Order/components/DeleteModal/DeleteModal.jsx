@@ -7,7 +7,7 @@ function DeleteModal({ closeModal, setShowDel, handleDelete, id }) {
   const { t } = useTranslation();
 
   const deleteOrdersFromFirebase = async () => {
-    const url = `https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/orders/${id}`;
+    const url = `https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/orders/${id}`;
     try {
       const response = await axios.delete(url);
       console.log('order data deleted successfully', response.data);
