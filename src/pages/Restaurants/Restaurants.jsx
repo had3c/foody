@@ -17,7 +17,7 @@ export default function Restaurants() {
   const navigate = useNavigate();
 
   const fetchRestaurants = async () => {
-    const restaurantsUrl = 'https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/restaurants';
+    const restaurantsUrl = `https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/restaurants`;
     
     try {
       const response = await axios.get(restaurantsUrl);
