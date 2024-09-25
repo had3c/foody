@@ -149,7 +149,7 @@ function LoginForm() {
                                             id="userName"
                                             label={t("E-mail")}
                                             type='email'
-                                            placeholder={t("WE")}
+                                            placeholder={t("PE")}
                                         />
                                         <Input
                                             label={t("Password")}
