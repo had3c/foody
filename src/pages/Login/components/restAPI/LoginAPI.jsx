@@ -2,7 +2,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 export const handleLoginSubmit = async (values, setSubmitting, t, generateUserLoginDatas, navigate) => {
-    const apiKey = "AIzaSyDVi1kKlEiv3cmavo83rlOc20ki56PnnHw";
+    const apiKey = `${import.meta.env.VITE_API_KEY}`;
     const signInUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`;
     console.log(values)
     try {
