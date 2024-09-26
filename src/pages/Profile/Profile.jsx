@@ -84,12 +84,18 @@ export default function Profile() {
     } catch (error) {
       console.error('Error sending user data to Firestore:', error);
     }
+    window.location.reload()
   };
 
   const fetchUsers = async () => {
     try {
       const response = await axios.get(userURL);
       const userInformation = {
+        address:response.data.fields.address.stringValue,
+        contact:response.data.fields.contact.stringValue ,
+        userName:response.data.fields.userName.stringValue ,
+        fullName:response.data.fields.fullName.stringValue,
+        email:response.data.fields.email.stringValue,
         gender: response.data.fields.gender.stringValue,
         password: response.data.fields.password.stringValue,
       };
@@ -103,6 +109,30 @@ export default function Profile() {
   useEffect(() => {
     fetchUsers();
   }, []);
+
+  const deleteImageUrl = async () => {
+    const userdata = {
+      fields: {
+        address: { stringValue: users.address },
+        contact: { stringValue: users.contact },
+        userName: { stringValue: users.userName },
+        fullName: { stringValue: users.fullName },
+        email: { stringValue: users.email },
+        gender: { stringValue: users.gender},
+        password: { stringValue: users.password},
+      },
+    };
+    try {
+      await axios.patch(userURL, userdata, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    } catch (error) {
+      console.error('Error', error);
+    }
+    window.location.reload()
+  };
 
   const handleImageClick = () => {
     inputFileRef.current.click();
@@ -131,6 +161,7 @@ export default function Profile() {
         <img src={upload} alt="" />
         <p>{t('upload')} </p>
       </div>
+      <div className={style.deleteImg}><button onClick={deleteImageUrl}>{t('Delete Profile Photo')}</button></div>
       <input
         type="file"
         accept="image/*"

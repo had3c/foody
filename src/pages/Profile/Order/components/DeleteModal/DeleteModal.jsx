@@ -29,6 +29,7 @@ function DeleteModal({ closeModal, setShowDel, handleDelete, id }) {
           </button>
           <button className={style.delete} onClick={() =>{
             deleteOrdersFromFirebase()
+            window.location.reload()
              closeModal()
           }
            } >{t('Delete')} </button>
