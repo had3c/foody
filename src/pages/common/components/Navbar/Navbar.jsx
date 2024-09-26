@@ -34,7 +34,7 @@ function Navbar() {
   function dropDownMenu() {
     setDropDown(!dropDown);
   }
-  
+
   const ref = useOnClickOutside(() => {
     if (dropDown) {
       setDropDown(false);
@@ -51,14 +51,26 @@ function Navbar() {
     const url = `https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/users/${user.userId}`;
     try {
       const response = await axios.get(url);
-      const userData = response.data.fields;  
+      const userData = response.data.fields;
       setFullName(userData.fullName.stringValue);
-      const image = userData.imageURL?.stringValue || avatar;
-      setProfilePicture(image);
+
+      const imageUrl = userData.imageURL?.stringValue;
+      const img = new Image();
+      img.src = imageUrl || '';
+
+      img.onload = () => {
+        setProfilePicture(imageUrl);
+      };
+
+      img.onerror = () => {
+        setProfilePicture(avatar);
+      }
     } catch (error) {
       console.error('Error fetching user data:', error);
+      setProfilePicture(avatar);
     }
   };
+
   useEffect(() => {
     fetchUserData();
   }, [user]);
@@ -66,8 +78,8 @@ function Navbar() {
 
   return (
     <div className={navStyle.navbar}>
-      {openMenu && <ResponsNav setOpenMenu={setOpenMenu} openMenu={openMenu}  profilePicture={profilePicture} 
-  fullName={fullName}/>}
+      {openMenu && <ResponsNav setOpenMenu={setOpenMenu} openMenu={openMenu} profilePicture={profilePicture}
+        fullName={fullName} />}
       {/*     Foody Logo and Navigation Bar       */}
       <div className={navStyle.navigation}>
         <img src={navLogo} alt="" onClick={() => navigate('/')} />
@@ -91,7 +103,7 @@ function Navbar() {
         />
         {searchResult && (
           <div className={navStyle.searchResult}>
-            <SearchResult debouncedSearch={debouncedSearch} setSearchResult={setSearchResult}/>
+            <SearchResult debouncedSearch={debouncedSearch} setSearchResult={setSearchResult} />
           </div>
         )}
 
@@ -101,7 +113,7 @@ function Navbar() {
             <div className={navStyle.userTrue}>
               <img src={basket} alt="" onClick={() => navigate('/user/basket')} />
               <img src={profilePicture} alt="" onClick={dropDownMenu} className={navStyle.userImg} />
-              {dropDown && <UserMenu ref={ref} setDropDown={setDropDown} fullName={fullName}/>}
+              {dropDown && <UserMenu ref={ref} setDropDown={setDropDown} fullName={fullName} />}
             </div>
           ) : (
             <button className={navStyle.signupBtn} onClick={() => navigate('/login')}>{t('Sign Up')}</button>

@@ -18,7 +18,7 @@ export default function Restaurants() {
 
   const fetchRestaurants = async () => {
     const restaurantsUrl = `https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/restaurants`;
-    
+
     try {
       const response = await axios.get(restaurantsUrl);
       const restaurantsData = response.data.documents.map(doc => ({
@@ -30,7 +30,7 @@ export default function Restaurants() {
         image: doc.fields.image.stringValue,
         createTime: new Date(doc.createTime)
       }));
-      
+
       setAllRestaurants(restaurantsData);
       setFilteredRestaurants(restaurantsData);
     } catch (error) {
@@ -80,7 +80,7 @@ export default function Restaurants() {
   function getUniqueCuisines() {
     const cuisinesArray = allRestaurants
       .flatMap((restaurant) => restaurant.cuisine.split(', '));
-    const uniqueCuisines = [...new Set(cuisinesArray)].sort(); 
+    const uniqueCuisines = [...new Set(cuisinesArray)].sort();
     return [t('All'), ...uniqueCuisines];
   }
 
@@ -128,7 +128,7 @@ export default function Restaurants() {
         {filteredRestaurants.map((restaurant) => (
           <div key={restaurant.id} className={style.card} onClick={() => navigate(`/restaurants/${restaurant.id}`)}>
             {restaurant.createTime >= new Date('2024-09-20') && <div className={style.newRest}>NEW</div>}
-            <img src={restaurant.image}/>
+            <img src={restaurant.image} />
             <h6 className={style.cardTitle}>{restaurant.name}</h6>
             <p>{restaurant.cuisine}</p>
             <div className={style.cardFooter}>

@@ -48,9 +48,9 @@ function ResponsNav({ setOpenMenu, openMenu, profilePicture, fullName }) {
     }
     const ref = useOnClickOutside(() => {
         if (openMenu) {
-          setOpenMenu(false);
+            setOpenMenu(false);
         }
-      });
+    });
     const getNavLinkStyle = (path) => {
         return {
             color: location.pathname === path || (location.pathname === '/' && path === '/') ? '#d63626' : '#828282',

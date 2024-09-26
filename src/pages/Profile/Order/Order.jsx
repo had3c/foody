@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import style from './style/Order.module.css';
 import { useTranslation } from 'react-i18next'
 import useOnclickOutside from 'react-cool-onclickoutside';
@@ -7,7 +7,6 @@ import prev from '../../../assets/icons/prevTable.svg';
 import next from '../../../assets/icons/nextTable.svg';
 import ShowDel from './components/ShowDelete/ShowDel';
 import axios from 'axios'
-import ShowModal from './components/ShowModal/ShowModal';
 
 export default function Order() {
   const { t } = useTranslation()
@@ -20,7 +19,7 @@ export default function Order() {
   const toggleShowDel = (id) => {
     setShowDel(showDel === id ? null : id);
   };
-  
+
   const formatDate = (timestamp) => {
     const date = new Date(Number(timestamp));
     const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
@@ -32,13 +31,13 @@ export default function Order() {
       const response = await axios.get(`https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/orders`);
       const fetchedOrders = response.data.documents.map(doc => ({
         id: doc.fields.id.stringValue,
-        time:formatDate(doc.fields.time.stringValue),
+        time: formatDate(doc.fields.time.stringValue),
         address: doc.fields.deliveryAddress.stringValue,
         amount: doc.fields.totalPrice.stringValue,
         payment: doc.fields.paymentMethod.stringValue,
         contact: doc.fields.contactNumber.stringValue,
         customerId: doc.fields.customerID.stringValue,
-      })).filter(order => order.customerId === userID); 
+      })).filter(order => order.customerId === userID);
       setOrders(fetchedOrders);
     } catch (error) {
       console.error('Error fetching orders:', error);
@@ -77,7 +76,7 @@ export default function Order() {
     setCurrentPage(1);
   };
 
-  const ref =useOnclickOutside(() => {
+  const ref = useOnclickOutside(() => {
     if (showDel) {
       setShowDel(false);
     }
@@ -86,11 +85,8 @@ export default function Order() {
   const handleDelete = (id) => {
     const updatedData = orders.filter(item => item.id !== id);
     setOrders(updatedData);
-    // if (currentPage > Math.ceil(updatedData.length / perPage)) {
-    //   setCurrentPage(Math.ceil(updatedData.length / perPage));
-    // }
   };
-  
+
   return (
     <div className={style.userOrder}>
       <h2>{t('Your Orders')}</h2>
@@ -126,7 +122,7 @@ export default function Order() {
                 <td className={style.show}>
                   <img src={setting} alt="Settings" onClick={() => toggleShowDel(item.id)} />
                   {showDel === item.id && (
-                    <ShowDel setShowDel={setShowDel}  ref={ref} handleDelete={handleDelete} id={item.id} />
+                    <ShowDel setShowDel={setShowDel} ref={ref} handleDelete={handleDelete} id={item.id} />
                   )}
                 </td>
               </tr>
