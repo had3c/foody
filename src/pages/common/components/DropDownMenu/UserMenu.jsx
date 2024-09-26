@@ -7,7 +7,7 @@ import { useAuth } from '../../../../context/AuthContext';
 import { useTranslation } from 'react-i18next';
 
 
-const UserMenu = React.forwardRef(({ setDropDown, fullName}, ref) =>  {
+const UserMenu = React.forwardRef(({ setDropDown, fullName }, ref) => {
   const { t } = useTranslation();
   const { generateUserLogoutDatas } = useAuth();
   const navigate = useNavigate();

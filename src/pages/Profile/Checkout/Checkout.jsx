@@ -68,17 +68,18 @@ export default function Checkout() {
           "stringValue": basketProducts[0].restaurant
         },
         "totalPrice": {
-          "stringValue": totalPrice },
+          "stringValue": totalPrice
+        },
         basket: {
           arrayValue: {
             values: basketProducts.map(product => ({
               mapValue: {
                 fields: {
-                  id: { stringValue: product.id.toString() },  
+                  id: { stringValue: product.id.toString() },
                   name: { stringValue: product.name },
-                  price: { stringValue: product.price + "" }, 
+                  price: { stringValue: product.price + "" },
                   quantity: { stringValue: product.quantity + "" },
-                  image: { stringValue: product.image},
+                  image: { stringValue: product.image },
                 }
               }
             })),

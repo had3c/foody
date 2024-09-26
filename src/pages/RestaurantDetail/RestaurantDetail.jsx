@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate,useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
@@ -31,7 +31,7 @@ export default function RestaurantDetail() {
 
   const fetchRestaurantDetail = async () => {
     const restaurantUrl = `https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/restaurants/${id}`;
-    
+
     try {
       const response = await axios.get(restaurantUrl);
       const data = response.data;
@@ -54,10 +54,10 @@ export default function RestaurantDetail() {
     fetchRestaurantDetail();
   }, [id]);
 
-  
+
   const fetchRestaurantProducts = async () => {
     const productsUrl = `https://firestore.googleapis.com/v1/projects/foody-b6c94/databases/(default)/documents/products`;
-    
+
     try {
       const response = await axios.get(productsUrl);
       const data = response.data.documents;
@@ -65,7 +65,7 @@ export default function RestaurantDetail() {
         .map(doc => ({
           id: doc.fields.id.stringValue,
           name: doc.fields.name.stringValue,
-          price:doc.fields.price.stringValue,
+          price: doc.fields.price.stringValue,
           restaurant: doc.fields.restaurant.stringValue,
           image: doc.fields.image.stringValue,
         }))
@@ -85,7 +85,7 @@ export default function RestaurantDetail() {
   const handleAddProduct = (product) => {
     if (user) {
       dispatch(addProduct(product));
-    }else{
+    } else {
       const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
@@ -108,7 +108,7 @@ export default function RestaurantDetail() {
     });
   };
   const handleUpdateQuantity = (id, quantity) => {
-    if (quantity <1) return;
+    if (quantity < 1) return;
     dispatch(updateQuantity({ id, quantity }));
   };
   useEffect(() => {
@@ -131,7 +131,7 @@ export default function RestaurantDetail() {
     }
   };
 
-  
+
   const sortedProducts = [...products].sort((a, b) => {
     switch (sortOption) {
       case 'A-Z':
@@ -153,69 +153,69 @@ export default function RestaurantDetail() {
   }
 
   return <div>
-   {restaurantDetail && (
-        <div className={style.details}>
-          <img src={restaurantDetail.image}/>
-          <div className={style.information}>
-            <div className={style.location}>
-              <h5>{restaurantDetail.name}</h5>
-              <p>{restaurantDetail.address}</p>
+    {restaurantDetail && (
+      <div className={style.details}>
+        <img src={restaurantDetail.image} />
+        <div className={style.information}>
+          <div className={style.location}>
+            <h5>{restaurantDetail.name}</h5>
+            <p>{restaurantDetail.address}</p>
+          </div>
+          <div className={style.foods}>
+            <div>
+              <p>Cuisine</p>
+              <span>{restaurantDetail.cuisine}</span>
             </div>
-            <div className={style.foods}>
-              <div>
-                <p>Cuisine</p>
-                <span>{restaurantDetail.cuisine}</span>
-              </div>
-              <div className={style.delivery}>
-                <p>${restaurantDetail.price} {t('Delivery')}</p>
-                <button onClick={() => navigate('/restaurants')}>{t('Go Back')}</button>
-              </div>
+            <div className={style.delivery}>
+              <p>${restaurantDetail.price} {t('Delivery')}</p>
+              <button onClick={() => navigate('/restaurants')}>{t('Go Back')}</button>
             </div>
           </div>
         </div>
-      )}
+      </div>
+    )}
 
     <div className={style.sortingRest}>
-        <select
-          value={sortOption}
-          onChange={(e) => setSortOption(e.target.value)}
-        >
-          <option value="">{t('Sort by')}</option>
-          <option value="A-Z">A-Z</option>
-          <option value="Z-A">Z-A</option>
-          <option value="priceAsc">{t('Price: Low to High')}</option>
-          <option value="priceDesc">{t('Price: High to Low')}</option>
-        </select>
-      </div>
+      <select
+        value={sortOption}
+        onChange={(e) => setSortOption(e.target.value)}
+      >
+        <option value="">{t('Sort by')}</option>
+        <option value="A-Z">A-Z</option>
+        <option value="Z-A">Z-A</option>
+        <option value="priceAsc">{t('Price: Low to High')}</option>
+        <option value="priceDesc">{t('Price: High to Low')}</option>
+      </select>
+    </div>
 
     <div className={style.items}>
       <div className={style.products}>
         <h2>{t('Products')}</h2>
         <div className={style.prdctCards}>
-              {sortedProducts.map((product) => (
-                <div key={product.id} className={style.prdctCard}>
-                  <img src={product.image} alt="" className={style.prdctImg} />
-                  <div className={style.feature}>
-                    <p>{product.name}</p>
-                    <span>Lorem ipsum dolor sit amet elit. Consaeqatur, est reprehenderit.</span>
-                  </div>
-                  <div className={style.price}>
-                    <span>From </span>
-                    <span>${product.price}</span>
-                  </div>
-                  <img
-                    src={addPrdct}
-                    alt="Add to Basket"
-                    className={style.addPrdct}
-                    onClick={() => handleAddProduct(product)}
-                  />
-                </div>
-              ))}
-          </div>
+          {sortedProducts.map((product) => (
+            <div key={product.id} className={style.prdctCard}>
+              <img src={product.image} alt="" className={style.prdctImg} />
+              <div className={style.feature}>
+                <p>{product.name}</p>
+                <span>Lorem ipsum dolor sit amet elit. Consaeqatur, est reprehenderit.</span>
+              </div>
+              <div className={style.price}>
+                <span>From </span>
+                <span>${product.price}</span>
+              </div>
+              <img
+                src={addPrdct}
+                alt="Add to Basket"
+                className={style.addPrdct}
+                onClick={() => handleAddProduct(product)}
+              />
+            </div>
+          ))}
+        </div>
         <div className={style.checkout} onClick={openFilterMenu}>
           <p>{basketProducts.length} {t('items')}</p>
           <div>
-          $ {basketProducts.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)}
+            $ {basketProducts.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)}
           </div>
         </div>
       </div>
@@ -233,12 +233,12 @@ export default function RestaurantDetail() {
 
                 <div className={bstyle.basketList}>
                   <div className={bstyle.deleteAll}>
-                      <button onClick={handleDeleteAll}>{t('Delete all')}</button>
+                    <button onClick={handleDeleteAll}>{t('Delete all')}</button>
                   </div>
-                
+
                   {basketProducts.map((product) => (
                     <div key={product.id} className={bstyle.listCard}>
-                   
+
                       <div className={bstyle.listHead}>
                         <img
                           src={deleteBasket}
@@ -257,7 +257,7 @@ export default function RestaurantDetail() {
                         <div className={bstyle.itemCount}>
                           <button onClick={() => handleUpdateQuantity(product.id, product.quantity + 1)} className={bstyle.operation}>＋</button>
                           <p>{product.quantity}</p>
-                          <button onClick={() => handleUpdateQuantity(product.id, product.quantity - 1)}className={bstyle.operation}>‒</button>
+                          <button onClick={() => handleUpdateQuantity(product.id, product.quantity - 1)} className={bstyle.operation}>‒</button>
                         </div>
                       </div>
                     </div>
@@ -267,7 +267,7 @@ export default function RestaurantDetail() {
             ) : (
               <div>
                 <div className={bstyle.basketCount}>
-                  <img src={emptyBasket} alt="" style={{width:'25px'}}/>
+                  <img src={emptyBasket} alt="" style={{ width: '25px' }} />
                   <p style={{ color: 'grey' }}>0 {t('items')}</p>
                 </div>
                 <div className={bstyle.emptyBasket}>
@@ -279,8 +279,8 @@ export default function RestaurantDetail() {
 
           </div>
           <div style={{ cursor: 'pointer' }} onClick={handleCheckoutClick}>
-        <Checkout basketProducts={basketProducts}/>
-      </div>
+            <Checkout basketProducts={basketProducts} />
+          </div>
         </div>
       </div>)}
     </div>

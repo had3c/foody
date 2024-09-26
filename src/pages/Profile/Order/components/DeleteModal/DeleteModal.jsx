@@ -27,12 +27,12 @@ function DeleteModal({ closeModal, setShowDel, handleDelete, id }) {
           }}>
             {t('Cancel')}
           </button>
-          <button className={style.delete} onClick={() =>{
+          <button className={style.delete} onClick={() => {
             deleteOrdersFromFirebase()
             window.location.reload()
-             closeModal()
+            closeModal()
           }
-           } >{t('Delete')} </button>
+          } >{t('Delete')} </button>
         </div>
       </div>
     </div>

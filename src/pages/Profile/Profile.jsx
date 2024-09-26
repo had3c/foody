@@ -99,12 +99,9 @@ export default function Profile() {
       console.error('Error fetching users:', error);
     }
   };
-  
-
   useEffect(() => {
     fetchUsers();
   }, []);
-
 
   const handleImageClick = () => {
     inputFileRef.current.click();

@@ -14,7 +14,7 @@ function BasketItems() {
   const navigate = useNavigate()
   const dispatch = useDispatch();
   const basketProducts = useSelector((state) => state.basket.products);
- 
+
 
   const handleRemoveProduct = (id) => {
     dispatch(removeProduct(id));
@@ -47,17 +47,17 @@ function BasketItems() {
         </div>
 
         <div className={style.basketList}>
-        {basketProducts.length > 0 ? ( <div className={style.deleteAll}>
-                      <button onClick={handleDeleteAll}>{t('Delete all')}</button>
-                  </div>) : (<></>)}
-       
+          {basketProducts.length > 0 ? (<div className={style.deleteAll}>
+            <button onClick={handleDeleteAll}>{t('Delete all')}</button>
+          </div>) : (<></>)}
+
           {basketProducts.length > 0 ? (
             basketProducts.map((product) => (
               <div key={product.id} className={style.listCard}>
                 <div className={style.listHead}>
-                  <img 
-                    src={deleteBasket} 
-                    alt="" 
+                  <img
+                    src={deleteBasket}
+                    alt=""
                     onClick={() => handleRemoveProduct(product.id)}
                   />
                 </div>
@@ -91,7 +91,7 @@ function BasketItems() {
       </div>
 
       <div style={{ cursor: 'pointer' }} onClick={handleCheckoutClick}>
-        <Checkout basketProducts={basketProducts}/>
+        <Checkout basketProducts={basketProducts} />
       </div>
     </div>
   )

@@ -31,7 +31,7 @@ function Offers() {
 
   return (
     <div>
-         <section className={style.offers}>
+      <section className={style.offers}>
         {offers.map((offer, index) => (
           <div key={offer.id} className={`${style.promo} ${index % 2 !== 0 ? style.rowReverse : ''}`}>
             <div className={style.promoTxt}>
@@ -39,8 +39,8 @@ function Offers() {
               <p>{offer.description}</p>
             </div>
             <div className={style.promoImg}>
-            <div className={`${style.imgBg} ${index % 2 !== 0 ? style.scaleX : ''}`}></div>  
-            <img src={offer.image} alt={offer.title} />
+              <div className={`${style.imgBg} ${index % 2 !== 0 ? style.scaleX : ''}`}></div>
+              <img src={offer.image} alt={offer.title} />
             </div>
           </div>
         ))}

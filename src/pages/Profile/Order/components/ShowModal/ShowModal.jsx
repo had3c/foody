@@ -1,36 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import style from './Show.module.css';
 import { useTranslation } from 'react-i18next';
-import margarita from '../../../../../assets/images/margarita.svg';
 import prev from '../../../../../assets/icons/prevTable.svg';
 import next from '../../../../../assets/icons/nextTable.svg';
 import close from '../../../../../assets/icons/close.svg';
 import axios from 'axios'
 
-function ShowModal({ closeModal, setShowDel,id }) {
+function ShowModal({ closeModal, setShowDel, id }) {
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(2);
-   const [orders,setOrders]= useState([])
- 
-   const fetchOrders = async () => {
+  const [orders, setOrders] = useState([])
+
+  const fetchOrders = async () => {
     try {
       const response = await axios.get(`https://firestore.googleapis.com/v1/projects/${import.meta.env.VITE_PROJECT_ID}/databases/(default)/documents/orders/${id}`);
-      
+
       const fetchedOrders = response.data.fields.basket.arrayValue.values.map(item => ({
         id: item.mapValue.fields.id.stringValue,
         image: item.mapValue.fields.image.stringValue,
         name: item.mapValue.fields.name.stringValue,
-        price:parseFloat(item.mapValue.fields.price.stringValue) ,
-        quantity:parseInt(item.mapValue.fields.quantity.stringValue),
+        price: parseFloat(item.mapValue.fields.price.stringValue),
+        quantity: parseInt(item.mapValue.fields.quantity.stringValue),
       }));
-  
+
       setOrders(fetchedOrders);
     } catch (error) {
       console.error('Error fetching orders:', error);
     }
   };
-  
+
 
   useEffect(() => {
     fetchOrders();

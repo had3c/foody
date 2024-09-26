@@ -30,14 +30,14 @@ function SideBar() {
       confirmButtonText: t('Yes'),
       cancelButtonText: t('Cancel')
     });
-  
+
     if (result.isConfirmed) {
       generateUserLogoutDatas();
-  
+
       Swal.fire({
         title: t('Logout'),
-      icon: 'success',
-      confirmButtonText: t('OK')
+        icon: 'success',
+        confirmButtonText: t('OK')
       }).then(() => {
         window.location.href = '/';
       });
@@ -48,33 +48,33 @@ function SideBar() {
       <ul>
         <li>
           <NavLink to='/user' style={getNavLinkStyle('/user')}>
-          <MdPeopleOutline size={24}  style={{margin: '0 10px 3px 0' }} />
+            <MdPeopleOutline size={24} style={{ margin: '0 10px 3px 0' }} />
             {t('Profile')}
           </NavLink>
         </li>
         <li>
           <NavLink to='/user/basket' style={getNavLinkStyle('/user/basket')}>
-          <MdOutlineShoppingBasket size={24}  style={{margin: '0 10px 3px 0' }}/>
+            <MdOutlineShoppingBasket size={24} style={{ margin: '0 10px 3px 0' }} />
             {t('Your Basket')}
           </NavLink>
         </li>
         <li>
           <NavLink to='/user/orders' style={getNavLinkStyle('/user/orders')}>
-          <MdOutlineShoppingBasket size={24}  style={{margin: '0 10px 3px 0' }}/>
+            <MdOutlineShoppingBasket size={24} style={{ margin: '0 10px 3px 0' }} />
             {t('Your Orders')}
           </NavLink>
         </li>
         <li>
           <NavLink to='/user/checkout' style={getNavLinkStyle('/user/checkout')}>
-          <MdOutlineShoppingBasket size={24}  style={{margin: '0 10px 3px 0' }}/>
+            <MdOutlineShoppingBasket size={24} style={{ margin: '0 10px 3px 0' }} />
             {t('Checkout')}
           </NavLink>
         </li>
         <li>
-            <NavLink to="/" style={getNavLinkStyle('/')} onClick={handleLogout}>
-            <MdOutlineShoppingBasket size={24} style={{margin: '0 10px 3px 0' }}/>
-    {t('Logout')}
-  </NavLink>
+          <NavLink to="/" style={getNavLinkStyle('/')} onClick={handleLogout}>
+            <MdOutlineShoppingBasket size={24} style={{ margin: '0 10px 3px 0' }} />
+            {t('Logout')}
+          </NavLink>
         </li>
       </ul>
     </div>
