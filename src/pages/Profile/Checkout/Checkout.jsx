@@ -188,7 +188,7 @@ export default function Checkout() {
 
       {!isCheckedOut && (
         <div className={style.orderTotal}>
-          {isFriday ? <div className={style.discount}>Friday discount - 15%</div> : null}
+          {isFriday ? <div className={style.discount}>{t('Friday Discount')} - 15%</div> : null}
           <div>
             <h4>{t('Your Order')}</h4>
             <ul>
