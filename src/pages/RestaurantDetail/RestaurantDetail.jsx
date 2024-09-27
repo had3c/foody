@@ -197,7 +197,7 @@ export default function RestaurantDetail() {
               <img src={product.image} alt="" className={style.prdctImg} />
               <div className={style.feature}>
                 <p>{product.name}</p>
-                <span>Lorem ipsum dolor sit amet elit. Consaeqatur, est reprehenderit.</span>
+                <span>Lorem ipsum dolor sit amet elit. Consaeqatur reprehenderit.</span>
               </div>
               <div className={style.price}>
                 <span>From </span>
