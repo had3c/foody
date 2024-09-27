@@ -23,9 +23,3 @@ export const addUserToFS = async (userId, userData, token) => {
         console.error('Error FS', err);
     }
 };
-//
-///
-//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-//asdddddddddddddddddddddddddddddddddddd
-//foooooooooooooooooooooody
-//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
