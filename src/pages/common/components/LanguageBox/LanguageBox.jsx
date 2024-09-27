@@ -53,7 +53,6 @@ export default function LanguageBox() {
   const liItems = Object.keys(langs).map((key) => (
     <LangItem key={key} data={{ key, langs, handleLangSelect }} />
   ));
-  console.log(i18n.language);
 
   return (
     <div className="LanguageBox">
@@ -65,7 +64,7 @@ export default function LanguageBox() {
 
       {show && (
         <motion.ul
-        ref={ref}
+          ref={ref}
           initial={{ scale: 0, x: 30 }}
           animate={{ scale: 1, x: 30 }}
           transition={{
