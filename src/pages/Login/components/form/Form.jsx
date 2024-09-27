@@ -14,7 +14,7 @@ import { useAuth } from '../../../../context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import ReCAPTCHA from 'react-google-recaptcha';
+import PassiveReCAPTCHA from '../recaptcha/RecapTCHA';
 
 import { handleSubmit } from '../restAPI/FireStoreAPI';
 import { handleLoginSubmit } from '../restAPI/LoginAPI';
@@ -36,7 +36,6 @@ function LoginForm() {
     };
 
     const onChange = () => {
-        // recaptcha onChange
     };
 
     return (
@@ -101,18 +100,22 @@ function LoginForm() {
                                             name="fullName"
                                             id="fullName"
                                             placeholder={t("PN")}
+                                            autoComplete="name"
                                         />
                                         <Input
                                             label={t("User Name")}
                                             name="userName2"
                                             id="userName2"
                                             placeholder={t("PU")}
+                                            autoComplete="username"
                                         />
                                         <Input
                                             label={t("E-mail")}
                                             name="email"
                                             id="email"
                                             placeholder={t("PE")}
+                                            type="email"
+                                            autoComplete="email"
                                         />
                                         <Input
                                             label={t("Password")}
@@ -120,11 +123,12 @@ function LoginForm() {
                                             id="passwordReg"
                                             type="password"
                                             placeholder={t("PP")}
+                                            autoComplete="new-password"
                                         />
                                         <div className={StyleForm.formRow}>
                                             <div className={StyleForm.selectField}>
                                                 <label htmlFor="gender">{t("Gender")}</label>
-                                                <Field as="select" name="gender" id="gender">
+                                                <Field as="select" name="gender" id="gender" autoComplete="sex">
                                                     <option value="" disabled>{t('Select')}</option>
                                                     <option value="male">{t('Male')}</option>
                                                     <option value="female">{t('Female')}</option>
@@ -135,7 +139,7 @@ function LoginForm() {
                                                 )}
                                             </div>
                                             <div className={StyleForm.recaptchaContainer}>
-                                                <ReCAPTCHA
+                                                <PassiveReCAPTCHA
                                                     sitekey="6LeNHikqAAAAAKyGkMVWiiX6fSi1hpSng0vQ9aRY"
                                                     onChange={onChange}
                                                 />
@@ -150,6 +154,7 @@ function LoginForm() {
                                             label={t("E-mail")}
                                             type='email'
                                             placeholder={t("PE")}
+                                            autoComplete="email"
                                         />
                                         <Input
                                             label={t("Password")}
@@ -157,6 +162,7 @@ function LoginForm() {
                                             id="passwordLog"
                                             type="password"
                                             placeholder={t("PP2")}
+                                            autoComplete="current-password"
                                         />
                                     </>
                                 )}
@@ -188,14 +194,3 @@ function LoginForm() {
 }
 
 export default LoginForm;
-///
-///
-// Test
-//
-//
-// Test
-//
-//
-//
-//
-//
