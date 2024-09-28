@@ -4,15 +4,12 @@ import { toast } from 'react-toastify';
 export const handleLoginSubmit = async (values, setSubmitting, t, generateUserLoginDatas, navigate) => {
     const apiKey = `${import.meta.env.VITE_API_KEY}`;
     const signInUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`;
-    console.log(values)
     try {
         const response = await axios.post(signInUrl, {
             email: values.userName,
             password: values.password,
             returnSecureToken: true
         });
-
-        console.log('User logged in', response.data);
 
         const userId = response.data.localId;
         const token = response.data.idToken;
