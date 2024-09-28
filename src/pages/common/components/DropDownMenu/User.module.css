@@ -19,6 +19,11 @@ padding: 10px 0;
 .dropDown li span {
 color: #d63626;
 font-weight: 600;
+text-overflow: ellipsis;
+overflow: hidden; 
+width: 140px; 
+display: block; 
+white-space: nowrap;
 }
 .dropDown li a{
   color: black;    
