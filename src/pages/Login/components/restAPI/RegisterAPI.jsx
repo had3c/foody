@@ -18,7 +18,6 @@ export const addUserToFS = async (userId, userData, token) => {
             }
         });
 
-        console.log('User added FS', response.data);
     } catch (err) {
         console.error('Error FS', err);
     }
