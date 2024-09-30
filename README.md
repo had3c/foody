@@ -92,6 +92,8 @@ Are you hungry? Let's cook and eat. But wait, there's a problem, you're too tire
 
 This project is the admin side of Foody. In short, Foody is an online food ordering website. Here, customers can register, log in, choose a restaurant, add food to cart, place an order, account settings and many more features. This project is a Foody Admin project that collects Foody's restaurants, food, categories, offers, orders, order history, real-time user information, reports and many more similar events.
 
+Foody Admin Repo : [Foody admin repository](https://github.com/user01101111000/foody_admin)
+
 <div align="center"><img src ="/src/assets/readmeIcons/FOODYADMIN.png" alt="foodyAdmin" width="100%" title='foodyAdmin' />
 </div>
 
@@ -171,4 +173,3 @@ This project is the admin side of Foody. In short, Foody is an online food order
 ---
 
 <h6 align="center">© Foody, TEAM 3E All rights reserved.</h6>
- 
