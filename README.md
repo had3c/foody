@@ -170,6 +170,14 @@ Foody Admin Repo : [Foody admin repository](https://github.com/user01101111000/f
 
 </table>
 
+## Developers 👨‍💻
+
+**Team Leader :** [user01101111000](https://github.com/user01101111000)
+
+**Developer :** [elnararizv](https://github.com/elnararizv)
+
+**Developer :** [EldostJs](https://github.com/EldostJs)
+
 ---
 
 <h6 align="center">© Foody, TEAM 3E All rights reserved.</h6>
